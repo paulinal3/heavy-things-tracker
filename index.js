@@ -12,7 +12,7 @@ app.use(express.urlencoded({extended:false}))
 // controllers middleware
 app.use('/auth', require('./controllers/auth'))
 
-
+// home route
 app.get('/', (req, res)=>{
     res.send("auth_practice home route")
 })
