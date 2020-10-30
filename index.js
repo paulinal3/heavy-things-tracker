@@ -1,5 +1,9 @@
 const express = require('express')
 const app = express()
+const ejsLayouts = require('express-ejs-layouts')
+
+app.set('view engine', 'ejs')
+app.use(ejsLayouts)
 
 // controllers middleware
 app.use('/auth', require('./controllers/auth'))
