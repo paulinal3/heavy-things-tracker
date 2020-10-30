@@ -6,6 +6,7 @@ router.get('/signup', (req, res)=>{
 })
 
 router.post('/signup', (req, res)=>{
+    console.log('signup form data:', req.body)
     res.send('POST form data from signup.ejs, then redirect')
 })
 
@@ -14,6 +15,7 @@ router.get('/login', (req, res)=>{
 })
 
 router.post('/login', (req, res)=>{
+    console.log('login form data:', req.body)
     res.send('POST form data, validate users email/password')
 })
 
