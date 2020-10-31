@@ -60,6 +60,13 @@ module.exports = (sequelize, DataTypes) => {
     })
   })
 
+  // ALTERNATIVE TIMING OPTIONS
+  // user.addHook('beforeCreate', (pendingUser, options)=>{
+  //   let hashedPassword = bcrypt.hashSync(pendingUser.password, 10)
+  //   console.log(`${pendingUser.password} became ---> ${hashedPassword}`)
+  //   pendingUser.password = hashedPassword
+  // })
+
   return user;
 
 };
