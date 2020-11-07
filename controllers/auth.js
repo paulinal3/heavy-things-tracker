@@ -18,7 +18,10 @@ router.post('/signup', (req, res)=>{
     .then(([createdUser, wasCreated])=>{
         if(wasCreated){
             console.log(`just created the following user:`, createdUser)
-            res.send('POST form data from signup.ejs, then redirect')
+            // res.send('POST form data from signup.ejs, then redirect')
+            passport.authenticate('local', {
+                successRedirect: '/',
+            })(req, res) // why does this need to be an IIFE???
         } else {
             console.log('An account associated with that email address already exists! Did you mean to login?')
             res.redirect('/auth/login')
@@ -38,5 +41,10 @@ router.post('/login', passport.authenticate('local', {
         successRedirect: '/'
     })
 )
+
+router.get('/logout', (req, res)=>{
+    req.logout()
+    res.redirect('/')
+})
 
 module.exports = router

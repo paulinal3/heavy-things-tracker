@@ -27,7 +27,11 @@ app.use('/auth', require('./controllers/auth'))
 
 // home route
 app.get('/', (req, res)=>{
-    res.send("auth_practice home route")
+    if(req.user){
+        res.send(`req.user: ${req.user.name}`)
+    } else {
+        res.send("no user currently logged in")
+    }
 })
 
 
