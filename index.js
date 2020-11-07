@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 const ejsLayouts = require('express-ejs-layouts')
 const session = require('express-session')
-const passport = require('config/ppConfig.json')
+const passport = require('./config/ppConfig')
 
 // views (ejs and layouts) set up
 app.set('view engine', 'ejs')

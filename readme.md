@@ -41,13 +41,15 @@ const passport = require('config/ppConfig.json')
 * Serialize the user because the [docs](https://www.npmjs.com/package/passport#sessions) tell us we have to for sessions:
 ```javascript
 passport.serializeUser((user, doneCallback) => {
+    console.log("serializing user...")
     doneCallback(null, user.id)
 })
    
 passport.deserializeUser((id, doneCallback) => {
     db.user.findByPk(id)
-    .then((err, foundUser) => {
-        doneCallback(err, foundUser)
+    .then(foundUser => {
+        console.log("deserializing user....")
+        doneCallback(null, foundUser)
     })
     .catch((err)=>{
         console.log("error deserializing user")
@@ -66,6 +68,11 @@ app.use(passport.session())
 
 ```
 npm i passport-local
+```
+
+* Import `passport-local` into `config/ppConfig.js`
+```javascript
+const LocalStrategy = require('passport-local')
 ```
 
 * Set up `passport-local` as the strategy in `config/ppConfig.js`

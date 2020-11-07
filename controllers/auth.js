@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const db = require('../models')
+const passport = require('../config/ppConfig.js')
 
 router.get('/signup', (req, res)=>{
     res.render('auth/signup')
@@ -32,9 +33,10 @@ router.get('/login', (req, res)=>{
     res.render('auth/login')
 })
 
-router.post('/login', (req, res)=>{
-    console.log('login form data:', req.body)
-    res.send('POST form data, validate users email/password')
-})
+router.post('/login', passport.authenticate('local', {
+        failureRedirect: '/auth/login',
+        successRedirect: '/'
+    })
+)
 
 module.exports = router
