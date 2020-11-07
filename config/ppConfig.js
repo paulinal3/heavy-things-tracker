@@ -43,43 +43,47 @@ passport.deserializeUser((id, doneCallback) => {
  there's no user.
 */
 
-passport.use(new LocalStrategy({
-        usernameField: 'email',
-        passwordField: 'password'
-    },
-    (email, password, doneCallback) => {
-        console.log("passport-local is now trying to authenticate this user:", email)
-        db.user.findOne({where:{email:email}})
-        .then(foundUser=>{
-            if (!foundUser || !foundUser.validPassword(password)) { 
-                return doneCallback(null, false)
-            } else {
-                return doneCallback(null, foundUser);
-            }
-        })
-        .catch(err=>doneCallback(err))
-    }
-))
+// passport.use(new LocalStrategy({
+//         usernameField: 'email',
+//         passwordField: 'password'
+//     },
+//     (email, password, doneCallback) => {
+//         console.log("passport-local is now trying to authenticate this user:", email)
+//         db.user.findOne({where:{email:email}})
+//         .then(foundUser=>{
+//             if (!foundUser || !foundUser.validPassword(password)) { 
+//                 return doneCallback(null, false)
+//             } else {
+//                 return doneCallback(null, foundUser);
+//             }
+//         })
+//         .catch(err=>doneCallback(err))
+//     }
+// ))
 
-// const findAndLogInUser = (email, password, doneCallback) => {
-//     db.user.findOne({where:{email:email}})
-//     .then(foundUser=>{
-//         if (!foundUser || !foundUser.validPassword(password)) { 
-//             return doneCallback(null, false)
-//         } else {
-//             return doneCallback(null, foundUser);
-//         }
-//     })
-//     .catch(err=>doneCallback(err))
-// }
+const findAndLogInUser = (email, password, doneCallback) => {
+    db.user.findOne({where:{email:email}})
+    .then(async foundUser=>{
+        let match
+        if(foundUser){
+            match = await foundUser.validPassword(password)
+        }
+        if (!foundUser || !match) { 
+            return doneCallback(null, false)
+        } else {
+            return doneCallback(null, foundUser);
+        }
+    })
+    .catch(err=>doneCallback(err))
+}
 
-// const fieldsToCheck = {
-//     usernameField: 'email',
-//     passwordField: 'password'
-// }
+const fieldsToCheck = {
+    usernameField: 'email',
+    passwordField: 'password'
+}
 
-// const strategy = new LocalStrategy(fieldsToCheck, findAndLogInUser)
+const strategy = new LocalStrategy(fieldsToCheck, findAndLogInUser)
 
-// passport.use(strategy)
+passport.use(strategy)
 
 module.exports = passport
