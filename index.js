@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const ejsLayouts = require('express-ejs-layouts')
 const session = require('express-session')
+const passport = require('config/ppConfig.json')
 
 // views (ejs and layouts) set up
 app.set('view engine', 'ejs')
@@ -15,7 +16,7 @@ app.use(session({
     secret: 'keyboard cat',
     resave: false,
     saveUninitialized: true
-  }))
+}))
 
 // controllers middleware
 app.use('/auth', require('./controllers/auth'))
