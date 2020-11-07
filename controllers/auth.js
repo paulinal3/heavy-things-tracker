@@ -20,15 +20,18 @@ router.post('/signup', (req, res)=>{
             console.log(`just created the following user:`, createdUser)
             // res.send('POST form data from signup.ejs, then redirect')
             passport.authenticate('local', {
-                successRedirect: '/',
+                successRedirect: '/', // !-> FLASH <-!
+                successFlash: 'Account created and logged in!'
             })(req, res) // why does this need to be an IIFE???
-        } else {
-            console.log('An account associated with that email address already exists! Did you mean to login?')
+        } else { // !-> FLASH <-!
+            req.flash('error', 'email already exists, try logging in') 
+            // console.log('An account associated with that email address already exists! Did you mean to login?')
             res.redirect('/auth/login')
         }
     })
-    .catch(err =>{
-        console.log(err)
+    .catch(err =>{ // !-> FLASH <-!
+        req.flash('error', error.message) 
+        res.redirect('/auth/signup')
     })
 })
 
@@ -38,12 +41,15 @@ router.get('/login', (req, res)=>{
 
 router.post('/login', passport.authenticate('local', {
         failureRedirect: '/auth/login',
-        successRedirect: '/'
+        successRedirect: '/', // !-> FLASH <-!
+        failureFlash: 'Invalid username and/or password.',
+        successFlash: 'You are now logged in.'
     })
 )
 
 router.get('/logout', (req, res)=>{
-    req.logout()
+    req.logout() // !-> FLASH <-!
+    req.flash('Success! You\'re logged out.')
     res.redirect('/')
 })
 
