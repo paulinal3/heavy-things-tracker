@@ -55,4 +55,11 @@ passport.deserializeUser((id, doneCallback) => {
 })
 ```
 
+* Set up passport middleware BELOW session middleware per [docs](https://www.npmjs.com/package/passport#middleware)
+
+```javascript
+app.use(passport.initialize())
+app.use(passport.session())
+```
+
 

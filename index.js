@@ -18,6 +18,10 @@ app.use(session({
     saveUninitialized: true
 }))
 
+// passport middleware
+app.use(passport.initialize())
+app.use(passport.session())
+
 // controllers middleware
 app.use('/auth', require('./controllers/auth'))
 
