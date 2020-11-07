@@ -90,16 +90,21 @@ const LocalStrategy = require('passport-local')
 * Set up `passport-local` as the strategy in `config/ppConfig.js`
 
 ```javascript
-const findAndLogInUser = (email, password, doneCallback) => {
-    db.user.findOne({where:{email:email}})
-    .then(foundUser=>{
-        if (!foundUser || !foundUser.validPassword(password)) { 
-            return doneCallback(null, false)
-        } else {
-            return doneCallback(null, foundUser);
+const findAndLogInUser = (email, password, doneCallback) =>{
+    db.user.findOne({where:{email: email}}) // go check for a user in the db with that email
+    .then(async foundUser=>{
+        let match
+        if(foundUser){
+            match = await foundUser.validPassword(password)
+        }
+        if(!foundUser || !match){ // something funky about the user
+            console.log('password was NOT validated i.e. match is false')
+            return doneCallback(null, false) // send back "false"
+        } else { // user was legit
+            return doneCallback(null, foundUser) // send the found user object
         }
     })
-    .catch(err=>doneCallback(err))
+    .catch(err=>doneCallback(err)) // doneCallback takes two params: error, userToBeLoggedIn
 }
 
 const fieldsToCheck = {
