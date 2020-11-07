@@ -19,7 +19,7 @@ app.use(session({
 ---
 ### Set up Passport
 
-* Install it
+* Install [passport](http://www.passportjs.org/)
 ```
 npm i passport
 ```
@@ -61,5 +61,38 @@ passport.deserializeUser((id, doneCallback) => {
 app.use(passport.initialize())
 app.use(passport.session())
 ```
+
+* Install [passport local](http://www.passportjs.org/packages/passport-local/)
+
+```
+npm i passport-local
+```
+
+* Set up `passport-local` as the strategy in `config/ppConfig.js`
+
+```javascript
+const findAndLogInUser = (email, password, doneCallback) => {
+    db.user.findOne({where:{email:email}})
+    .then(foundUser=>{
+        if (!foundUser || !foundUser.validPassword(password)) { 
+            return doneCallback(null, false)
+        } else {
+            return doneCallback(null, foundUser);
+        }
+    })
+    .catch(err=>doneCallback(err))
+}
+
+const fieldsToCheck = {
+    usernameField: 'email',
+    passwordField: 'password'
+}
+
+const strategy = new LocalStrategy(fieldsToCheck, findAndLogInUser)
+
+passport.use(strategy)
+```
+
+
 
 
