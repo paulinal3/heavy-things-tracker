@@ -304,7 +304,7 @@ app.get('/', (req, res)=>{
 
 * Add a `views/profile.ejs`
 ```markup
-<h2><%= currentUser %>'s Profile</h2>
+<h2><%= currentUser.name %>'s Profile</h2>
 ```
 
 * Add a `/profile` route in `index.js`:
