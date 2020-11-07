@@ -4,6 +4,8 @@ const ejsLayouts = require('express-ejs-layouts')
 const session = require('express-session')
 const passport = require('./config/ppConfig')
 const flash = require('connect-flash')
+const isLoggedIn = require('./middleware/isLoggedIn')
+
 
 // views (ejs and layouts) set up
 app.set('view engine', 'ejs')
@@ -44,7 +46,7 @@ app.get('/', (req, res)=>{
 })
 
 // profile route
-app.get('/profile', (req, res)=>{
+app.get('/profile', isLoggedIn, (req, res)=>{
     res.render('profile')
 })
 

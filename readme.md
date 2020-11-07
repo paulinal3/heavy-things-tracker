@@ -314,8 +314,32 @@ app.get('/profile', (req, res)=>{
 })
 ```
 
+### Set Up Authorization
 
+* Create authorization middleware in a `middleware/isLoggedIn.js` file that checks if a user is logged in. We do this in a separate file so we can import it into any controller if needed.
+```javascript
+module.exports = (req, res, next) => {
+    if (!req.user) {
+        req.flash('error', 'You must be logged in to access that page.')
+        res.redirect('/auth/login')
+    } else {
+        next()
+    }
+}
+```
 
+* Import the middleware in `index.js` (and anywhere else you want to use it)
+```javascript
+const isLoggedIn = require('./middleware/isLoggedIn')
+```
+
+* Protect your profile route by adding `isLoggedIn` as an optional middleware argument:
+
+```javascript
+app.get('/profile', isLoggedIn, (req, res) => {
+  res.render('profile');
+})
+```
 
 
 
