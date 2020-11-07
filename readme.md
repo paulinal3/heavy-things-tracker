@@ -47,7 +47,7 @@ module.exports = passport
 
 * Import the code from the configuration file back into `index.js`:
 ```javascript
-const passport = require('config/ppConfig.js')
+const passport = require('./config/ppConfig.js')
 ```
 
 * Serialize the user because the [docs](https://www.npmjs.com/package/passport#sessions) tell us we have to for sessions:
