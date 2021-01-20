@@ -64,7 +64,15 @@ user.init({
     console.log(`HOOK!!!! BEFORE CREATING THIS USER: ${pendingUser.name}`)
   })
 ```
-* 
+* hash that password!!!!
+```javascript
+  user.addHook('beforeCreate', (pendingUser, options)=>{
+    console.log(`OG password: ${pendingUser.password}`)
+    let hashedPassword = bcrypt.hashSync(pendingUser.password, 10)
+    console.log(`Hashed password: ${hashedPassword}`)
+    pendingUser.password = hashedPassword
+  })
+```
 
 
 ### Set up Express Sessions
