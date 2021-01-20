@@ -1,3 +1,60 @@
+### Sequelize Validations
+
+**Name**
+* cannot be null
+* must be between 2 and 25 characters
+
+**Email**
+* cannot be null
+* must be unique
+* must be a legit email
+
+**Password**
+* cannot be null
+* must be between 8 and 99 characters
+
+```javascript
+user.init({
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: {
+          args: [2, 25],
+          msg: 'Name must be 2-25 characters long.'
+        }
+      }
+    },
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+      validate: {
+        isEmail: {
+          args: true,
+          msg: 'Please enter a valid email address.'
+        }
+      }
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: {
+          args: [8,99],
+          msg: 'Password must be between 8 and 99 characters.'
+        }
+      }
+    }
+  }, {
+    sequelize,
+    modelName: 'user',
+  });
+```
+
+### Set Up Bcrypt
+
+
 ### Set up Express Sessions
 * install it
 ```
