@@ -128,13 +128,16 @@ module.exports = passport
 const passport = require('./config/ppConfig.js')
 ```
 
-* Serialize the user because the [docs](https://www.npmjs.com/package/passport#sessions) tell us we have to for sessions:
+* Tell passport how to [serialize](https://www.npmjs.com/package/passport#sessions) the user by converting it to the id alone (this makes it easy to store):
 ```javascript
 passport.serializeUser((user, doneCallback) => {
     console.log("serializing user...")
     doneCallback(null, user.id)
 })
-   
+```
+
+* Tell passport how to deserialize the user now by looking it up in the db based on the id:
+```javascript   
 passport.deserializeUser((id, doneCallback) => {
     db.user.findByPk(id)
     .then(foundUser => {
