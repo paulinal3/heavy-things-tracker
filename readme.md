@@ -88,11 +88,12 @@ const session = require('express-session')
 * set up session middleware: 
 ```javascript
 app.use(session({
-    secret: 'keyboard cat',
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true
 }))
 ```
+Check out the docs for more on the [secret](https://www.npmjs.com/package/express-session#secret), [resave](https://www.npmjs.com/package/express-session#resave), and [saveUninitialized](https://www.npmjs.com/package/express-session#saveuninitialized) options.
 
 * Change home route to say something useful for our next steps:
 
