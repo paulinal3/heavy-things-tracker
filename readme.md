@@ -13,6 +13,8 @@
 * cannot be null
 * must be between 8 and 99 characters
 
+Test it out!
+
 ```javascript
 user.init({
     name: {
@@ -52,7 +54,17 @@ user.init({
   });
 ```
 
-### Set Up Bcrypt
+### Hash the password on signup (sequelize hook + bcrypt)
+
+* install bcrypt with `npm i bcrypt`
+* import bcrypt into the user model with `const bcrypt = require('bcrypt`)`
+* create a beforeCreate hook and test it out
+```javascript
+  user.addHook('beforeCreate', (pendingUser, options)=>{
+    console.log(`HOOK!!!! BEFORE CREATING THIS USER: ${pendingUser.name}`)
+  })
+```
+* 
 
 
 ### Set up Express Sessions
