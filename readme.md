@@ -406,25 +406,9 @@ router.post('/signup', (req, res)=>{
 })
 ```
 
-```javascript
-router.post('/login', passport.authenticate('local', {
-        failureRedirect: '/auth/login',
-        successRedirect: '/', // !-> FLASH <-!
-        failureFlash: 'Invalid username and/or password.',
-        successFlash: 'You are now logged in.'
-    })
-)
-```
+### Make our flash messages available to all ejs
 
-```javascript
-router.get('/logout', (req, res)=>{
-    req.logout() // !-> FLASH <-!
-    req.flash('Success! You\'re logged out.')
-    res.redirect('/')
-})
-```
-
-* Set up custom middlware (underneath the flash and session middleware) so our messages are always available in our ejs and we don't have to pass through `req.alerts` to our ejs manually (let's also do this with the user!):
+We want out messages always available in our ejs so we don't have to pass through `req.alerts` to our ejs manually:
 
 ```javascript
 app.use((req, res, next) => {
@@ -434,10 +418,11 @@ app.use((req, res, next) => {
     next()
 })
 ```
----
-### Display the flash messages and current user
 
-* Create a `views/partials/alerts.ejs` file with the following:
+
+## Display the flash messages in the ejs
+
+### Create a `views/partials/alerts.ejs` file with the following:
 
 ```markup
 <% if (alerts.error) { %>
@@ -457,13 +442,7 @@ app.use((req, res, next) => {
     <%- include('partials/alerts') %>
 ```
 
-* Create a `views/home.ejs` page
-
-```markup
-<h2>Express Auth Boilerplate Home Page</h2>
-```
-
-* Modify home route to show the new home ejs
+### Revert home route to show the home ejs
 
 ```javascript
 app.get('/', (req, res)=>{
@@ -471,7 +450,35 @@ app.get('/', (req, res)=>{
 })
 ```
 
-* Add a nav bar to the `layout.ejs` header:
+### Test your alert!
+
+See if you get the appropiate alerts on signup.
+
+### Now add flash to the login and logout routes:
+
+```javascript
+router.post('/login', passport.authenticate('local', {
+        failureRedirect: '/auth/login',
+        successRedirect: '/', // !-> FLASH <-!
+        failureFlash: 'Invalid username and/or password.',
+        successFlash: 'You are now logged in.'
+    })
+)
+```
+
+```javascript
+router.get('/logout', (req, res)=>{
+    req.logout() // !-> FLASH <-!
+    req.flash('Success! You\'re logged out.')
+    res.redirect('/')
+})
+```
+
+Test these too!!
+
+### Nav Bar
+
+Add a nav bar to the `layout.ejs` header:
 
 ```markup
 <nav>
@@ -487,19 +494,9 @@ app.get('/', (req, res)=>{
     </nav>
 ```
 
-* Add a `views/profile.ejs`
-```markup
-<h2><%= currentUser.name %>'s Profile</h2>
-```
+---
 
-* Add a `/profile` route in `index.js`:
-```javascript
-app.get('/profile', (req, res)=>{
-    res.render('profile')
-})
-```
-
-### Set Up Authorization
+# Set Up Authorization
 
 * Create authorization middleware in a `middleware/isLoggedIn.js` file that checks if a user is logged in. We do this in a separate file so we can import it into any controller if needed.
 ```javascript
