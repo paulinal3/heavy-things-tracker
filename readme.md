@@ -53,8 +53,11 @@ user.init({
     modelName: 'user',
   });
 ```
+---
 
-# Hash the password on signup (sequelize hook + bcrypt)
+# Bcrypt & Sequelize Hooks
+
+## Hash the password on signup (sequelize hook + bcrypt)
 
 ### install bcrypt with 
 
@@ -82,7 +85,7 @@ user.init({
   })
 ```
 
-# Create a method for validating password
+## Create a method for validating password
 Now that we have bcrypt available for us, we need a way to check if a password is correct! This method will get called later in the passport function that logs in a user.
 
 ```javascript
@@ -93,7 +96,9 @@ Now that we have bcrypt available for us, we need a way to check if a password i
   }
 ```
 
-# Set up Express Sessions
+---
+
+# Express Sessions
 
 ### install it
 ```
