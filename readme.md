@@ -328,6 +328,8 @@ router.post('/signup', (req, res)=>{
 
 ### Add a logout route!
 
+The logout method is added to the request object by the passport middleware. See [docs](http://www.passportjs.org/docs/logout/).
+
 ```javascript
 router.get('/logout', (req, res)=>{
     req.logout()
