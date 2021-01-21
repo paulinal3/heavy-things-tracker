@@ -1,4 +1,4 @@
-### Sequelize Validations
+# Sequelize Validations
 
 **Name**
 * cannot be null
@@ -54,17 +54,25 @@ user.init({
   });
 ```
 
-### Hash the password on signup (sequelize hook + bcrypt)
+# Hash the password on signup (sequelize hook + bcrypt)
 
-* install bcrypt with `npm i bcrypt`
-* import bcrypt into the user model with `const bcrypt = require('bcrypt`)`
-* create a beforeCreate hook and test it out
+### install bcrypt with 
+
+`npm i bcrypt`
+
+### import bcrypt into the user model
+
+`const bcrypt = require('bcrypt')`
+
+### create a beforeCreate hook and test it out
+
 ```javascript
   user.addHook('beforeCreate', (pendingUser, options)=>{
     console.log(`HOOK!!!! BEFORE CREATING THIS USER: ${pendingUser.name}`)
   })
 ```
-* hash that password!!!!
+
+### hash that password!!!!
 ```javascript
   user.addHook('beforeCreate', (pendingUser, options)=>{
     console.log(`OG password: ${pendingUser.password}`)
@@ -74,18 +82,30 @@ user.init({
   })
 ```
 
+# Create a method for validating password
+Now that we have bcrypt available for us, we need a way to check if a password is correct! This method will get called later in the passport function that logs in a user.
 
-### Set up Express Sessions
-* install it
+```javascript
+  user.prototype.validPassword = async function(passwordInput) {
+    let match = await bcrypt.compare(passwordInput, this.password)
+    console.log("???????????match:", match)
+    return match
+  }
+```
+
+# Set up Express Sessions
+
+### install it
 ```
 npm i express-session
 ```
 
-* import it in `index.js`: 
+### import it in `index.js`: 
+
 ```javascript
 const session = require('express-session')
 ```
-* set up session middleware: 
+### set up session middleware: 
 ```javascript
 app.use(session({
     secret: process.env.SESSION_SECRET,
@@ -93,9 +113,10 @@ app.use(session({
     saveUninitialized: true
 }))
 ```
+
 Check out the docs for more on the [secret](https://www.npmjs.com/package/express-session#secret), [resave](https://www.npmjs.com/package/express-session#resave), and [saveUninitialized](https://www.npmjs.com/package/express-session#saveuninitialized) options.
 
-* Change home route to say something useful for our next steps:
+### Change home route to say something useful for our next steps:
 
 ```javascript
 app.get('/', (req, res)=>{
@@ -106,14 +127,18 @@ app.get('/', (req, res)=>{
     }
 })
 ```
----
-### Set up Passport
 
-* Install [passport](http://www.passportjs.org/)
+# Set up Passport
+
+### Install [passport](http://www.passportjs.org/)
+
 ```
 npm i passport
 ```
-* Create a configuration file `config/ppConfig.js` where we'll put all of the passport-specific set up code (so we don't make `index.js` super long)
+
+### Create a configuration file
+
+`config/ppConfig.js` is where we'll put all of the passport-specific set up code (so we don't make `index.js` super long)
 
 ```javascript
 const passport = require('passport')
@@ -126,12 +151,16 @@ const passport = require('passport')
 module.exports = passport
 ```
 
-* Import the code from the configuration file back into `index.js`:
+### Import the code from the configuration file back into `index.js`:
+
 ```javascript
 const passport = require('./config/ppConfig.js')
 ```
 
-* Tell passport how to [serialize](https://www.npmjs.com/package/passport#sessions) the user by converting it to the id alone (this makes it easy to store):
+### Serialize
+
+We have to tell Passport how to [serialize](https://www.npmjs.com/package/passport#sessions) the user by converting it to the id alone (this makes it easy to store):
+
 ```javascript
 // tell the passport to serialize the user using the id
 // by passing it into the doneCallback
@@ -141,7 +170,10 @@ passport.serializeUser((user, doneCallback) => {
 })
 ```
 
-* Tell passport how to deserialize the user now by looking it up in the db based on the id:
+### Deserialize
+
+Tell passport how to deserialize the user now by looking it up in the db based on the id:
+
 ```javascript   
 passport.deserializeUser((id, doneCallback) => {
     db.user.findByPk(id)
@@ -155,25 +187,27 @@ passport.deserializeUser((id, doneCallback) => {
 })
 ```
 
-* Set up passport middleware BELOW session middleware per [docs](https://www.npmjs.com/package/passport#middleware)
+### Set up passport middleware 
+
+This hass to happen BELOW session middleware per [docs](https://www.npmjs.com/package/passport#middleware)
 
 ```javascript
 app.use(passport.initialize())
 app.use(passport.session())
 ```
 
-* Install [passport local](http://www.passportjs.org/packages/passport-local/)
+### Install [passport local](http://www.passportjs.org/packages/passport-local/)
 
 ```
 npm i passport-local
 ```
 
-* Import `passport-local` into `config/ppConfig.js`
+### Import `passport-local` into `config/ppConfig.js`
 ```javascript
 const LocalStrategy = require('passport-local')
 ```
 
-* Set up `passport-local` as the strategy in `config/ppConfig.js`
+### Set up `passport-local` as the strategy in `config/ppConfig.js`
 
 If we want to mimic the way the [docs](http://www.passportjs.org/packages/passport-local/) do it, it would look like this:
 ```javascript
@@ -234,12 +268,12 @@ const strategy = new LocalStrategy(fieldsToCheck, findAndLogInUser)
 passport.use(strategy)
 ```
 
-* Import passport to your auth controller
+### Import passport to your auth controller
 ```javascript
 const passport = require('../config/ppConfig.js')
 ```
 
-* Modify login route to use passport and check to see if loggin in works!
+### Modify login route to use passport and check to see if loggin in works!
 
 ```javascript
 router.post('/login', passport.authenticate('local', {
@@ -251,7 +285,7 @@ router.post('/login', passport.authenticate('local', {
 
 **> TEST NOW!!!!** Can you login?
 
-* Modify sign up route to automatically log the new user in after a new user upon successful signup
+### Modify sign up route to automatically log the new user in after a new user upon successful signup
 
 ```javascript
 router.post('/signup', (req, res)=>{
@@ -280,7 +314,7 @@ router.post('/signup', (req, res)=>{
 })
 ```
 
-* Add a logout route!
+### Add a logout route!
 
 ```javascript
 router.get('/logout', (req, res)=>{
@@ -288,8 +322,10 @@ router.get('/logout', (req, res)=>{
     res.redirect('/')
 })
 ```
+
 ---
-### Set Up Flash Messages
+
+# Flash Messages
 
 * Install
 ```
