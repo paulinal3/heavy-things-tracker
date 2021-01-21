@@ -472,7 +472,7 @@ app.get('/', (req, res)=>{
 
 See if you get the appropiate alerts on signup.
 
-### Now add flash to the login and logout routes:
+### Now add flash to the login route:
 
 ```javascript
 router.post('/login', passport.authenticate('local', {
@@ -484,15 +484,7 @@ router.post('/login', passport.authenticate('local', {
 )
 ```
 
-```javascript
-router.get('/logout', (req, res)=>{
-    req.logout() // !-> FLASH <-!
-    req.flash('Success! You\'re logged out.')
-    res.redirect('/')
-})
-```
-
-Test these too!!
+Test this too!!
 
 ---
 
