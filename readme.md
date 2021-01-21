@@ -336,6 +336,24 @@ router.get('/logout', (req, res)=>{
     res.redirect('/')
 })
 ```
+---
+
+# Custom Middleware
+### Make the user available to all ejs pages by attaching it to the response object
+
+```javascript
+// CUSTOM MIDDLEWARE
+app.use((req, res, next)=>{
+    res.locals.currentUser = req.user
+    next() // move on to the next piece of middleware
+})
+```
+
+### Modify `profile.ejs` to test currentUser accessibility
+
+```html
+<h1><%=currentUser.name%>'s Profile</h1>
+```
 
 ---
 
