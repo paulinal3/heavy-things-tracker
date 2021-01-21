@@ -311,7 +311,7 @@ router.post('/signup', (req, res)=>{
             // res.send('POST form data from signup.ejs, then redirect')
             passport.authenticate('local', {
                 successRedirect: '/',
-            })(req, res) // why does this need to be an IIFE???
+            })(req, res) // IIFE
         } else {
             console.log('An account associated with that email address already exists! Did you mean to login?')
             res.redirect('/auth/login')
@@ -322,6 +322,9 @@ router.post('/signup', (req, res)=>{
     })
 })
 ```
+
+`passport.authenticate()` returns a function designed to be used as the route callback (like we used it in the login route! It will call `res.redirect` to the indicated `successRedirect` path when it is  called, so we open parentheses and pass in the request and response objects to make this happen immediately when that line of code is read. This is called and *immediately invoked function express* (or IIFE). Since `passport.authenticate()` resolves to be a function definition, we're immediately calling (aka invoking) a function upon it's definition.
+
 
 ### Add a logout route!
 
