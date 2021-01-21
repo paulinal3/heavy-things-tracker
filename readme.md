@@ -121,18 +121,6 @@ app.use(session({
 
 Check out the docs for more on the [secret](https://www.npmjs.com/package/express-session#secret), [resave](https://www.npmjs.com/package/express-session#resave), and [saveUninitialized](https://www.npmjs.com/package/express-session#saveuninitialized) options.
 
-### Change home route to say something useful for our next steps:
-
-```javascript
-app.get('/', (req, res)=>{
-    if(req.user){
-        res.send(`req.user: ${req.user.name}`)
-    } else {
-        res.send("no user currently logged in")
-    }
-})
-```
-
 # Set up Passport
 
 ### Install [passport](http://www.passportjs.org/)
@@ -288,9 +276,25 @@ router.post('/login', passport.authenticate('local', {
 )
 ```
 
-**> TEST NOW!!!!** Can you login? A valid eamil & password should send you to the home page, and an invalid login should redirect back to the login page.
+### TEST NOW!!!!
 
-### Modify sign up route to automatically log the new user in after a new user upon successful signup
+Can you login? A valid eamil & password should send you to the home page, and an invalid login should redirect back to the login page.
+
+### Change home route to show us the logged in user:
+
+```javascript
+app.get('/', (req, res)=>{
+    if(req.user){
+        res.send(`req.user: ${req.user.name}`)
+    } else {
+        res.send("no user currently logged in")
+    }
+    // res.render('home')
+})
+```
+Try refreshing the page after logging in to make sure the session persists!
+
+### Log the new user in upon successful signup
 
 ```javascript
 router.post('/signup', (req, res)=>{
