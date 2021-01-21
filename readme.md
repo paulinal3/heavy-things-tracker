@@ -118,7 +118,10 @@ npm i passport
 ```javascript
 const passport = require('passport')
 
-// put a bunch of configuration stuff in here to set up the strategy
+// ----------------------------> SERIALIZATION SET UP <----------------------------
+
+// ----------------------------> STRATEGY SET UP <----------------------------
+
 
 module.exports = passport
 ```
