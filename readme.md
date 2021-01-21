@@ -130,6 +130,8 @@ const passport = require('./config/ppConfig.js')
 
 * Tell passport how to [serialize](https://www.npmjs.com/package/passport#sessions) the user by converting it to the id alone (this makes it easy to store):
 ```javascript
+// tell the passport to serialize the user using the id
+// by passing it into the doneCallback
 passport.serializeUser((user, doneCallback) => {
     console.log("serializing user...")
     doneCallback(null, user.id)
