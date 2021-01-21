@@ -288,7 +288,7 @@ router.post('/login', passport.authenticate('local', {
 )
 ```
 
-**> TEST NOW!!!!** Can you login?
+**> TEST NOW!!!!** Can you login? A valid eamil & password should send you to the home page, and an invalid login should redirect back to the login page.
 
 ### Modify sign up route to automatically log the new user in after a new user upon successful signup
 
