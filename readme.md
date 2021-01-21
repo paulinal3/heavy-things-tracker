@@ -172,6 +172,29 @@ const LocalStrategy = require('passport-local')
 
 * Set up `passport-local` as the strategy in `config/ppConfig.js`
 
+If we want to mimic the way the [docs](http://www.passportjs.org/packages/passport-local/) do it, it would look like this:
+```javascript
+passport.use(new LocalStrategy({
+        usernameField: 'email',
+        passwordField: 'password'
+    },
+    (email, password, doneCallback) => {
+        console.log("passport-local is now trying to authenticate this user:", email)
+        db.user.findOne({where:{email:email}})
+        .then(async foundUser=>{
+            let match = await foundUser.validPassword(password)
+            if (!foundUser || !match) { 
+                return doneCallback(null, false)
+            } else {
+                return doneCallback(null, foundUser);
+            }
+        })
+        .catch(err=>doneCallback(err))
+    }
+))
+```
+**OR** we could assign each argument that goes into a function to its own variable so we can see each component more clearly:
+
 ```javascript
 const findAndLogInUser = (email, password, doneCallback) =>{
     db.user.findOne({where:{email: email}}) // go check for a user in the db with that email
@@ -195,6 +218,14 @@ const fieldsToCheck = {
     passwordField: 'password'
 }
 
+
+// Create an instance of Local Strategy
+// --> constructor arg 1:
+// an object that indicates how we're going refer to the two fields
+// we're checking (for ex. we're using email instead of username)
+// --> constructor arg 2:
+// a callback that is ready to receive the two fields we're checking
+// as well as a doneCallback
 const strategy = new LocalStrategy(fieldsToCheck, findAndLogInUser)
 
 passport.use(strategy)
