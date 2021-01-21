@@ -355,6 +355,24 @@ app.use((req, res, next)=>{
 <h1><%=currentUser.name%>'s Profile</h1>
 ```
 
+### Nav Bar
+
+Add a nav bar to the `layout.ejs` header that dynamically renders based on whether a user is logged in:
+
+```markup
+<nav>
+    <ul>
+        <% if (!currentUser) { %>
+        <li><a href="/auth/signup">Signup</a></li>
+        <li><a href="/auth/login">Login</a></li>
+        <% } else { %>
+        <li><a href="/auth/logout">Logout</a></li>
+        <li><a href="/profile">Profile</a></li>
+        <% } %>
+    </ul>
+    </nav>
+```
+
 ---
 
 # Flash Messages
@@ -475,24 +493,6 @@ router.get('/logout', (req, res)=>{
 ```
 
 Test these too!!
-
-### Nav Bar
-
-Add a nav bar to the `layout.ejs` header:
-
-```markup
-<nav>
-    <ul>
-        <% if (!currentUser) { %>
-        <li><a href="/auth/signup">Signup</a></li>
-        <li><a href="/auth/login">Login</a></li>
-        <% } else { %>
-        <li><a href="/auth/logout">Logout</a></li>
-        <li><a href="/profile">Profile</a></li>
-        <% } %>
-    </ul>
-    </nav>
-```
 
 ---
 
