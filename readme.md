@@ -418,7 +418,7 @@ router.post('/signup', (req, res)=>{
         }
     })
     .catch(err =>{ // !-> FLASH <-!
-        req.flash('error', error.message) 
+        req.flash('error', err.message) 
         res.redirect('/auth/signup')
     })
 })
