@@ -1,3 +1,15 @@
+# Set Up
+
+Here's how to download and run this application on your local mac:
+
+* Fork & Clone
+* `npm i` to install dependencies
+* create database with `createdb express_auth_development`
+* if your postgress process requires a username and password, add these to the `config/config.json` file
+* migrate models to your database with `sequelize db:migrate` (This command assumes you have the sequelize-cli installed globally. If you don't, run `npm i sequelize-cli` to install in this project.)
+
+---
+
 # Sequelize Validations
 
 **Name**
@@ -83,17 +95,6 @@ user.init({
     console.log(`Hashed password: ${hashedPassword}`)
     pendingUser.password = hashedPassword
   })
-```
-
-## Create a method for validating password
-Now that we have bcrypt available for us, we need a way to check if a password is correct! This method will get called later in the passport function that logs in a user.
-
-```javascript
-  user.prototype.validPassword = async function(passwordInput) {
-    let match = await bcrypt.compare(passwordInput, this.password)
-    console.log("???????????match:", match)
-    return match
-  }
 ```
 
 ---
@@ -212,7 +213,7 @@ passport.use(new LocalStrategy({
         console.log("passport-local is now trying to authenticate this user:", email)
         db.user.findOne({where:{email:email}})
         .then(async foundUser=>{
-            let match = await foundUser.validPassword(password)
+            let match = await bcrypt.compare(password, foundUser.password)
             if (!foundUser || !match) { 
                 return doneCallback(null, false)
             } else {
@@ -231,7 +232,7 @@ const findAndLogInUser = (email, password, doneCallback) =>{
     .then(async foundUser=>{
         let match
         if(foundUser){
-            match = await foundUser.validPassword(password)
+            match = await bcrypt.compare(password, foundUser.password)
         }
         if(!foundUser || !match){ // something funky about the user
             console.log('password was NOT validated i.e. match is false')
