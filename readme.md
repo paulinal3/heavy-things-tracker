@@ -7,21 +7,21 @@
 
 ## Wireframes
 * Welcome Page
-![Wireframe](./images/welcome-page.png)
+![Wireframe](./pitch-images/welcome-page.png)
 * User Profile
-![Wireframe](./images/user-profile.png)
+![Wireframe](./pitch-images/user-profile.png)
 * Search
-![Wireframe](./images/search.png)
+![Wireframe](./pitch-images/search.png)
 * Same Layout for Results, Favorites, & Saved Lists
-![Wireframe](./images/list-page.png)
+![Wireframe](./pitch-images/list-page.png)
 * Detailed Exercise
-![Wireframe](./images/detailed-exercise.png)
+![Wireframe](./pitch-images/detailed-exercise.png)
 
 ## API
 * wger Workout Manager
 
 ## ERD
-![ERD](./images/erd.png)
+![ERD](./pitch-images/erd.png)
 
 ## Examples of API Data
 API root = https://wger.de/api/v2/<:param>/?language=2
