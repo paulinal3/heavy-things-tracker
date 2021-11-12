@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express')
 const app = express()
 const ejsLayouts = require('express-ejs-layouts')
@@ -16,7 +17,7 @@ app.use(express.urlencoded({extended:false}))
 
 // session middleware
 app.use(session({
-    secret: 'keyboard cat',
+    secret: process.env.SUPER_SECRET_SECRET,
     resave: false,
     saveUninitialized: true
 }))
