@@ -1,6 +1,8 @@
 const passport = require('passport')
 const db = require('../models')
 const LocalStrategy = require('passport-local')
+const bcrypt = require('bcrypt')
+
 
 /*
  Passport "serializes" objects to make them easy to store,
@@ -66,7 +68,7 @@ const findAndLogInUser = (email, password, doneCallback) => {
     .then(async foundUser=>{
         let match
         if(foundUser){
-            match = await foundUser.validPassword(password)
+            match = await bcrypt.compare(password, foundUser.password)
         }
         if (!foundUser || !match) { 
             return doneCallback(null, false)
