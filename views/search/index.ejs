@@ -1,7 +1,16 @@
-<h1>Search for an Exercise!</h1>
+<h1>Looking For an Exercise?</h1>
 
-<form method="GET" action="search">
-    <label for="exercise name input">Search By Exercise Name:</label>
-    <input type="text" name="exerciseName">
-    <input type="submit" value="Find Exercise!">
+<form method="GET" action="search/results">
+    <label for="exercise name input">Search By Major Muscle Group:</label>
+    <select name="category" id="muscleGroup">
+        <option value="10">Abs</option>
+        <option value="8">Arms</option>
+        <option value="12">Back</option>
+        <option value="14">Calves</option>
+        <option value="11">Chest</option>
+        <option value="9">Legs</option>
+        <option value="13">Shoulders</option>
+    </select>
+    <!-- <input type="text" name="bodyPart"> -->
+    <input type="submit" value="See Results!">
 </form>
