@@ -4,7 +4,7 @@ const axios = require ('axios')
 
 // create search route
 router.get('/', (req, res) => {
-    res.render('search/index')
+    res.render('search/main')
 })
 
 // create a search results route
