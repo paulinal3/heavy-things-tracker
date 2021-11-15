@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
 router.get('/results', (req, res) => {
     const exerciseApi = 'https://wger.de/api/v2/exercise/'
     const eng = 'language=2'
-    const limit = 'limit=500'
+    const limit = 'limit=5000'
     let muscleGroup = req.query.category
 
     axios.get(`${exerciseApi}?category=${muscleGroup}&${eng}&${limit}`)
@@ -28,19 +28,25 @@ router.get('/results', (req, res) => {
 // create a detailed exercise route
 router.get('/:exercise_id', (req, res) => {
     let exerciseId = req.params.exercise_id
-    const exerciseApi = 'https://wger.de/api/v2/exercise/'
+    const rootApi = 'https://wger.de/api/v2/'
     const eng = 'language=2'
 
-    axios.get(`${exerciseApi}${exerciseId}?${eng}`)
+    axios.get(`${rootApi}exercise/${exerciseId}?${eng}`)
     .then(apiRes => {
         console.log('this is apiRes.data \n', apiRes.data)
         let name = apiRes.data.name
-        let muscleGroup = apiRes.data.category
+        let muscleGroupId = apiRes.data.category
         let description = apiRes.data.description
         let primaryMuscle = apiRes.data.muscles[0]
         let secondaryMuscle = apiRes.data.muscles[0]
+        
+        axios.get(`${rootApi}exercisecategory/${muscleGroupId}`)
+            .then(categoryRes => {
+                console.log('this is the muscle group \n', categoryRes.data)
+                let muscleGroup = categoryRes.data.name
 
-        res.render('search/details', {name, muscleGroup, description, primaryMuscle, secondaryMuscle})
+                res.render('search/details', {name, description, primaryMuscle, secondaryMuscle, muscleGroup})
+            })
     })
     .catch(error => {
         console.error
