@@ -16,7 +16,8 @@ router.get('/results', (req, res) => {
     axios.get(`${exerciseApi}?category=${muscleGroup}&${eng}`)
     .then(apiRes => {
         console.log('this is results of exercises\n', apiRes.data.results)
-        res.render('search/results')
+        const results = apiRes.data.results
+        res.render('search/results', {results})
     })
 })
 
