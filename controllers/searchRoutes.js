@@ -42,6 +42,9 @@ router.get('/:exercise_id', (req, res) => {
 
         res.render('search/details', {name, muscleGroup, description, primaryMuscle, secondaryMuscle})
     })
+    .catch(error => {
+        console.error
+    })
 })
 
 module.exports = router
