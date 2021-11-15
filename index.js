@@ -54,5 +54,5 @@ app.get('/profile', isLoggedIn, (req, res)=>{
 
 
 app.listen(3000, ()=>{
-    console.log("auth_practice running on port 3000")
+    console.log("heavy things grind 💪🏼🏋🏽‍♀️")
 })

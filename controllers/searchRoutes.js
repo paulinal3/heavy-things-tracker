@@ -20,6 +20,28 @@ router.get('/results', (req, res) => {
         const results = apiRes.data.results
         res.render('search/results', {results})
     })
+    .catch(error => {
+        console.error
+    })
+})
+
+// create a detailed exercise route
+router.get('/:exercise_id', (req, res) => {
+    let exerciseId = req.params.exercise_id
+    const exerciseApi = 'https://wger.de/api/v2/exercise/'
+    const eng = 'language=2'
+
+    axios.get(`${exerciseApi}${exerciseId}?${eng}`)
+    .then(apiRes => {
+        console.log('this is apiRes.data \n', apiRes.data)
+        let name = apiRes.data.name
+        let muscleGroup = apiRes.data.category
+        let description = apiRes.data.description
+        let primaryMuscle = apiRes.data.muscles[0]
+        let secondaryMuscle = apiRes.data.muscles[0]
+
+        res.render('search/details', {name, muscleGroup, description, primaryMuscle, secondaryMuscle})
+    })
 })
 
 module.exports = router

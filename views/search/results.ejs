@@ -5,7 +5,7 @@
 <ul>
     <% results.forEach((result) => { %>
         <li>
-            <%= result.name %> 
+            <a href="/search/<%= result.id %> "><%= result.name %></a>
         </li>
    <% }) %> 
 </ul>
