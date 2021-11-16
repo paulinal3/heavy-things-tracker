@@ -13,24 +13,7 @@ router.get('/', (req, res) => {
     res.render('search/main')
 })
 
-// // create a search results route
-// router.get('/results', (req, res) => {
-//     const exerciseApi = 'https://wger.de/api/v2/exercise/'
-//     const eng = 'language=2'
-//     const limit = 'limit=5000'
-//     let muscleGroup = req.query.category
-
-//     axios.get(`${exerciseApi}?category=${muscleGroup}&${eng}&${limit}`)
-//     .then(apiRes => {
-//         console.log('this is results of exercises\n', apiRes.data.results)
-//         const results = apiRes.data.results
-//         res.render('search/results', {results})
-//     })
-//     .catch(error => {
-//         console.error
-//     })
-// })
-
+// create a search results route
 router.get('/results', (req, res) => {
     const rootApi = 'https://v1.exercisedb.io/api/exercises'
     let muscleTargeted = req.query.bodyPart
@@ -45,6 +28,29 @@ router.get('/results', (req, res) => {
         console.error
     })
 })
+
+// create a detailed exercise route
+router.get('/:exercise_name', (req, res) => {
+    const rootApi = 'https://v1.exercisedb.io/api/exercises'
+    let exerciseName = req.params.exercise_name
+
+    axios.get(`${rootApi}/name/${exerciseName}`, authHeader)
+    .then(apiRes => {
+        console.log('these are the exercise details', apiRes)
+    })
+})
+
+// create a detailed exercise route
+// router.get('/:exercise_id', (req, res) => {
+//     const rootApi = 'https://v1.exercisedb.io/api/exercises'
+//     let exerciseId = req.params.exerciseName
+
+//     axios.get(`${rootApi}/name/${exerciseName}`, authHeader)
+//     .then(apiRes => {
+//         console.log('these are the exercise details', apiRes)
+//     })
+// })
+
 
 // // create a detailed exercise route
 // router.get('/:exercise_id', (req, res) => {
@@ -75,3 +81,22 @@ router.get('/results', (req, res) => {
 // })
 
 module.exports = router
+
+// <----------------- OLD API ----------------->
+// // create a search results route
+// router.get('/results', (req, res) => {
+//     const exerciseApi = 'https://wger.de/api/v2/exercise/'
+//     const eng = 'language=2'
+//     const limit = 'limit=5000'
+//     let muscleGroup = req.query.category
+
+//     axios.get(`${exerciseApi}?category=${muscleGroup}&${eng}&${limit}`)
+//     .then(apiRes => {
+//         console.log('this is results of exercises\n', apiRes.data.results)
+//         const results = apiRes.data.results
+//         res.render('search/results', {results})
+//     })
+//     .catch(error => {
+//         console.error
+//     })
+// })
