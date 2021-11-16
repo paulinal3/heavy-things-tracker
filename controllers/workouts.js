@@ -18,4 +18,9 @@ router.get('/history', (req, res) => {
     res.render('workouts/index')
 })
 
+// create a show route to display details of a logged workout
+router.get('/details', (req, res) => {
+    res.render('workouts/show')
+})
+
 module.exports = router
