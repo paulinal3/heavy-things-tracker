@@ -37,7 +37,9 @@ router.get('/results', (req, res) => {
 
     axios.get(`${rootApi}/bodyPart/${muscleTargeted}`, authHeader)
     .then(apiRes => {
-        console.log('this is the apiRes', apiRes)
+        console.log('this is the apiRes data arr of exercises', apiRes.data)
+        const results = apiRes.data
+        res.render('search/results', {results})
     })
     .catch(error => {
         console.error
