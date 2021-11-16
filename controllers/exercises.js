@@ -9,5 +9,8 @@ const authHeader = {
 }
 
 // create search route
+router.get('/search', (req, res) => {
+    res.render('exercises/search')
+})
 
 module.exports = router
