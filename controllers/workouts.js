@@ -8,4 +8,9 @@ const authHeader = {
     }
 }
 
+// create new route for user to log a workout
+router.get('/new', (req, res) => {
+    res.render('workouts/new')
+})
+
 module.exports = router
