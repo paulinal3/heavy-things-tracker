@@ -39,9 +39,10 @@ app.use((req, res, next) => {
 
 // controllers middleware 
 app.use('/auth', require('./controllers/auth'))
-app.use('/exercise', require('./controllers/exercises'))
+app.use('/exercises', require('./controllers/exercises'))
+app.use('/workouts', require('./controllers/workouts'))
+
 app.use('/search', require('./controllers/searchRoutes'))
-app.use('/user', require('./controllers/userRoutes'))
 
 // home route
 app.get('/', (req, res)=>{

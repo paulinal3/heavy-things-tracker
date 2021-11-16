@@ -8,6 +8,4 @@ const authHeader = {
     }
 }
 
-// create search route
-
 module.exports = router
