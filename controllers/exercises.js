@@ -2,6 +2,7 @@ require('dotenv').config()
 const express = require('express')
 const router = express.Router()
 const axios = require ('axios')
+const db = require('../models')
 const authHeader = {
     headers: {
         'Authorization': process.env.API_KEY
@@ -27,6 +28,33 @@ router.get('/search/results', (req, res) => {
     .catch(error => {
         console.error
     })
+})
+
+// create a post route that will save exercise
+router.post('/saves', (req, res) => {
+    const exerciseData = JSON.parse(JSON.stringify(req.body))
+    console.log('this is the exercise data to be saved', exerciseData)
+    db.user.findAll({
+        where: {
+            id: res.locals.currentUser.id,
+        }
+        .then(foundUser => {
+            console.log('saving exercise to this user\n', foundUser.name)
+            foundUser.createExercise({
+                name: exerciseData.name,
+                bodyPart: exerciseData.bodyPart,
+                equipment: exerciseData.equipment,
+                muscleTargeted: exerciseData.muscleTargeted,
+                exerciseDemo: exerciseData.exerciseDemo
+            })
+            .then(savedExercise => {
+                console.log('exercise details saved to db\n', savedExercise)
+            })
+        })
+    })
+    // .then(saveExercise => {
+    //     console.log('exercise saved to db',saveExercise)
+    // })
 })
 
 // create a show route based on exercise clicked on

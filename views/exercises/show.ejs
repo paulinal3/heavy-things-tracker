@@ -8,8 +8,12 @@
 <p>Equipment: <%= equipment %> </p>
 <p>Muscle Targeted: <%= targetMuscle %> </p>
 Exercise Demo: <img src="<%= demoVid %>" alt = "animation demo of <%= name %> ">
-
-<form action="">
-    <input hidden type="text" name="exerciseName" value="<%= name %>">
+<br>
+<form method="POST" action="/exercises/saves">
+    <input hidden type="text" name="name" value="<%= name %>">
+    <input hidden type="text" name="bodyPart" value="<%= bodyPart %>">
+    <input hidden type="text" name="equipment" value="<%= equipment %>">
+    <input hidden type="text" name="muscleTargeted" value="<%= targetMuscle %>">
+    <input hidden type="text" name="exerciseDemo" value="<%= demoVid %>">
     <button type="submit">Save for Later!</button>
 </form>
