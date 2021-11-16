@@ -42,8 +42,6 @@ app.use('/auth', require('./controllers/auth'))
 app.use('/exercises', require('./controllers/exercises'))
 app.use('/workouts', require('./controllers/workouts'))
 
-app.use('/search', require('./controllers/searchRoutes'))
-
 // home route
 app.get('/', (req, res)=>{
     res.render('home')

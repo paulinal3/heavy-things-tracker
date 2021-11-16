@@ -1,0 +1,15 @@
+<nav>
+    <!-- <a href="/exercises/search/results">Back to Results List</a> -->
+    <a href="/exercises/search">Start a New Search</a>
+</nav>
+
+<h1><%= name %> </h1>
+<h3>Body Part: <%= bodyPart %> </h3>
+<p>Equipment: <%= equipment %> </p>
+<p>Muscle Targeted: <%= targetMuscle %> </p>
+Exercise Demo: <img src="<%= demoVid %>" alt = "animation demo of <%= name %> ">
+
+<form action="">
+    <input hidden type="text" name="exerciseName" value="<%= name %>">
+    <button type="submit">Save for Later!</button>
+</form>
