@@ -48,6 +48,28 @@ router.get('/:exercise_name', (req, res) => {
     })
 })
 
+
+module.exports = router
+
+// <----------------- OLD API ----------------->
+// // create a search results route
+// router.get('/results', (req, res) => {
+//     const exerciseApi = 'https://wger.de/api/v2/exercise/'
+//     const eng = 'language=2'
+//     const limit = 'limit=5000'
+//     let muscleGroup = req.query.category
+
+//     axios.get(`${exerciseApi}?category=${muscleGroup}&${eng}&${limit}`)
+//     .then(apiRes => {
+//         console.log('this is results of exercises\n', apiRes.data.results)
+//         const results = apiRes.data.results
+//         res.render('search/results', {results})
+//     })
+//     .catch(error => {
+//         console.error
+//     })
+// })
+
 // // create a detailed exercise route
 // router.get('/:exercise_id', (req, res) => {
 //     let exerciseId = req.params.exercise_id
@@ -70,27 +92,6 @@ router.get('/:exercise_name', (req, res) => {
 
 //                 res.render('search/details', {name, description, primaryMuscle, secondaryMuscle, muscleGroup})
 //             })
-//     })
-//     .catch(error => {
-//         console.error
-//     })
-// })
-
-module.exports = router
-
-// <----------------- OLD API ----------------->
-// // create a search results route
-// router.get('/results', (req, res) => {
-//     const exerciseApi = 'https://wger.de/api/v2/exercise/'
-//     const eng = 'language=2'
-//     const limit = 'limit=5000'
-//     let muscleGroup = req.query.category
-
-//     axios.get(`${exerciseApi}?category=${muscleGroup}&${eng}&${limit}`)
-//     .then(apiRes => {
-//         console.log('this is results of exercises\n', apiRes.data.results)
-//         const results = apiRes.data.results
-//         res.render('search/results', {results})
 //     })
 //     .catch(error => {
 //         console.error
