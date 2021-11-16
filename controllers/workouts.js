@@ -13,4 +13,9 @@ router.get('/new', (req, res) => {
     res.render('workouts/new')
 })
 
+// create an index route to display a list of all of user's workouts
+router.get('/history', (req, res) => {
+    res.render('workouts/index')
+})
+
 module.exports = router
