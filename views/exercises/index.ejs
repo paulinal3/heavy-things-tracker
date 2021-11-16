@@ -6,7 +6,9 @@
 <ul>
     <% results.forEach((result) => { %>
         <li>
-            <a href="exercises/search/results/<%= result.name %> "><%= result.name %></a>
+            <% let name = result.name %>
+            <% name.replace('', '%20') %>
+            <a href="/exercises/<%= name %> "><%= result.name %></a>
         </li>
    <% }) %> 
 </ul>
