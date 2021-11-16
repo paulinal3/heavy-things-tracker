@@ -36,21 +36,17 @@ router.get('/:exercise_name', (req, res) => {
 
     axios.get(`${rootApi}/name/${exerciseName}`, authHeader)
     .then(apiRes => {
-        console.log('these are the exercise details', apiRes)
+        console.log('these are the exercise details', apiRes.data)
+        const results = apiRes.data[0]
+        let name = results.name
+        let bodyPart = results.bodyPart
+        let equipment = results.equipment
+        let demoVid = results.gifUrl
+        let targetMuscle = results.target
+
+        res.render('search/details', {name, bodyPart, equipment, demoVid, targetMuscle})
     })
 })
-
-// create a detailed exercise route
-// router.get('/:exercise_id', (req, res) => {
-//     const rootApi = 'https://v1.exercisedb.io/api/exercises'
-//     let exerciseId = req.params.exerciseName
-
-//     axios.get(`${rootApi}/name/${exerciseName}`, authHeader)
-//     .then(apiRes => {
-//         console.log('these are the exercise details', apiRes)
-//     })
-// })
-
 
 // // create a detailed exercise route
 // router.get('/:exercise_id', (req, res) => {
