@@ -44,11 +44,12 @@ router.post('/saves/', (req, res) => {
             bodyPart: exerciseData.bodyPart,
             equipment: exerciseData.equipment,
             muscleTargeted: exerciseData.muscleTargeted,
-            exerciseDemo: exerciseData.exerciseDemo
+            exerciseDemo: exerciseData.exerciseDemo 
+        })
+        res.redirect('/exercises/indexSaves')
     })
     .catch(error => {
         console.error
-        })
     })
 })
 
@@ -60,7 +61,7 @@ router.get('/:exercise_name', (req, res) => {
 
     axios.get(`${rootApi}/name/${exerciseName}`, authHeader)
     .then(apiRes => {
-        console.log('these are the exercise details', apiRes.data)
+        // console.log('these are the exercise details', apiRes.data)
         const results = apiRes.data[0]
         let name = results.name
         let bodyPart = results.bodyPart

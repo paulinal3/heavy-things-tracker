@@ -67,7 +67,7 @@ router.get('/edit/:id', isLoggedIn, (req, res) => {
 })
 
 // create a put route to edit workout
-router.put('/:id', isLoggedIn, (req, res) => {
+router.put('/edit/:id', isLoggedIn, (req, res) => {
     db.workout.findOne({
         where: {
             id: req.params.id,
@@ -81,6 +81,7 @@ router.put('/:id', isLoggedIn, (req, res) => {
             duration: req.body.duration,
             type: req.body.type
         })
+        res.redirect('/workouts/history')
     })
 })
 
@@ -94,7 +95,7 @@ router.get('/details/:id', isLoggedIn, (req, res) => {
         }
     })
     .then(foundWorkout => {
-        res.render('workouts/show', {date: foundWorkout.date, duration: foundWorkout.duration, type: foundWorkout.type})
+        res.render('workouts/show', {workoutId: req.params.id, date: foundWorkout.date, duration: foundWorkout.duration, type: foundWorkout.type})
     })
 })
 
