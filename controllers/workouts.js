@@ -51,8 +51,15 @@ router.get('/history', isLoggedIn, (req, res) => {
 })
 
 // create a show route to display details of a logged workout
-router.get('/details', isLoggedIn, (req, res) => {
-    res.render('workouts/show')
+router.get('/details/:id', isLoggedIn, (req, res) => {
+    let workout_id = req.params.id
+    console.log('this is the workout id\n', workout_id)
+    db.workout.findOne({
+        where: {id: workout_id}
+    })
+    .then(foundWorkout => {
+        res.render('workouts/show', {date: foundWorkout.date, duration: foundWorkout.duration, type: foundWorkout.type})
+    })
 })
 
 module.exports = router

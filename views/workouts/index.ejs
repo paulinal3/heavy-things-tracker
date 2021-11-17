@@ -1,11 +1,9 @@
-<!-- display all logged workouts in a listed order my date (newest to oldest) -->
-
 <h1>All Your Logged Workouts</h1>
 
-<% results.forEach(result => { %>
+<% results.forEach(workout => { %>
     <h3>
-        <a href="/workouts/details/<%= result.date %>">
-        <%= result.date %>
+        <a href="/workouts/details/<%= workout.id %>">
+        <%= workout.date %>
         </a>
     </h3>
 <% }) %> 
