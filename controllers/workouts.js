@@ -64,6 +64,9 @@ router.get('/edit/:id', isLoggedIn, (req, res) => {
     .then(foundWorkout => {
         res.render('workouts/edit', {workoutId, date: foundWorkout.date, duration: foundWorkout.duration, type: foundWorkout.type})
     })
+    .catch(error => {
+        console.error
+    })
 })
 
 // create a put route to edit workout
@@ -83,6 +86,9 @@ router.put('/edit/:id', isLoggedIn, (req, res) => {
         })
         res.redirect('/workouts/history')
     })
+    .catch(error => {
+        console.error
+    })
 })
 
 // create a show route to display details of a logged workout
@@ -96,6 +102,9 @@ router.get('/details/:id', isLoggedIn, (req, res) => {
     })
     .then(foundWorkout => {
         res.render('workouts/show', {workoutId: req.params.id, date: foundWorkout.date, duration: foundWorkout.duration, type: foundWorkout.type})
+    })
+    .catch(error => {
+        console.error
     })
 })
 
