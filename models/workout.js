@@ -16,9 +16,11 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   workout.init({
-    date: DataTypes.DATE,
+    date: DataTypes.DATEONLY,
     duration: DataTypes.INTEGER,
     type: DataTypes.STRING,
+    comments: DataTypes.TEXT,
+    name: DataTypes.STRING,
     userId: DataTypes.INTEGER
   }, {
     sequelize,
