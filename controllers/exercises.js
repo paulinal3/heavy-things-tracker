@@ -97,10 +97,20 @@ router.get('/saves/:id', isLoggedIn, (req, res) => {
         // include: [db.user, db.exercise]
     })
     .then(foundSave => {
-        res.render('exercises/showSaves', {name: foundSave.name, bodyPart: foundSave.bodyPart, equipment: foundSave.equipment, muscleTargeted: foundSave.muscleTargeted, exerciseDemo: foundSave.exerciseDemo})
+        res.render('exercises/showSaves', {id: savedId, name: foundSave.name, bodyPart: foundSave.bodyPart, equipment: foundSave.equipment, muscleTargeted: foundSave.muscleTargeted, exerciseDemo: foundSave.exerciseDemo})
     })
     .catch(error => {
         console.error
+    })
+})
+
+// create delete route for a saved exercise
+router.delete('/saves/:id', (req, res) => {
+    db.exercise.destroy({
+        where: {id: req.params.id}
+    })
+    .then(deletedSave => {
+        res.redirect('/exercises/saves')
     })
 })
 
