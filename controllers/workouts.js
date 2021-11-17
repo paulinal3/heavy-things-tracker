@@ -50,6 +50,7 @@ router.get('/history', isLoggedIn, (req, res) => {
     })
 })
 
+
 // create a get route to render the edit workout page
 router.get('/edit/:id', isLoggedIn, (req, res) => {
     let workoutId = req.params.id
@@ -66,6 +67,22 @@ router.get('/edit/:id', isLoggedIn, (req, res) => {
 })
 
 // create a put route to edit workout
+router.put('/:id', isLoggedIn, (req, res) => {
+    db.workout.findOne({
+        where: {
+            id: req.params.id,
+            userId: res.locals.currentUser.id
+        }
+    })
+    .then(foundWorkout => {
+        console.log('updating workout to this id\n', foundWorkout.id)
+        foundWorkout.update({
+            date: req.body.date,
+            duration: req.body.duration,
+            type: req.body.type
+        })
+    })
+})
 
 // create a show route to display details of a logged workout
 router.get('/details/:id', isLoggedIn, (req, res) => {
