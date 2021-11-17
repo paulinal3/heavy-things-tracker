@@ -15,6 +15,7 @@ router.get('/new', isLoggedIn, (req, res) => {
     res.render('workouts/new')
 })
 
+// <------------ id not working -------------->
 // create post route to workout user inputted
 router.post('/new', isLoggedIn, (req, res) => {
     const workoutData = req.body
@@ -36,7 +37,13 @@ router.post('/new', isLoggedIn, (req, res) => {
 
 // create an index route to display a list of all of user's workouts
 router.get('/history', isLoggedIn, (req, res) => {
-    res.render('workouts/index')
+    db.workout.findAll()
+    .then(workouts => {
+        res.render('workouts/index', {results:  workouts})
+    })
+    .catch(error => {
+        console.error
+    })
 })
 
 // create a show route to display details of a logged workout

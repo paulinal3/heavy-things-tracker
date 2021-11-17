@@ -1,6 +1,52 @@
-<nav>
-    <a href="exercises/search">Search for Exercises</a>
-    <a href="workouts/new">Log a Workout</a>
-    <a href="workouts/history">Workout History</a>
-</nav>
-<h2><%= currentUser.name %>'s Profile</h2>
+<div class="row">
+    <div class="col">
+        <nav class="nav">
+            <ul class="nav">
+                <% if (!currentUser) { %>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/auth/signup">Sign Up</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/auth/login">Login</a>
+                    </li>
+                    <% } else { %>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/auth/logout">Logout</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/profile">Profile</a>
+                        </li>
+            </ul>
+            <% } %>
+        </nav>
+    </div>
+    <div class="col">
+        <ul class="nav justify-content-end">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="workouts/new">Log a Workout</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="exercises/search">Search for Exercises</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<br>
+
+<div class="row">
+    <div class="col text-center">
+        <h2>
+            <%= currentUser.name %>'s Profile
+        </h2>
+    </div>
+</div>
+<br>
+<div class="row text-center">
+    <div class="col">
+        <h5><a href="workouts/history">Workout History</a></h5>
+    </div>
+    <div class="col">
+        <h5><a href="exercises/saves">Saved for Later Exercises</a></h5>
+    </div>
+</div>
