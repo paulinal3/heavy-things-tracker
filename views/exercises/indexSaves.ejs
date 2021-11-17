@@ -1,1 +1,9 @@
 <h1>All Your Saved Exercises </h1>
+
+<ul>
+    <% exerciseSaves.forEach(exercise => { %>
+        <li>
+            <%= exercise.name %> 
+        </li>
+    <% }) %> 
+</ul>

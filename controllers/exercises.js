@@ -30,6 +30,19 @@ router.get('/search/results', (req, res) => {
     })
 })
 
+// create an index route that will display all saved exercises
+router.get('/saves', (req, res) => {
+    db.user.findOne({
+        where: {id: res.locals.currentUser.id}
+    })
+    .then(user => {
+        user.getExercises()
+        .then(saves => {
+            res.render('exercises/indexSaves', {exerciseSaves: saves})
+        })
+    })
+})
+
 // create a post route that will save exercise
 router.post('/saves/', (req, res) => {
     const exerciseData = JSON.parse(JSON.stringify(req.body))
@@ -46,7 +59,7 @@ router.post('/saves/', (req, res) => {
             muscleTargeted: exerciseData.muscleTargeted,
             exerciseDemo: exerciseData.exerciseDemo 
         })
-        res.redirect('/exercises/indexSaves')
+        res.redirect('/exercises/saves')
     })
     .catch(error => {
         console.error
