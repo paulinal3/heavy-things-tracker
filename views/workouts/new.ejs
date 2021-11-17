@@ -1,17 +1,52 @@
-<h1>Log Your Latest Workout!</h1>
-<form method="POST" action="/workouts/new">
-    <h3>
-        <label for="date">Date:</label>
-        <input id="date" type="date" name="date">
-    </h3>
-    <h3>
-        <label for="workoutType">Type of Workout:</label>
-        <input id="workoutType" type="text" name="type">
-    </h3>
-    <h3>
-        <label for="duration">Duration in Minutes:</label>
-        <input id="duration" type="number" name=
-        "duration">
-    </h3>
-    <input type="submit" value="Log Workout"></input>
-</form>
+<div class="row">
+    <div class="col">
+        <nav class="nav">
+            <ul class="nav">
+                <% if (!currentUser) { %>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/auth/signup">Sign Up</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/auth/login">Login</a>
+                    </li>
+                    <% } else { %>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/auth/logout">Logout</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/profile">Profile</a>
+                        </li>
+            </ul>
+            <% } %>
+        </nav>
+    </div>
+    <div class="col">
+        <ul class="nav justify-content-end">
+            <li class="nav-item">
+                <a class="nav-link" href="/exercises/search">Search for Exercises</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<br>
+
+<div class="text-center">
+    <h1>Log Your Latest Workout!</h1>
+    <form method="POST" action="/workouts/new">
+        <h3>
+            <label for="date">Date:</label>
+            <input id="date" type="date" name="date">
+        </h3>
+        <h3>
+            <label for="workoutType">Type of Workout:</label>
+            <input id="workoutType" type="text" name="type">
+        </h3>
+        <h3>
+            <label for="duration">Duration in Minutes:</label>
+            <input id="duration" type="number" name=
+            "duration">
+        </h3>
+        <input type="submit" value="Log Workout"></input>
+    </form>
+</div>

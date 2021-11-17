@@ -1,1 +1,24 @@
-<h1>Heavy Things</h1>
+<div class="row">
+    <div class="col">
+        <nav class="nav">
+            <ul class="nav">
+                <% if (!currentUser) { %>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/auth/signup">Sign Up</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/auth/login">Login</a>
+                    </li>
+                    <% } else { %>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/auth/logout">Logout</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/profile">Profile</a>
+                        </li>
+            </ul>
+            <% } %>
+        </nav>
+    </div>
+</div>
+<h1 class="text-center">Heavy Things</h1>

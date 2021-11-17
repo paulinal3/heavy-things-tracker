@@ -1,16 +1,49 @@
-<h1>Looking For an Exercise?</h1>
+<div class="row">
+    <div class="col">
+        <nav class="nav">
+            <ul class="nav">
+                <% if (!currentUser) { %>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/auth/signup">Sign Up</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/auth/login">Login</a>
+                    </li>
+                    <% } else { %>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/auth/logout">Logout</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/profile">Profile</a>
+                        </li>
+            </ul>
+            <% } %>
+        </nav>
+    </div>
+    <div class="col">
+        <ul class="nav justify-content-end">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/workouts/new">Log a Workout</a>
+            </li>
+        </ul>
+    </div>
+</div>
 
-<form method="GET" action="search/results">
-    <label for="exercise name input">Search By Muscle You Would Like to Target:</label>
-    <select name="bodyPart" id="muscleTargeted">
-        <option value="waist">Abs</option>
-        <option value="back">Back</option>
-        <option value="upper%20arms">Biceps & Triceps</option>
-        <option value="lower%20legs">Calves</option>
-        <option value="chest">Chest</option>
-        <option value="lower%20arms">Forearms</option>
-        <option value="upper%20legs">Legs</option>
-        <option value="shoulders">Shoulders</option>
-    </select>
-    <input type="submit" value="See Results!">
-</form>
+<div class="text-center">
+    <h1>Looking For an Exercise?</h1>
+
+    <form method="GET" action="search/results">
+        <label for="exercise name input">Search By Muscle You Would Like to Target:</label>
+        <select name="bodyPart" id="muscleTargeted">
+            <option value="waist">Abs</option>
+            <option value="back">Back</option>
+            <option value="upper%20arms">Biceps & Triceps</option>
+            <option value="lower%20legs">Calves</option>
+            <option value="chest">Chest</option>
+            <option value="lower%20arms">Forearms</option>
+            <option value="upper%20legs">Legs</option>
+            <option value="shoulders">Shoulders</option>
+        </select>
+        <input type="submit" value="See Results!">
+    </form>    
+</div>
