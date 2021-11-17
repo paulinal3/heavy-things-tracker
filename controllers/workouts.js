@@ -52,12 +52,16 @@ router.get('/history', isLoggedIn, (req, res) => {
 
 // create a get route to render the edit workout page
 router.get('/edit/:id', isLoggedIn, (req, res) => {
-    console.log('this is the workout id\n', req.params.id)
+    let workoutId = req.params.id
+    console.log('this is the workout id\n', workoutId)
     db.workout.findOne({
-        where: {id: req.params.id}
+        where: {
+            id: workoutId,
+            userId: res.locals.currentUser.id
+        }
     })
     .then(foundWorkout => {
-        res.render('workouts/edit', {date: foundWorkout.date, duration: foundWorkout.duration, type: foundWorkout.type})
+        res.render('workouts/edit', {workoutId, date: foundWorkout.date, duration: foundWorkout.duration, type: foundWorkout.type})
     })
 })
 
@@ -67,7 +71,10 @@ router.get('/edit/:id', isLoggedIn, (req, res) => {
 router.get('/details/:id', isLoggedIn, (req, res) => {
     console.log('this is the workout id\n', req.params.id)
     db.workout.findOne({
-        where: {id: req.params.id}
+        where: {
+            id: req.params.id,
+            userId: res.locals.currentUser.id
+        }
     })
     .then(foundWorkout => {
         res.render('workouts/show', {date: foundWorkout.date, duration: foundWorkout.duration, type: foundWorkout.type})
