@@ -35,10 +35,8 @@ router.get('/search/results', (req, res) => {
 router.post('/saves', (req, res) => {
     const exerciseData = JSON.parse(JSON.stringify(req.body))
     console.log('this is the exercise data to be saved', exerciseData)
-    db.user.findAll({
-        where: {
-            id: res.locals.currentUser.id
-        }
+    db.user.findOne({
+        where: {id: res.locals.currentUser.id}
     })
     console.log('this is the userId\n', id)
     .then(foundUser => {
@@ -73,6 +71,9 @@ router.get('/:exercise_name', (req, res) => {
         let targetMuscle = results.target
 
         res.render('exercises/show', {name, bodyPart, equipment, demoVid, targetMuscle})
+    })
+    .catch(error => {
+        console.error
     })
 })
 

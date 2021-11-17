@@ -1,6 +1,46 @@
 <!-- display logged workout details
     STRETCH GOALS add edit button?, upload photo?, add exercises? -->
+<div class="row">
+    <div class="col">
+        <nav class="nav">
+            <ul class="nav">
+                <% if (!currentUser) { %>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/auth/signup">Sign Up</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/auth/login">Login</a>
+                    </li>
+                    <% } else { %>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/auth/logout">Logout</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/profile">Profile</a>
+                        </li>
+            </ul>
+            <% } %>
+        </nav>
+    </div>
+    <div class="col">
+        <ul class="nav justify-content-end">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/workouts/newPlan">Plan a Workout</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/workouts/new">Log a Workout</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/exercises/search">Search for Exercises</a>
+            </li>
+        </ul>
+    </div>
+</div>
+    
+<h3>Workout completed on <%= date %> </h3>
+<h5>Completed a <%= type %> workout</h5>
+<h5>Worked out for <%= duration %> minutes</h5>
 
-    <h3>Workout completed on <%= date %> </h3>
-    <h5>Completed a <%= type %> workout</h5>
-    <h5>Worked out for <%= duration %> minutes</h5>
+<form method="" action="">
+    <input type="submit" value="Edit Workout">
+</form>

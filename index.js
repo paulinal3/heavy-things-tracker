@@ -6,6 +6,7 @@ const session = require('express-session')
 const passport = require('./config/ppConfig')
 const flash = require('connect-flash')
 const isLoggedIn = require('./middleware/isLoggedIn')
+const db = require('./models')
 
 
 // views (ejs and layouts) set up
@@ -49,7 +50,13 @@ app.get('/', (req, res)=>{
 
 // profile route
 app.get('/profile', isLoggedIn, (req, res)=>{
-    res.render('profile')
+    db.workout.findAll()
+    .then(workouts => {
+        res.render('profile', {results:  workouts})
+    })
+    .catch(error => {
+        console.error
+    })
 })
 
 
