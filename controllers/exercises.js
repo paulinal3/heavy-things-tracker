@@ -30,32 +30,32 @@ router.get('/search/results', (req, res) => {
     })
 })
 
+// <-------------- NOT WORKING ------------->
 // create a post route that will save exercise
 router.post('/saves', (req, res) => {
     const exerciseData = JSON.parse(JSON.stringify(req.body))
     console.log('this is the exercise data to be saved', exerciseData)
     db.user.findAll({
         where: {
-            id: res.locals.currentUser.id,
+            id: res.locals.currentUser.id
         }
-        .then(foundUser => {
-            console.log('saving exercise to this user\n', foundUser.name)
-            foundUser.createExercise({
-                name: exerciseData.name,
-                bodyPart: exerciseData.bodyPart,
-                equipment: exerciseData.equipment,
-                muscleTargeted: exerciseData.muscleTargeted,
-                exerciseDemo: exerciseData.exerciseDemo
-            })
-            .then(savedExercise => {
-                console.log('exercise details saved to db\n', savedExercise)
-            })
+    })
+    console.log('this is the userId\n', id)
+    .then(foundUser => {
+        console.log('saving exercise to this user\n', foundUser.name)
+        foundUser.createExercise({
+            name: exerciseData.name,
+            bodyPart: exerciseData.bodyPart,
+            equipment: exerciseData.equipment,
+            muscleTargeted: exerciseData.muscleTargeted,
+            exerciseDemo: exerciseData.exerciseDemo
+    })
+        .then(savedExercise => {
+            console.log('exercise details saved to db\n', savedExercise)
         })
     })
-    // .then(saveExercise => {
-    //     console.log('exercise saved to db',saveExercise)
-    // })
 })
+
 
 // create a show route based on exercise clicked on
 router.get('/:exercise_name', (req, res) => {
