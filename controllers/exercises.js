@@ -3,6 +3,7 @@ const express = require('express')
 const router = express.Router()
 const axios = require ('axios')
 const db = require('../models')
+const isLoggedIn = require('../middleware/isLoggedIn')
 const authHeader = {
     headers: {
         'Authorization': process.env.API_KEY
@@ -88,10 +89,16 @@ router.get('/:exercise_name', (req, res) => {
     })
 })
 
-// // create a show route based on saved exercise clicked
-// router.get('/saves/:exercise_name', (req, res) => {
-//     let savedExercise = req.params.exercise_name
-//     res.render('exercises/showSaves')
-// })
+// create a show route based on saved exercise clicked
+router.get('/saves/:id', isLoggedIn, (req, res) => {
+    let savedId = req.params.id
+    db.exercise.findOne({
+        where: {id: savedId},
+        // include: [db.user, db.exercise]
+    })
+    .then(foundSave => {
+        res.render('exercises/showSaves', {name: foundSave.name, bodyPart: foundSave.bodyPart, equipment: foundSave.equipment, muscleTargeted: foundSave.muscleTargeted, exerciseDemo: foundSave.exerciseDemo})
+    })
+})
 
 module.exports = router

@@ -5,7 +5,7 @@
         <li style="list-style-type:none">
             <% let name = exercise.name %>
             <% name.replace('', '%20') %>
-            <a href="/saves/<%= exercise.name %>"><%= exercise.name %></a>
+            <a href="/exercises/saves/<%= exercise.id %>"><%= exercise.name %></a>
         </li>
     <% }) %> 
 </ul>
