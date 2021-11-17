@@ -35,6 +35,11 @@ router.post('/new', isLoggedIn, (req, res) => {
     })
 })
 
+// create a new route for user to plan a workout
+router.get('/newPlan', isLoggedIn, (req, res) => {
+    res.render('workouts/newPlan')
+})
+
 // create an index route to display a list of all of user's workouts
 router.get('/history', isLoggedIn, (req, res) => {
     db.workout.findAll()
