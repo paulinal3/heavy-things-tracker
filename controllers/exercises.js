@@ -99,6 +99,9 @@ router.get('/saves/:id', isLoggedIn, (req, res) => {
     .then(foundSave => {
         res.render('exercises/showSaves', {name: foundSave.name, bodyPart: foundSave.bodyPart, equipment: foundSave.equipment, muscleTargeted: foundSave.muscleTargeted, exerciseDemo: foundSave.exerciseDemo})
     })
+    .catch(error => {
+        console.error
+    })
 })
 
 module.exports = router
