@@ -66,7 +66,6 @@ router.post('/saves/', (req, res) => {
     })
 })
 
-
 // create a show route based on exercise clicked on
 router.get('/:exercise_name', (req, res) => {
     const rootApi = 'https://v1.exercisedb.io/api/exercises'
@@ -88,5 +87,11 @@ router.get('/:exercise_name', (req, res) => {
         console.error
     })
 })
+
+// // create a show route based on saved exercise clicked
+// router.get('/saves/:exercise_name', (req, res) => {
+//     let savedExercise = req.params.exercise_name
+//     res.render('exercises/showSaves')
+// })
 
 module.exports = router

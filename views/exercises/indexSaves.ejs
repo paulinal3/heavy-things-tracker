@@ -2,8 +2,10 @@
 
 <ul>
     <% exerciseSaves.forEach(exercise => { %>
-        <li>
-            <%= exercise.name %> 
+        <li style="list-style-type:none">
+            <% let name = exercise.name %>
+            <% name.replace('', '%20') %>
+            <a href="/saves/<%= exercise.name %>"><%= exercise.name %></a>
         </li>
     <% }) %> 
 </ul>
