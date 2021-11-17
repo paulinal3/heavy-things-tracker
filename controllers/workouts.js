@@ -15,7 +15,6 @@ router.get('/new', isLoggedIn, (req, res) => {
     res.render('workouts/new')
 })
 
-// <------------ id not working -------------->
 // create post route to workout user inputted
 router.post('/new', isLoggedIn, (req, res) => {
     const workoutData = req.body
@@ -24,7 +23,7 @@ router.post('/new', isLoggedIn, (req, res) => {
         date: workoutData.date,
         duration: workoutData.duration,
         type: workoutData.type,
-        // userId = res.locals.currentUser.id
+        userId: res.locals.currentUser.id
     })
     .then(createdWorkout => {
         console.log('workout added to db\n', createdWorkout)
