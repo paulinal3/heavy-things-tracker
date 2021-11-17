@@ -1,0 +1,25 @@
+<h3>Edit Workout</h3>
+
+<form action="">
+    <input type="text">
+</form>
+
+<div class="text-center">
+    <h1>Edit Workout</h1>
+    <form method="POST" action="/workouts/edit/<%= req.params.id %>/?_method=PUT">
+        <h3>
+            <label for="date">Date:</label>
+            <input id="date" type="date" name="date" value="<%= date %>">
+        </h3>
+        <h3>
+            <label for="workoutType">Type of Workout:</label>
+            <input id="workoutType" type="text" name="type" value="<%= type %>">
+        </h3>
+        <h3>
+            <label for="duration">Duration in Minutes:</label>
+            <input id="duration" type="number" name=
+            "duration" value="<%= duration %>">
+        </h3>
+        <input type="submit" value="Log Workout"></input>
+    </form>
+</div>
