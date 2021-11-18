@@ -36,7 +36,15 @@ router.post('/new', isLoggedIn, (req, res) => {
 
 // create a new route for user to plan a workout
 router.get('/newPlan', isLoggedIn, (req, res) => {
-    res.render('workouts/newPlan')
+    db.user.findOne({
+        where: {id: res.locals.currentUser.id}
+    })
+    .then(user => {
+        user.getExercises()
+        .then(saves => {
+            res.render('workouts/newPlan', {exerciseSaves: saves})
+        })
+    })
 })
 
 // create an index route to display a list of all of user's workouts
@@ -49,7 +57,6 @@ router.get('/history', isLoggedIn, (req, res) => {
         console.error
     })
 })
-
 
 // create a get route to render the edit workout page
 router.get('/edit/:id', isLoggedIn, (req, res) => {
