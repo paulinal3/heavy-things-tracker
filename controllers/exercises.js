@@ -15,7 +15,7 @@ router.get('/search', (req, res) => {
     res.render('exercises/search')
 })
 
-// create index route based on search results
+// GET/INDEX route based on search results
 router.get('/search/results', (req, res) => {
     const rootApi = 'https://v1.exercisedb.io/api/exercises'
     let muscleTargeted = req.query.bodyPart
@@ -31,7 +31,7 @@ router.get('/search/results', (req, res) => {
     })
 })
 
-// create an index route that will display all saved exercises
+// GET/INDEX route that will display all saved exercises
 router.get('/saves', (req, res) => {
     db.user.findOne({
         where: {id: res.locals.currentUser.id}
@@ -44,7 +44,7 @@ router.get('/saves', (req, res) => {
     })
 })
 
-// create a post route that will save exercise
+// POST route that will save exercise
 router.post('/saves/', (req, res) => {
     const exerciseData = JSON.parse(JSON.stringify(req.body))
     // console.log('this is the exercise data to be saved', exerciseData)
@@ -67,7 +67,7 @@ router.post('/saves/', (req, res) => {
     })
 })
 
-// create a show route based on exercise clicked on
+// SHOW route based on exercise clicked on
 router.get('/:exercise_name', (req, res) => {
     const rootApi = 'https://v1.exercisedb.io/api/exercises'
     let exerciseName = req.params.exercise_name
@@ -89,7 +89,7 @@ router.get('/:exercise_name', (req, res) => {
     })
 })
 
-// create a show route based on saved exercise clicked
+// SHOW route based on saved exercise clicked
 router.get('/saves/:id', isLoggedIn, (req, res) => {
     let savedId = req.params.id
     db.exercise.findOne({
@@ -104,7 +104,7 @@ router.get('/saves/:id', isLoggedIn, (req, res) => {
     })
 })
 
-// create delete route for a saved exercise
+// DELETE route for a saved exercise
 router.delete('/saves/:id', (req, res) => {
     db.exercise.destroy({
         where: {id: req.params.id}

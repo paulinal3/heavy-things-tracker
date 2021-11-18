@@ -8,6 +8,10 @@
             <% let name = exercise.name %>
             <% name.replace('', '%20') %>
             <a href="/exercises/saves/<%= exercise.id %>"><%= exercise.name %></a>
+            <form method="POST" action="/workouts/newPlan">
+
+                <button type="submit">Add to Workout!</button>
+            </form>
         </li>
     <% }) %> 
 </ul>

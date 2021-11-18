@@ -10,12 +10,12 @@ const authHeader = {
     }
 }
 
-// create new route for user to log a workout
+// NEW route for user to log a workout
 router.get('/new', isLoggedIn, (req, res) => {
     res.render('workouts/new')
 })
 
-// create post route to workout user inputted
+// POST route to create workout in db based on user input
 router.post('/new', isLoggedIn, (req, res) => {
     const workoutData = req.body
     console.log('these are the workout details\n', workoutData)
@@ -34,7 +34,7 @@ router.post('/new', isLoggedIn, (req, res) => {
     })
 })
 
-// create a new route for user to plan a workout
+// NEW route for user to plan a workout
 router.get('/newPlan', isLoggedIn, (req, res) => {
     db.user.findOne({
         where: {id: res.locals.currentUser.id}
@@ -45,9 +45,35 @@ router.get('/newPlan', isLoggedIn, (req, res) => {
             res.render('workouts/newPlan', {exerciseSaves: saves})
         })
     })
+    .catch(error => {
+        console.error
+    })
 })
 
-// create an index route to display a list of all of user's workouts
+// // POST route that will add a saved exercise to a planned workout
+// router.post('/newPlan', (req, res) => {
+//     const exerciseData = JSON.parse(JSON.stringify(req.body))
+//     // console.log('this is the exercise data to be saved', exerciseData)
+//     db.user.findOne({
+//         where: {id: res.locals.currentUser.id}
+//     })
+//     .then(foundUser => {
+//         console.log('saving exercise to this user\n', foundUser.name)
+//         foundUser.createExercise({
+//             name: exerciseData.name,
+//             bodyPart: exerciseData.bodyPart,
+//             equipment: exerciseData.equipment,
+//             muscleTargeted: exerciseData.muscleTargeted,
+//             exerciseDemo: exerciseData.exerciseDemo 
+//         })
+//         res.redirect('/exercises/newPlan')
+//     })
+//     .catch(error => {
+//         console.error
+//     })
+// })
+
+// GET/INDEX route to display a list of all of user's workouts
 router.get('/history', isLoggedIn, (req, res) => {
     db.workout.findAll()
     .then(workouts => {
@@ -58,7 +84,7 @@ router.get('/history', isLoggedIn, (req, res) => {
     })
 })
 
-// create a get route to render the edit workout page
+// GET route to render the edit workout page
 router.get('/edit/:id', isLoggedIn, (req, res) => {
     let workoutId = req.params.id
     console.log('this is the workout id\n', workoutId)
@@ -76,7 +102,7 @@ router.get('/edit/:id', isLoggedIn, (req, res) => {
     })
 })
 
-// create a put route to edit workout
+// PUT route to edit workout
 router.put('/edit/:id', isLoggedIn, (req, res) => {
     console.log('this button works?')
     db.workout.findOne({
@@ -100,7 +126,7 @@ router.put('/edit/:id', isLoggedIn, (req, res) => {
     })
 })
 
-// create a show route to display details of a logged workout
+// SHOW route to display details of a logged workout
 router.get('/details/:id', isLoggedIn, (req, res) => {
     console.log('this is the workout id\n', req.params.id)
     db.workout.findOne({
