@@ -6,7 +6,7 @@ body {
 .navContainer {
     display: flex;
     flex-direction: row;
-    font-size: 20px;
+    font-size: 25px;
     text-decoration: none;
     justify-content: space-between;
 }
@@ -17,4 +17,13 @@ body {
 
 .searchLink {
     padding-right: 10px;
+}
+
+.profileNav:link {
+    text-decoration: none;
+    color: #D3F2E9
+}
+
+.profileNav:hover{
+    color: black;
 }

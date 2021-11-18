@@ -1,39 +1,18 @@
-<div class="row">
-    <div class="col">
-        <nav class="nav">
-            <ul class="nav">
-                <% if (!currentUser) { %>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/auth/signup">Sign Up</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/auth/login">Login</a>
-                    </li>
-                    <% } else { %>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/profile">Profile</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/auth/logout">Logout</a>
-                        </li>
-            </ul>
-            <% } %>
-        </nav>
-    </div>
-    <div class="col">
-        <ul class="nav justify-content-end">
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/workouts/newPlan">Plan a Workout</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/workouts/new">Log a Workout</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/exercises/search">Search for Exercises</a>
-            </li>
-        </ul>
-    </div>
-</div>
+<body>
+    <nav>
+        <div class="navContainer">
+            <div class="newSearchLink">
+                <a href="/auth/logout" class="profileNav">Logout</a>
+            </div>
+            <div class="logLink">
+                <a href="/workouts/newPlan" class="profileNav">Plan a Workout</a>
+                <a href="/workouts/new" class="profileNav">Log a Workout</a>
+                <a class="profileNav" href="/exercises/search">Search for Exercises</a>
+            </div>
+        </div>
+    </nav>
+
+</body>
 
 <br>
 
