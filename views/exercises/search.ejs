@@ -1,38 +1,24 @@
 <head>
     <link rel="stylesheet" href="/static/css/exercises.css">
 </head>
+
 <body>
-    <div class="row">
-        <div class="col">
-            <nav class="nav">
-                <ul class="nav">
-                    <% if (!currentUser) { %>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/auth/signup">Sign Up</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/auth/login">Login</a>
-                        </li>
-                        <% } else { %>
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="/auth/logout">Logout</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="/profile">Profile</a>
-                            </li>
-                </ul>
-                <% } %>
-            </nav>
+    <nav>
+        <div class="navContainer">
+            <div class="profileLink">
+                <a href="/profile" class="searchNav">Profile</a>
+            </div>
+            <div class="logLink">
+                <a href="/workouts/newPlan" class="searchNav">Plan a Workout</a>
+                <a href="/workouts/new" class="searchNav">Log a Workout</a>
+            </div>
+            <div class="searchLink">
+                <a href="/auth/logout" class="searchNav">Logout</a>
+            </div>
         </div>
-        <div class="col">
-            <ul class="nav justify-content-end">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/workouts/new">Log a Workout</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <div class="searchContainer">
+    </nav>
+
+    <div id="searchContainer">
         <form method="GET" action="search/results">
             <div class="searchDiv">
                 <label for="exercise name input" id="searchLabel">Search By Muscle You Would Like to Target:</label>
@@ -54,4 +40,3 @@
         </form>    
     </div>
 </body>
-
