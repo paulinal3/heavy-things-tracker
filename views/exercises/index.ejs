@@ -1,14 +1,21 @@
-<nav>
-    <a href="/exercises/search">Back to Search</a>
-</nav>
+<head>
+    <link rel="stylesheet" href="/static/css/exercises.css">
+</head>
 
-<h1>Results Based on Your Search:</h1>
-<ul>
-    <% results.forEach((result) => { %>
-        <li style="list-style-type:none">
-            <% let name = result.name %>
-            <% name.replace('', '%20') %>
-            <a href="/exercises/<%= name %> "><%= result.name %></a>
-        </li>
-   <% }) %> 
-</ul>
+<body>
+    <nav>
+        <a href="/exercises/search">Back to Search</a>
+    </nav>
+    
+    <h1 >Results Based on Your Search:</h1>
+    <ul>
+        <% results.forEach((result) => { %>
+            <li style="list-style-type:none">
+                <% let name = result.name %>
+                <% name.replace('', '%20') %>
+                <a href="/exercises/<%= name %> "><%= result.name %></a>
+            </li>
+       <% }) %> 
+    </ul>
+</body>
+

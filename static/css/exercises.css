@@ -1,0 +1,48 @@
+/* ----- SEARCH.EJS ----- */
+body {
+    background-color: #D3F2E9;
+}
+
+.searchContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    width: 100%;
+    height: 20px;
+    top: 50%;
+    margin-top: -10px;
+    text-align: center;
+}
+
+.searchDiv {
+    border: 5px solid #719294;
+    padding: 25px 150px 25px 150px;
+}
+
+#searchLabel {
+    font-family: 'Poiret One', cursive;
+    font-size: 35px;
+}
+
+#muscleTargeted {
+    font-family: 'Poiret One', cursive;
+    font: 30px;
+    height: 35px;
+}
+
+#searchBtn {
+    font-family: 'Poiret One', cursive;
+    height: 35px;
+    width: 125px;
+    font-size: 20px;
+    background-color: #719294;
+    color: #e9e9e9;
+    border-radius: 3px;
+}
+
+#searchBtn:hover {
+    background-color: #e9e9e9;
+    color: #719294;
+}
