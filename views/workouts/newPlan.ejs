@@ -2,7 +2,110 @@
 
 
 <h5>All Your Saved Exercises </h5>
+<div>
+    <h6>Abs:</h6>
+    <ul>
+        <% exerciseSaves.forEach(exercise => { %>
+            <% if(exercise.bodyPart === 'waist') { %>
+                <li class="savedList" style="list-style-type:none">
+                <% let name = exercise.name %>
+                <% name.replace('', '%20') %>
+                <a href="/exercises/saves/<%= exercise.id %>"><%= exercise.name %></a>
+                </li>
+            <% } %> 
+        <% }) %> 
+    </ul>
+</div>
 
+<div>
+    <h6>Back:</h6>
+    <ul>
+        <% exerciseSaves.forEach(exercise => { %>
+            <% if(exercise.bodyPart === 'back') { %>
+                <li style="list-style-type:none">
+                <% let name = exercise.name %>
+                <% name.replace('', '%20') %>
+                <a href="/exercises/saves/<%= exercise.id %>"><%= exercise.name %></a>
+                </li>
+            <% } %> 
+        <% }) %> 
+    </ul>
+</div>
+
+<div>
+    <h6>Arms:</h6>
+    <ul>
+        <% exerciseSaves.forEach(exercise => { %>
+            <% if(exercise.bodyPart === 'upper arms' || exercise.bodyPart === 'lower arms') { %>
+                <li style="list-style-type:none">
+                <% let name = exercise.name %>
+                <% name.replace('', '%20') %>
+                <a href="/exercises/saves/<%= exercise.id %>"><%= exercise.name %></a>
+                </li>
+            <% } %>
+        <% }) %> 
+    </ul>
+</div>
+
+<div>
+    <h6>Calves:</h6>
+    <ul>
+        <% exerciseSaves.forEach(exercise => { %>
+            <% if(exercise.bodyPart === 'calves') { %>
+                <li style="list-style-type:none">
+                <% let name = exercise.name %>
+                <% name.replace('', '%20') %>
+                <a href="/exercises/saves/<%= exercise.id %>"><%= exercise.name %></a>
+                </li>
+            <% } %> 
+        <% }) %> 
+    </ul>
+</div>
+
+<div>
+    <h6>Chest:</h6>
+    <ul>
+        <% exerciseSaves.forEach(exercise => { %>
+            <% if(exercise.bodyPart === 'chest') { %>
+                <li style="list-style-type:none">
+                <% let name = exercise.name %>
+                <% name.replace('', '%20') %>
+                <a href="/exercises/saves/<%= exercise.id %>"><%= exercise.name %></a>
+                </li>
+            <% } %> 
+        <% }) %> 
+    </ul>
+</div>
+
+<div>
+    <h6>Legs:</h6>
+    <ul>
+        <% exerciseSaves.forEach(exercise => { %>
+            <% if(exercise.bodyPart === 'upper legs') { %>
+                <li style="list-style-type:none">
+                <% let name = exercise.name %>
+                <% name.replace('', '%20') %>
+                <a href="/exercises/saves/<%= exercise.id %>"><%= exercise.name %></a>
+                </li>
+            <% } %> 
+        <% }) %> 
+    </ul>
+</div>
+
+<div>
+    <h6>Shoulders:</h6>
+    <ul>
+        <% exerciseSaves.forEach(exercise => { %>
+            <% if(exercise.bodyPart === 'shoulders') { %>
+                <li style="list-style-type:none">
+                <% let name = exercise.name %>
+                <% name.replace('', '%20') %>
+                <a href="/exercises/saves/<%= exercise.id %>"><%= exercise.name %></a>
+                </li>
+            <% } %> 
+        <% }) %> 
+    </ul>
+</div>
 <ul>
     <% exerciseSaves.forEach(exercise => { %>
         <li style="list-style-type:none">
@@ -10,8 +113,8 @@
             <% name.replace('', '%20') %>
             <a href="/exercises/saves/<%= exercise.id %>"><%= exercise.name %></a>
             <form method="POST" action="/workouts/newPlan">
-                <input hidden type="text" name="name" value="<%= name %>">
-                <input hidden type="text" name="equipment" value="<%= equipment %>">
+                <!-- <input hidden type="text" name="name" value="<%= //name %>">
+                <input hidden type="text" name="equipment" value="<%= //equipment %>"> -->
                 <button type="submit">Add to Workout!</button>
             </form>
         </li>

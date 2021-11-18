@@ -1,10 +1,14 @@
+<!-- <head>
+    <link rel="stylesheet" href="static/css/style.css">
+</head> -->
+
 <h1>All Your Saved Exercises </h1>
 <div>
     <h3>Abs:</h3>
     <ul>
         <% exerciseSaves.forEach(exercise => { %>
             <% if(exercise.bodyPart === 'waist') { %>
-                <li style="list-style-type:none">
+                <li class="savedList" style="list-style-type:none">
                 <% let name = exercise.name %>
                 <% name.replace('', '%20') %>
                 <a href="/exercises/saves/<%= exercise.id %>"><%= exercise.name %></a>

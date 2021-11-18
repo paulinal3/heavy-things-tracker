@@ -3,6 +3,7 @@ body {
 }
 #title {
     font-family: 'Staatliches', cursive;
+    font-family: 'Shadows Into Light', cursive;
     font-size: 100px;
     color: #52848A;
 }
@@ -15,15 +16,20 @@ body {
 #profileName {
     text-align: center;
     font-family: 'Staatliches', cursive;
+    font-family: 'Shadows Into Light', cursive;
     font-size: 50px;
     color: #52848A;
 }
 
-#profileListTitle {
-    text-align: center;
+.profileListTitle {
+    color: #52848A;
+    font-family: 'Shadows Into Light', cursive;
 }
 
-#profileListRestuls {
-    font-family: 'Staatliches', cursive;
-
+.profileListResults {
+    font-family: 'Poiret One', cursive;
+    font-size: 20px;
+}
+.savedList {
+    font-family: 'Poiret One', cursive;
 }

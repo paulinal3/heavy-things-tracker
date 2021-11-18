@@ -47,18 +47,18 @@
 <br>
 <div class="row">
     <div class="col">
-        <h5><a href="/workouts/history">Workout History</a></h5>
+        <h5 class="profileListTitle"><a href="/workouts/history">Workout History</a></h5>
         <% results.forEach(workout => { %>
-            <p>
+            <p class="profileListResults">
                 <%= workout.date %>
                 </a>
             </p>
         <% }) %> 
     </div>
     <div class="col">
-        <h5><a href="/exercises/saves">Saved for Later Exercises</a></h5>
+        <h5 class="profileListTitle"><a href="/exercises/saves">Saved for Later Exercises</a></h5>
         <% saves.forEach(save => { %>
-            <p>
+            <p class="profileListResults">
                 <%= save.name %>
                 </a>
             </p>
