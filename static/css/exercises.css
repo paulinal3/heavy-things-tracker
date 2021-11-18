@@ -3,6 +3,11 @@ body {
     font-family: 'Poiret One', cursive;
 }
 
+nav {
+    background-color: #719294;
+    height: 35px;
+}
+
 .navContainer {
     display: flex;
     flex-direction: row;
@@ -21,8 +26,7 @@ body {
 
 .searchNav:link {
     text-decoration: none;
-    color: black;
-    
+    color: #D3F2E9
 }
 
 .searchNav:hover{

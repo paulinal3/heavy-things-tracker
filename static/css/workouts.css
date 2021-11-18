@@ -1,0 +1,20 @@
+body {
+    background-color: #D3F2E9;
+    font-family: 'Poiret One', cursive;
+}
+
+.navContainer {
+    display: flex;
+    flex-direction: row;
+    font-size: 20px;
+    text-decoration: none;
+    justify-content: space-between;
+}
+
+.profileLink, .newSearchLink {
+    padding-left: 10px;
+}
+
+.searchLink {
+    padding-right: 10px;
+}

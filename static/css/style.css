@@ -1,9 +1,17 @@
 body {
     background-color: #D3F2E9;
+    font-family: 'Poiret One', cursive;
 }
+
+/* ---------- HOME.EJS ---------- */
+.homeNav {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+
 #title {
-    font-family: 'Staatliches', cursive;
-    font-family: 'Shadows Into Light', cursive;
     font-size: 100px;
     color: #52848A;
 }

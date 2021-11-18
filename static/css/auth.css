@@ -1,0 +1,39 @@
+body {
+    background-color: #D3F2E9;
+    font-family: 'Poiret One', cursive;
+}
+
+/* ---------- LOGIN.EJS ---------- */
+#loginContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    width: 100%;
+    height: 20px;
+    top: 50%;
+    margin-top: -10px;
+    text-align: center;
+}
+
+#loginForm {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+}
+
+#loginBtn {
+    height: 35px;
+    width: 125px;
+    font-size: 20px;
+    background-color: #D3F2E9;
+    color: #719294;
+    border: 3px solid #719294;
+}
+
+#loginBtn:hover {
+    background-color: #719294;
+    color: #D3F2E9;
+}

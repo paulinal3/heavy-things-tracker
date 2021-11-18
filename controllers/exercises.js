@@ -60,7 +60,9 @@ router.post('/saves/', (req, res) => {
             muscleTargeted: exerciseData.muscleTargeted,
             exerciseDemo: exerciseData.exerciseDemo 
         })
-        res.redirect('/exercises/saves')
+        .then(saveExercise =>{
+            res.redirect('/exercises/saves')
+        })
     })
     .catch(error => {
         console.error
