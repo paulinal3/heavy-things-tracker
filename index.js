@@ -53,10 +53,23 @@ app.get('/', (req, res)=>{
 })
 
 // profile route
+// app.get('/profile', isLoggedIn, (req, res)=>{
+//     db.workout.findAll()
+//     .then(workouts => {
+//         res.render('profile', {results:  workouts})
+//     })
+//     .catch(error => {
+//         console.error
+//     })
+// })
+
 app.get('/profile', isLoggedIn, (req, res)=>{
     db.workout.findAll()
     .then(workouts => {
-        res.render('profile', {results:  workouts})
+        db.exercise.findAll()
+        .then(exercises => {
+            res.render('profile', {results: workouts, saves: exercises})
+        })
     })
     .catch(error => {
         console.error
