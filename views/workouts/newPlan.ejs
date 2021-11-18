@@ -1,5 +1,6 @@
 <h1>Build a Workout</h1>
 
+
 <h5>All Your Saved Exercises </h5>
 
 <ul>
@@ -9,7 +10,8 @@
             <% name.replace('', '%20') %>
             <a href="/exercises/saves/<%= exercise.id %>"><%= exercise.name %></a>
             <form method="POST" action="/workouts/newPlan">
-
+                <input hidden type="text" name="name" value="<%= name %>">
+                <input hidden type="text" name="equipment" value="<%= equipment %>">
                 <button type="submit">Add to Workout!</button>
             </form>
         </li>

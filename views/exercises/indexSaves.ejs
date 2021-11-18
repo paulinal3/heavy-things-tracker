@@ -1,11 +1,112 @@
 <h1>All Your Saved Exercises </h1>
+<div>
+    <h3>Abs:</h3>
+    <ul>
+        <% exerciseSaves.forEach(exercise => { %>
+            <% if(exercise.bodyPart === 'waist') { %>
+                <li style="list-style-type:none">
+                <% let name = exercise.name %>
+                <% name.replace('', '%20') %>
+                <a href="/exercises/saves/<%= exercise.id %>"><%= exercise.name %></a>
+                </li>
+            <% } %> 
+            
+        <% }) %> 
+    </ul>
+</div>
 
-<ul>
-    <% exerciseSaves.forEach(exercise => { %>
-        <li style="list-style-type:none">
-            <% let name = exercise.name %>
-            <% name.replace('', '%20') %>
-            <a href="/exercises/saves/<%= exercise.id %>"><%= exercise.name %></a>
-        </li>
-    <% }) %> 
-</ul>
+<div>
+    <h3>Back:</h3>
+    <ul>
+        <% exerciseSaves.forEach(exercise => { %>
+            <% if(exercise.bodyPart === 'back') { %>
+                <li style="list-style-type:none">
+                <% let name = exercise.name %>
+                <% name.replace('', '%20') %>
+                <a href="/exercises/saves/<%= exercise.id %>"><%= exercise.name %></a>
+                </li>
+            <% } %> 
+            
+        <% }) %> 
+    </ul>
+</div>
+
+<div>
+    <h3>Arms:</h3>
+    <ul>
+        <% exerciseSaves.forEach(exercise => { %>
+            <% if(exercise.bodyPart === 'upper arms' || exercise.bodyPart === 'lower arms') { %>
+                <li style="list-style-type:none">
+                <% let name = exercise.name %>
+                <% name.replace('', '%20') %>
+                <a href="/exercises/saves/<%= exercise.id %>"><%= exercise.name %></a>
+                </li>
+            <% } %> 
+            
+        <% }) %> 
+    </ul>
+</div>
+
+<div>
+    <h3>Calves:</h3>
+    <ul>
+        <% exerciseSaves.forEach(exercise => { %>
+            <% if(exercise.bodyPart === 'calves') { %>
+                <li style="list-style-type:none">
+                <% let name = exercise.name %>
+                <% name.replace('', '%20') %>
+                <a href="/exercises/saves/<%= exercise.id %>"><%= exercise.name %></a>
+                </li>
+            <% } %> 
+            
+        <% }) %> 
+    </ul>
+</div>
+
+<div>
+    <h3>Chest:</h3>
+    <ul>
+        <% exerciseSaves.forEach(exercise => { %>
+            <% if(exercise.bodyPart === 'chest') { %>
+                <li style="list-style-type:none">
+                <% let name = exercise.name %>
+                <% name.replace('', '%20') %>
+                <a href="/exercises/saves/<%= exercise.id %>"><%= exercise.name %></a>
+                </li>
+            <% } %> 
+            
+        <% }) %> 
+    </ul>
+</div>
+
+<div>
+    <h3>Legs:</h3>
+    <ul>
+        <% exerciseSaves.forEach(exercise => { %>
+            <% if(exercise.bodyPart === 'upper legs') { %>
+                <li style="list-style-type:none">
+                <% let name = exercise.name %>
+                <% name.replace('', '%20') %>
+                <a href="/exercises/saves/<%= exercise.id %>"><%= exercise.name %></a>
+                </li>
+            <% } %> 
+            
+        <% }) %> 
+    </ul>
+</div>
+
+<div>
+    <h3>Shoulders:</h3>
+    <ul>
+        <% exerciseSaves.forEach(exercise => { %>
+            <% if(exercise.bodyPart === 'shoulders') { %>
+                <li style="list-style-type:none">
+                <% let name = exercise.name %>
+                <% name.replace('', '%20') %>
+                <a href="/exercises/saves/<%= exercise.id %>"><%= exercise.name %></a>
+                </li>
+            <% } %> 
+            
+        <% }) %> 
+    </ul>
+</div>

@@ -1,4 +1,4 @@
-<div class="row">
+<!-- <div class="row">
     <div class="col">
         <nav class="nav">
             <ul class="nav">
@@ -20,5 +20,14 @@
             <% } %>
         </nav>
     </div>
-</div>
+</div> -->
+
+<% if (!currentUser) { %>
+    <a class="nav-link active" aria-current="page" href="/auth/signup">Sign Up</a>
+    <a class="nav-link active" aria-current="page" href="/auth/login">Login</a>
+    <% } else { %>
+    <a class="nav-link active" aria-current="page" href="/auth/logout">Logout</a>
+    <a class="nav-link active" aria-current="page" href="/profile">Profile</a>
+<% } %>
+
 <h1 id="title" class="text-center">Picking Up Heavy Things</h1>

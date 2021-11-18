@@ -38,14 +38,14 @@
 <br>
 
 <div class="row">
-    <div class="col text-center">
-        <h2>
+    <div class="col">
+        <h2 id="profileName">
             <%= currentUser.name %>'s Profile
         </h2>
     </div>
 </div>
 <br>
-<div class="row text-center">
+<div class="row">
     <div class="col">
         <h5><a href="/workouts/history">Workout History</a></h5>
         <% results.forEach(workout => { %>

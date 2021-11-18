@@ -1,4 +1,29 @@
+body {
+    background-color: #D3F2E9;
+}
 #title {
     font-family: 'Staatliches', cursive;
     font-size: 100px;
+    color: #52848A;
+}
+
+#profileCol {
+    border: 5px solid black;
+
+}
+
+#profileName {
+    text-align: center;
+    font-family: 'Staatliches', cursive;
+    font-size: 50px;
+    color: #52848A;
+}
+
+#profileListTitle {
+    text-align: center;
+}
+
+#profileListRestuls {
+    font-family: 'Staatliches', cursive;
+
 }
