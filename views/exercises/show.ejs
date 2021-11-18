@@ -2,22 +2,54 @@
     <link rel="stylesheet" href="/static/css/exercises.css">
 </head>
 
-<nav>
-    <!-- <a href="/exercises/search/results">Back to Results List</a> -->
-    <a href="/exercises/search">Start a New Search</a>
-</nav>
+<body>
+    <nav>
+        <div class="navContainer">
+            <div class="newSearchLink">
+                <a href="/exercises/search" class="searchNav">Start a New Search</a>
+            </div>
+            <div class="logLink">
+                <a href="/workouts/newPlan" class="searchNav">Plan a Workout</a>
+                <a href="/workouts/new" class="searchNav">Log a Workout</a>
+            </div>
+            <div class="searchLink">
+                <a href="/auth/logout" class="searchNav">Logout</a>
+            </div>
+        </div>
+    </nav>
 
-<h1><%= name %> </h1>
-<h3>Body Part: <%= bodyPart %> </h3>
-<p>Equipment: <%= equipment %> </p>
-<p>Muscle Targeted: <%= targetMuscle %> </p>
-Exercise Demo: <img src="<%= demoVid %>" alt = "animation demo of <%= name %> ">
-<br>
-<form method="POST" action="/exercises/saves">
-    <input hidden type="text" name="name" value="<%= name %>">
-    <input hidden type="text" name="bodyPart" value="<%= bodyPart %>">
-    <input hidden type="text" name="equipment" value="<%= equipment %>">
-    <input hidden type="text" name="muscleTargeted" value="<%= targetMuscle %>">
-    <input hidden type="text" name="exerciseDemo" value="<%= demoVid %>">
-    <button type="submit">Save for Later!</button>
-</form>
+    <div class="exerciseName">
+        <h1><%= name %></h1>
+    </div>
+    <div class="exerciseBody">
+        <div>
+            <img src="<%= demoVid %>" alt = "animation demo of <%= name %> ">
+        </div>
+        <div class="exerciseInfo">
+            <div class="info">
+                <% if(bodyPart === 'waist'){ %>
+                    <% newName = 'Abs' %>
+                    <p>Muscle Group: <%= newName %> </p>
+                    <% } else { %>
+                        <p>Muscle Group: <%= bodyPart %></p>
+                <% } %> 
+                <p>Equipment: <%= equipment %> </p>
+                <p>Muscle Targeted: <%= targetMuscle %> </p>
+            </div>
+        </div>
+    </div>
+    <div id="saveForm">
+        <form method="POST" action="/exercises/saves">
+            <input hidden type="text" name="name" value="<%= name %>">
+            <input hidden type="text" name="bodyPart" value="<%= bodyPart %>">
+            <input hidden type="text" name="equipment" value="<%= equipment %>">
+            <input hidden type="text" name="muscleTargeted" value="<%= targetMuscle %>">
+            <input hidden type="text" name="exerciseDemo" value="<%= demoVid %>">
+            <button type="submit" id="saveBtn">Save for Later!</button>
+        </form>
+    </div>
+
+</body>
+
+
+

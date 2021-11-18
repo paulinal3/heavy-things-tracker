@@ -11,7 +11,7 @@ body {
     justify-content: space-between;
 }
 
-.profileLink {
+.profileLink, .newSearchLink {
     padding-left: 10px;
 }
 
@@ -72,6 +72,54 @@ body {
 }
 
 /* ---------- INDEX.EJS ---------- */
+
+/* ---------- SHOW.EJS ---------- */
+.exerciseName {
+    text-align: center;
+    text-transform: capitalize;
+    padding: 25px 0 10px 0;
+}
+
+.exerciseBody {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-transform: capitalize;
+    font-size: 25px;
+    gap: 20px;
+}
+
+.exerciseInfo {
+    display: flex;
+    flex-direction: column;
+    border: 5px solid #719294;
+    width: 35%;
+    text-align: center;
+}
+
+.info {
+    padding-top: 20%;
+}
+
+#saveForm {
+    margin-top: 35px;
+    display: flex;
+    justify-content: center;
+}
+
+#saveBtn {
+    height: 50px;
+    width: 200px;
+    font-size: 25px;
+    background-color: #D3F2E9;
+    color: #719294;
+    border: 5px solid #719294;
+}
+
+#saveBtn:hover {
+    background-color: #719294;
+    color: #D3F2E9;
+}
 
 /* ---------- INDEXSAVES.EJS ---------- */
 #savedTitle {
