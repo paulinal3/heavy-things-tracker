@@ -40,9 +40,10 @@
                                 <a href="/exercises/saves/<%= exercise.id %>">
                                     <%= exercise.name %>
                                         <form method="POST" action="/workouts/newPlan">
-                                            <!-- <input hidden type="text" name="name" value="<%= //name %>">
-                                            <input hidden type="text" name="equipment" value="<%= //equipment %>"> -->
-                                            <input type="submit" id="addBtn" value="Add to Workout"></input>
+                                            <input hidden type="text" name="name" value="<%= name %>">
+                                            <% let equipment=exercise.equipment %>
+                                                <input hidden type="text" name="equipment" value="<%= equipment %>">
+                                                <input type="submit" id="addBtn" value="Add to Workout"></input>
                                         </form>
                                 </a>
                     </li>
