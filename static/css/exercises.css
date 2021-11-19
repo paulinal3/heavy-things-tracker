@@ -154,9 +154,6 @@ nav {
     border: 2px solid #719294;
     width: 30%;
     height: 300px;
-}
-
-.overflow-auto {
     overflow-y: scroll;
 }
 
