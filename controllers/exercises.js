@@ -16,7 +16,7 @@ router.get('/search', (req, res) => {
 })
 
 // GET/INDEX route based on search results
-router.get('/search/results', (req, res) => {
+router.get('/', (req, res) => {
     const rootApi = 'https://v1.exercisedb.io/api/exercises'
     let muscleTargeted = req.query.bodyPart
 
