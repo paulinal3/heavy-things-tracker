@@ -54,6 +54,10 @@ body {
     width: 40%;
 }
 
+li {
+    text-transform: capitalize;
+}
+
 #addBtn {
     font-size: small;
 }

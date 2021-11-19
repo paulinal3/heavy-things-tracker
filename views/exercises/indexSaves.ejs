@@ -24,7 +24,7 @@
     
     <div id="savedContainer">
         <div id="firstRow">
-            <div id="chest">
+            <div id="chest" class="overflow-auto">
                 <h3 class="muscleTitle">Chest:</h3>
                 <ul>
                     <% exerciseSaves.forEach(exercise => { %>
@@ -38,7 +38,7 @@
                     <% }) %> 
                 </ul>
             </div>
-            <div id="back">
+            <div id="back" class="overflow-auto">
                 <h3 class="muscleTitle">Back:</h3>
                 <ul>
                     <% exerciseSaves.forEach(exercise => { %>
@@ -52,7 +52,7 @@
                     <% }) %> 
                 </ul>
             </div>
-            <div id="legs">
+            <div id="legs" class="overflow-auto">
                 <h3 class="muscleTitle">Legs:</h3>
                 <ul>
                     <% exerciseSaves.forEach(exercise => { %>
@@ -69,7 +69,7 @@
         </div>
     
         <div id="secondRow">
-            <div id="shoulders">
+            <div id="shoulders" class="overflow-auto">
                 <h3 class="muscleTitle">Shoulders:</h3>
                 <ul>
                     <% exerciseSaves.forEach(exercise => { %>
@@ -84,7 +84,7 @@
                 </ul>
             </div>
             <div id="arms">
-                <h3 class="muscleTitle">Arms:</h3>
+                <h3 class="muscleTitle" class="overflow-auto">Arms:</h3>
                 <ul>
                     <% exerciseSaves.forEach(exercise => { %>
                         <% if(exercise.bodyPart === 'upper arms' || exercise.bodyPart === 'lower arms') { %>
@@ -98,7 +98,7 @@
                 </ul>
             </div>
             <div id="calves">
-                <h3 class="muscleTitle">Calves:</h3>
+                <h3 class="muscleTitle" class="overflow-auto">Calves:</h3>
                 <ul>
                     <% exerciseSaves.forEach(exercise => { %>
                         <% if(exercise.bodyPart === 'calves') { %>
@@ -114,7 +114,7 @@
         </div>
     
         <div id="thirdRow">
-            <div id="abs">
+            <div id="abs" class="overflow-auto">
                 <h3 class="muscleTitle overflow-auto">Abs:</h3>
                 <ul>
                     <% exerciseSaves.forEach(exercise => { %>

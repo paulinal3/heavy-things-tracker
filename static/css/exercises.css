@@ -153,7 +153,11 @@ nav {
 #chest, #back, #legs, #shoulders, #arms, #calves, #abs {
     border: 2px solid #719294;
     width: 30%;
-    height: 500px;
+    height: 300px;
+}
+
+.overflow-auto {
+    overflow-y: scroll;
 }
 
 .muscleTitle {
