@@ -75,20 +75,21 @@ router.get('/newPlan', isLoggedIn, (req, res) => {
 router.post('/newPlan', isLoggedIn, (req, res) => {
     const exerciseData = req.body
     console.log('these are the exercise details\n', exerciseData)
-    db.user.findOne({
-        where: {id: res.locals.currentUser.id}
-    })
-    .then(foundUser => {
-        foundUser.getExercises({
-            where: {
-                name: req.body.name,
-                equipment: req.body.equipment
-            }
-        })
-        .then(foundExercise => {
+    // db.user.findOne({
+    //     where: {id: res.locals.currentUser.id}
+    // })
+    // .then(foundUser => {
+    //     foundUser.getExercises({
+    //         where: {
+    //             name: req.body.name,
+    //             equipment: req.body.equipment
+    //         }
+    //     })
+    //     .then(foundExercise => {
+            // document.getElementById('exerciseList').innerText = req.body.name
             res.redirect('/workouts/newPlan')
-        })
-    })
+    //     })
+    // })
 })
 
 // GET/INDEX route to display a list of all of user's workouts
