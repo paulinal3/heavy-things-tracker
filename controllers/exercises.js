@@ -32,7 +32,7 @@ router.get('/search/results', (req, res) => {
 })
 
 // GET/INDEX route that will display all saved exercises
-router.get('/saves', (req, res) => {
+router.get('/saves', isLoggedIn, (req, res) => {
     db.user.findOne({
         where: {id: res.locals.currentUser.id}
     })
@@ -45,7 +45,7 @@ router.get('/saves', (req, res) => {
 })
 
 // POST route that will save exercise
-router.post('/saves/', (req, res) => {
+router.post('/saves/', isLoggedIn, (req, res) => {
     const exerciseData = JSON.parse(JSON.stringify(req.body))
     // console.log('this is the exercise data to be saved', exerciseData)
     db.user.findOne({
@@ -107,7 +107,7 @@ router.get('/saves/:id', isLoggedIn, (req, res) => {
 })
 
 // DELETE route for a saved exercise
-router.delete('/saves/:id', (req, res) => {
+router.delete('/saves/:id', isLoggedIn, (req, res) => {
     db.exercise.destroy({
         where: {id: req.params.id}
     })

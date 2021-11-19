@@ -51,27 +51,24 @@ router.get('/newPlan', isLoggedIn, (req, res) => {
 })
 
 // // POST route that will add a saved exercise to a planned workout
-// router.post('/newPlan', (req, res) => {
-//     const exerciseData = JSON.parse(JSON.stringify(req.body))
-//     // console.log('this is the exercise data to be saved', exerciseData)
-//     db.user.findOne({
-//         where: {id: res.locals.currentUser.id}
-//     })
-//     .then(foundUser => {
-//         console.log('saving exercise to this user\n', foundUser.name)
-//         foundUser.createExercise({
-//             name: exerciseData.name,
-//             bodyPart: exerciseData.bodyPart,
-//             equipment: exerciseData.equipment,
-//             muscleTargeted: exerciseData.muscleTargeted,
-//             exerciseDemo: exerciseData.exerciseDemo 
-//         })
-//         res.redirect('/exercises/newPlan')
-//     })
-//     .catch(error => {
-//         console.error
-//     })
-// })
+router.post('/newPlan', isLoggedIn, (req, res) => {
+    db.workout.findOne({
+        where: {userId: res.locals.currentUser.id},
+        include: [db.user, db.exercise]
+    })
+    .then(foundWorkout => {
+        foundWorkout.getExercises()
+        .then(exercise => {
+            name = exercise.name
+        })
+        .then(foundSavedExercise => {
+            res.redirect('/workouts/newPlan')
+        })
+        .catch(error => {
+            console.error
+        })
+    })
+})
 
 // GET/INDEX route to display a list of all of user's workouts
 router.get('/history', isLoggedIn, (req, res) => {
