@@ -18,13 +18,49 @@
         </div>
     </nav>
 
+    <div id="buildContainer">
+        <div id="buildList">
+            <h4>Build Your Next Workout</h4>
+        </div>
+        <div class="overflow-auto">
+            <h4>All Your Saved Exercises </h4>
+            <ul>
+                <% exerciseSaves.forEach(exercise=> { %>
+                    <li style="list-style-type:none">
+                        <% let name=exercise.name %>
+                            <% name.replace('', '%20' ) %>
+                                <a href="/exercises/saves/<%= exercise.id %>">
+                                    <%= exercise.name %>
+                                        <form method="POST" action="/workouts/newPlan">
+                                            <!-- <input hidden type="text" name="name" value="<%= //name %>">
+                                            <input hidden type="text" name="equipment" value="<%= //equipment %>"> -->
+                                            <input type="submit" id="addBtn" value="Add to Workout"></input>
+                                        </form>
+                                </a>
+                    </li>
+                    <% }) %>
+            </ul>
+        </div>
+    </div>
 
 </body>
-<h1>Build Your Next Workout</h1>
 
 
-<h5>All Your Saved Exercises </h5>
-<div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div>
     <h6>Abs:</h6>
     <ul>
         <% exerciseSaves.forEach(exercise => { %>
@@ -127,18 +163,4 @@
             <% } %> 
         <% }) %> 
     </ul>
-</div>
-<ul>
-    <% exerciseSaves.forEach(exercise => { %>
-        <li style="list-style-type:none">
-            <% let name = exercise.name %>
-            <% name.replace('', '%20') %>
-            <a href="/exercises/saves/<%= exercise.id %>"><%= exercise.name %></a>
-            <form method="POST" action="/workouts/newPlan">
-                <!-- <input hidden type="text" name="name" value="<%= //name %>">
-                <input hidden type="text" name="equipment" value="<%= //equipment %>"> -->
-                <button type="submit">Add to Workout!</button>
-            </form>
-        </li>
-    <% }) %> 
-</ul>
+</div> -->
