@@ -87,7 +87,7 @@ router.post('/newPlan', isLoggedIn, (req, res) => {
     //     })
     //     .then(foundExercise => {
             // document.getElementById('exerciseList').innerText = req.body.name
-            res.redirect('/workouts/newPlan')
+            // res.redirect('/workouts/newPlan')
     //     })
     // })
 })

@@ -23,8 +23,7 @@
             <h4>Build Your Next Workout</h4>
             <div id="exerciseList">
                 <!-- <ol>
-                    <li>
-                        req.body.name
+                    <li class="addedExercise">
                     </li>
                 </ol> -->
             </div>
@@ -45,6 +44,7 @@
                                             <input hidden type="text" name="name" value="<%= name %>">
                                             <% let equipment=exercise.equipment %>
                                                 <input hidden type="text" name="equipment" value="<%= equipment %>">
+                                                <!-- <button class="addBtn">Add to Workout</button> -->
                                                 <input type="submit" class="addBtn" value="Add to Workout"></input>
                                         </form>
                                 </a>
@@ -54,7 +54,7 @@
         </div>
     </div>
 
-    <script src="static/js/workouts.js"></script>
+    <script src="/static/js/workouts.js"></script>
 </body>
 
 

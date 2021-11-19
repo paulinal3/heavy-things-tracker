@@ -9,7 +9,7 @@ const isLoggedIn = require('./middleware/isLoggedIn')
 const db = require('./models')
 const methodOverride = require('method-override')
 
-// for css
+// static css and js middleware
 app.use('/static',express.static(__dirname + '/static/'))
 
 // views (ejs and layouts) set up
