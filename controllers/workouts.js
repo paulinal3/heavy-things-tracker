@@ -92,7 +92,7 @@ router.post('/newPlan', isLoggedIn, (req, res) => {
 })
 
 // GET/INDEX route to display a list of all of user's workouts
-router.get('/history', isLoggedIn, (req, res) => {
+router.get('/', isLoggedIn, (req, res) => {
     db.workout.findAll({
         where: {userId: res.locals.currentUser.id}
     })
@@ -139,7 +139,7 @@ router.put('/edit/:id', isLoggedIn, (req, res) => {
             duration: req.body.duration,
             type: req.body.type
         })
-        .then(res.redirect('/workouts/history'))
+        .then(res.redirect('/workouts'))
     })
     .catch(error => {
         console.error
