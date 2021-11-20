@@ -1,18 +1,31 @@
-<div class="text-center">
-    <h2>Sign Up</h2>
+<head>
+    <link rel="stylesheet" href="/static/css/auth.css">
+</head>
 
-    <br>
+<body>
+    <header>
+        <nav>
+            <a href="/">Home</a>
+        </nav>
+    </header>
     
-    <form action="/auth/signup" method="POST">
-        <label for="new-name">Name</label>
-        <input id="new-name" type="text" name="name">
-
-        <label for="new-email">Email</label>
-        <input id="new-email" type="email" name="email">
-    
-        <label for="new-password">Password</label>
-        <input id="new-password" type="password" name="password">
-    
-        <input type="submit" value="Sign up">
-    </form>
-</div>
+    <div id="signupContainer">
+        <form action="/auth/signup" method="POST">
+            <div>
+                <label class="signupLabel" for="new-name">Name</label>
+                <input id="new-name" type="text" name="name">
+            <!-- </div> -->
+            <!-- <div> -->
+                <label class="signupLabel" for="new-email">Email</label>
+                <input id="new-email" type="email" name="email">
+            
+                <label class="signupLabel" for="new-password">Password</label>
+                <input id="new-password" type="password" name="password">
+            </div>
+            <br>
+            <div>
+                <input id="signupBtn" type="submit" value="Sign up">
+            </div>
+        </form>
+    </div>
+</body>

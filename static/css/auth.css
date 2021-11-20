@@ -3,8 +3,7 @@ body {
     font-family: 'Poiret One', cursive;
 }
 
-/* ---------- LOGIN.EJS ---------- */
-#loginContainer {
+#loginContainer, #signupContainer {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,6 +16,7 @@ body {
     text-align: center;
 }
 
+/* ---------- LOGIN.EJS ---------- */
 #loginForm {
     display: flex;
     justify-content: center;
@@ -24,17 +24,17 @@ body {
     align-items: center;
 }
 
-.loginLabel {
+.loginLabel, .signupLabel {
     font-size: 35px;
 }
 
-.loginInput {
+#auth-password, #new-password, #new-email, #new-name {
     height: 35px;
     width: 200px;
 }
 
-#loginBtn {
-    height: 35px;
+#loginBtn, #signupBtn {
+    height: 40px;
     width: 125px;
     font-size: 20px;
     background-color: #D3F2E9;
@@ -42,7 +42,9 @@ body {
     border: 3px solid #719294;
 }
 
-#loginBtn:hover {
+#loginBtn:hover, #signupBtn:hover {
     background-color: #719294;
     color: #D3F2E9;
 }
+
+/* ---------- SIGNUP.EJS ---------- */
