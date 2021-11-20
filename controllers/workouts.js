@@ -173,7 +173,19 @@ router.get('/newPlan', isLoggedIn, (req, res) => {
 // POST route that will add a saved exercise to a planned workout
 router.post('/newPlan', isLoggedIn, (req, res) => {
     const exerciseData = req.body
-    console.log('these are the exercise details\n', exerciseData)
+    console.log('these are the exercise details\n', exerciseData.name)
+    addNameArr = exerciseData.name
+    addNameArr.forEach((exerciseName) => {
+        db.exercise.findOne({
+            where: {name: exerciseName}
+        })
+        .then(foundExercise => {
+            foundExercise.createWorkout({
+                scheduledDate: exerciseData.scheduledDate,
+                type: exerciseData.type
+            })
+        })
+    })
     // db.user.findOne({
     //     where: {id: res.locals.currentUser.id}
     // })
@@ -186,7 +198,7 @@ router.post('/newPlan', isLoggedIn, (req, res) => {
     //     })
     //     .then(foundExercise => {
             // document.getElementById('exerciseList').innerText = req.body.name
-            // res.redirect('/workouts/newPlan')
+            res.redirect('/workouts/newPlan')
     //     })
     // })
 })
