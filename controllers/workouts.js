@@ -1,7 +1,7 @@
 require('dotenv').config()
 const express = require('express')
 const router = express.Router()
-const axios = require ('axios')
+const axios = require('axios')
 const db = require('../models')
 const isLoggedIn = require('../middleware/isLoggedIn')
 const authHeader = {
@@ -23,20 +23,20 @@ router.get('/new', isLoggedIn, (req, res) => {
 // // POST route to create workout in db based on user input
 router.post('/new', isLoggedIn, (req, res) => {
     const workoutData = req.body
-        console.log('these are the workout details\n', workoutData)
-        db.workout.create({
-            date: workoutData.date,
-            duration: workoutData.duration,
-            type: workoutData.type,
-            userId: res.locals.currentUser.id
-        })
+    console.log('these are the workout details\n', workoutData)
+    db.workout.create({
+        date: workoutData.date,
+        duration: workoutData.duration,
+        type: workoutData.type,
+        userId: res.locals.currentUser.id
+    })
         .then(createdWorkout => {
             console.log('workout added to db\n', createdWorkout)
             res.redirect('/workouts')
         })
         .catch(error => {
             console.error
-    })
+        })
 })
 
 // // POST route to create workout in db based on user input
@@ -64,14 +64,14 @@ router.post('/new', isLoggedIn, (req, res) => {
 // GET/INDEX route to display a list of the user's workout histroy
 router.get('/', isLoggedIn, (req, res) => {
     db.workout.findAll({
-        where: {userId: res.locals.currentUser.id}
+        where: { userId: res.locals.currentUser.id }
     })
-    .then(workouts => {
-        res.render('workouts/index', {results:  workouts})
-    })
-    .catch(error => {
-        console.error
-    })
+        .then(workouts => {
+            res.render('workouts/index', { results: workouts })
+        })
+        .catch(error => {
+            console.error
+        })
 })
 
 // GET route to render the edit workout page
@@ -84,12 +84,12 @@ router.get('/edit/:id', isLoggedIn, (req, res) => {
             userId: res.locals.currentUser.id
         }
     })
-    .then(foundWorkout => {
-        res.render('workouts/edit', {workoutId, date: foundWorkout.date, duration: foundWorkout.duration, type: foundWorkout.type})
-    })
-    .catch(error => {
-        console.error
-    })
+        .then(foundWorkout => {
+            res.render('workouts/edit', { workoutId, date: foundWorkout.date, duration: foundWorkout.duration, type: foundWorkout.type })
+        })
+        .catch(error => {
+            console.error
+        })
 })
 
 // PUT route to edit workout
@@ -101,19 +101,19 @@ router.put('/edit/:id', isLoggedIn, (req, res) => {
             userId: res.locals.currentUser.id
         }
     })
-    .then(foundWorkout => {
-        console.log('updating workout to this id\n', foundWorkout.id)
-        console.log('this should be the whole workout\n', req.body)
-        foundWorkout.update({
-            date: req.body.date,
-            duration: req.body.duration,
-            type: req.body.type
+        .then(foundWorkout => {
+            console.log('updating workout to this id\n', foundWorkout.id)
+            console.log('this should be the whole workout\n', req.body)
+            foundWorkout.update({
+                date: req.body.date,
+                duration: req.body.duration,
+                type: req.body.type
+            })
+                .then(res.redirect('/workouts'))
         })
-        .then(res.redirect('/workouts'))
-    })
-    .catch(error => {
-        console.error
-    })
+        .catch(error => {
+            console.error
+        })
 })
 
 // SHOW route to display details of a logged workout
@@ -125,29 +125,29 @@ router.get('/details/:id', isLoggedIn, (req, res) => {
             userId: res.locals.currentUser.id
         }
     })
-    .then(foundWorkout => {
-        res.render('workouts/show', {workoutId: req.params.id, date: foundWorkout.date, duration: foundWorkout.duration, type: foundWorkout.type})
-    })
-    .catch(error => {
-        console.error
-    })
+        .then(foundWorkout => {
+            res.render('workouts/show', { workoutId: req.params.id, date: foundWorkout.date, duration: foundWorkout.duration, type: foundWorkout.type })
+        })
+        .catch(error => {
+            console.error
+        })
 })
 
 // NEW route for user to plan a workout
 router.get('/newPlan', isLoggedIn, (req, res) => {
     db.user.findOne({
-        where: {id: res.locals.currentUser.id}
+        where: { id: res.locals.currentUser.id }
     })
-    .then(user => {
-        user.getExercises()
-        .then(saves => {
-            // console.log('these are all the users saved exercises\n', saves)
-            res.render('workouts/newPlan', {exerciseSaves: saves})
+        .then(user => {
+            user.getExercises()
+                .then(saves => {
+                    // console.log('these are all the users saved exercises\n', saves)
+                    res.render('workouts/newPlan', { exerciseSaves: saves })
+                })
         })
-    })
-    .catch(error => {
-        console.error
-    })
+        .catch(error => {
+            console.error
+        })
 })
 
 // ----- adding to db but Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client ----
@@ -165,18 +165,21 @@ router.post('/newPlan', isLoggedIn, (req, res) => {
                 type: plannedWorkoutData.type
             }
         })
-        .then(([workout, created]) => {
-            db.exercise.findOrCreate({
-                where: {name: exerciseName}
-            })
-            .then(([exercise, created]) => {
-                workout.addExercise(exercise)
+            .then(([workout, created]) => {
+                db.exercise.findOrCreate({
+                    where: { name: exerciseName }
                 })
-                .then(workoutExercise => {
-                    console.log('this is the  workoutExercise\n', workoutExercise)
-                })
+                    .then(([exercise, created]) => {
+                        workout.addExercise(exercise)
+                    })
+                    .then(workoutExercise => {
+                        console.log('this is the  workoutExercise\n', workoutExercise)
+                    })
             })
-            res.redirect('/workouts/newPlan')
+        res.redirect('/workouts/newPlan')
+    })
+    .catch(error => {
+        console.error
     })
 })
 
