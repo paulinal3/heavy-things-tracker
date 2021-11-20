@@ -76,6 +76,19 @@ nav {
 }
 
 /* ---------- INDEX.EJS ---------- */
+#firstRowRes, #secondRowRes, #thirdRowRes {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 20px 0 20px 0;
+}
+
+.resListContainer {
+    border: 2px solid #719294;
+    width: 30%;
+    height: 300px;
+    overflow-y: scroll;
+}
 
 /* ---------- SHOW.EJS ---------- */
 .exerciseName {

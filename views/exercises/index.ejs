@@ -21,11 +21,11 @@
     </header>
     
     <div>
-        <h1 >Results Based on Your Search:</h1>
+        <h1>Results Based on Your Search:</h1>
     </div>
     
     <div id="firstRowRes">
-        <div>
+        <div class="resListContainer overflow-auto"">
             Bands: 
             <ul>
                 <% results.forEach(result => { %>
@@ -39,7 +39,7 @@
                 <% }) %>
             </ul>
         </div>
-        <div>
+        <div class="resListContainer overflow-auto"">
             Barbells/Trap Bar: 
             <ul>
                 <% results.forEach(result => { %>
@@ -53,7 +53,7 @@
                 <% }) %>
             </ul>
         </div>
-        <div>
+        <div class="resListContainer overflow-auto"">
             Bodyweight: 
             <ul>
                 <% results.forEach(result => { %>
@@ -70,7 +70,7 @@
     </div>
 
     <div id="secondRowRes">
-        <div>
+        <div class="resListContainer overflow-auto"">
             Cable: 
             <ul>
                 <% results.forEach(result => { %>
@@ -84,7 +84,7 @@
                 <% }) %>
             </ul>
         </div>
-        <div>
+        <div class="resListContainer overflow-auto"">
             Dumbbell/Plates: 
             <ul>
                 <% results.forEach(result => { %>
@@ -98,7 +98,7 @@
                 <% }) %>
             </ul>
         </div>
-        <div>
+        <div class="resListContainer overflow-auto"">
             KettleBell: 
             <ul>
                 <% results.forEach(result => { %>
@@ -115,7 +115,7 @@
     </div>
 
     <div id="thirdRowRes">
-        <div>
+        <div class="resListContainer overflow-auto"">
             Medicine/Bosu/Stability Ball: 
             <ul>
                 <% results.forEach(result => { %>
@@ -129,7 +129,7 @@
                 <% }) %>
             </ul>
         </div>
-        <div>
+        <div class="resListContainer overflow-auto"">
             Smith Machine: 
             <ul>
                 <% results.forEach(result => { %>
@@ -143,7 +143,7 @@
                 <% }) %>
             </ul>
         </div>
-        <div>
+        <div class="resListContainer overflow-auto"">
             Other: 
             <ul>
                 <% results.forEach(result => { %>
@@ -159,4 +159,3 @@
         </div>
     </div>
 </body>
-
