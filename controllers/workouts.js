@@ -9,89 +9,41 @@ const authHeader = {
         'Authorization': process.env.API_KEY
     }
 }
+const multer = require('multer')
+const upload = multer({ dest: './uploads/'})
+const cloudinary = require('cloudinary')
+cloudinary.config(process.env.CLOUDINARY_URL)
+
 
 // NEW route for user to log a workout
 router.get('/new', isLoggedIn, (req, res) => {
     res.render('workouts/new')
 })
 
+
 // POST route to create workout in db based on user input
-router.post('/new', isLoggedIn, (req, res) => {
-    const workoutData = req.body
-    console.log('these are the workout details\n', workoutData)
-    db.workout.create({
-        date: workoutData.date,
-        duration: workoutData.duration,
-        type: workoutData.type,
-        userId: res.locals.currentUser.id
-    })
-    .then(createdWorkout => {
-        console.log('workout added to db\n', createdWorkout)
-        res.redirect('/workouts/history')
-    })
-    .catch(error => {
-        console.error
-    })
-})
-
-// NEW route for user to plan a workout
-router.get('/newPlan', isLoggedIn, (req, res) => {
-    db.user.findOne({
-        where: {id: res.locals.currentUser.id}
-    })
-    .then(user => {
-        user.getExercises()
-        .then(saves => {
-            // console.log('these are all the users saved exercises\n', saves)
-            res.render('workouts/newPlan', {exerciseSaves: saves})
+router.post('/new', isLoggedIn, upload.single('myFile'), (req, res) => {
+    cloudinary.uploader.upload(req.file.path, (result) => {
+        const workoutData = req.body
+        console.log('these are the workout details\n', workoutData)
+        db.workout.create({
+            date: workoutData.date,
+            duration: workoutData.duration,
+            type: workoutData.type,
+            img: result.url,
+            userId: res.locals.currentUser.id
         })
-    })
-    .catch(error => {
-        console.error
-    })
-})
-
-// // POST route that will add a saved exercise to a planned workout
-// router.post('/newPlan', isLoggedIn, (req, res) => {
-//     db.workout.findOne({
-//         where: {userId: res.locals.currentUser.id},
-//         include: [db.user, db.exercise]
-//     })
-//     .then(foundWorkout => {
-//         foundWorkout.getExercises()
-//         .then(exercise => {
-//             name = exercise.name
-//         })
-//         .then(foundSavedExercise => {
-//             res.redirect('/workouts/newPlan')
-//         })
-//         .catch(error => {
-//             console.error
-//         })
-//     })
-// })
-
-// POST route that will add a saved exercise to a planned workout
-router.post('/newPlan', isLoggedIn, (req, res) => {
-    const exerciseData = req.body
-    console.log('these are the exercise details\n', exerciseData)
-    db.user.findOne({
-        where: {id: res.locals.currentUser.id}
-    })
-    .then(foundUser => {
-        foundUser.getExercises({
-            where: {
-                name: req.body.name,
-                equipment: req.body.equipment
-            }
+        .then(createdWorkout => {
+            console.log('workout added to db\n', createdWorkout)
+            res.redirect('/workouts')
         })
-        .then(foundExercise => {
-            res.redirect('/workouts/newPlan')
+        .catch(error => {
+            console.error
         })
     })
 })
 
-// GET/INDEX route to display a list of all of user's workouts
+// GET/INDEX route to display a list of the user's workout histroy
 router.get('/', isLoggedIn, (req, res) => {
     db.workout.findAll({
         where: {userId: res.locals.currentUser.id}
@@ -161,6 +113,64 @@ router.get('/details/:id', isLoggedIn, (req, res) => {
     .catch(error => {
         console.error
     })
+})
+
+// NEW route for user to plan a workout
+router.get('/newPlan', isLoggedIn, (req, res) => {
+    db.user.findOne({
+        where: {id: res.locals.currentUser.id}
+    })
+    .then(user => {
+        user.getExercises()
+        .then(saves => {
+            // console.log('these are all the users saved exercises\n', saves)
+            res.render('workouts/newPlan', {exerciseSaves: saves})
+        })
+    })
+    .catch(error => {
+        console.error
+    })
+})
+
+// // POST route that will add a saved exercise to a planned workout
+// router.post('/newPlan', isLoggedIn, (req, res) => {
+//     db.workout.findOne({
+//         where: {userId: res.locals.currentUser.id},
+//         include: [db.user, db.exercise]
+//     })
+//     .then(foundWorkout => {
+//         foundWorkout.getExercises()
+//         .then(exercise => {
+//             name = exercise.name
+//         })
+//         .then(foundSavedExercise => {
+//             res.redirect('/workouts/newPlan')
+//         })
+//         .catch(error => {
+//             console.error
+//         })
+//     })
+// })
+
+// POST route that will add a saved exercise to a planned workout
+router.post('/newPlan', isLoggedIn, (req, res) => {
+    const exerciseData = req.body
+    console.log('these are the exercise details\n', exerciseData)
+    // db.user.findOne({
+    //     where: {id: res.locals.currentUser.id}
+    // })
+    // .then(foundUser => {
+    //     foundUser.getExercises({
+    //         where: {
+    //             name: req.body.name,
+    //             equipment: req.body.equipment
+    //         }
+    //     })
+    //     .then(foundExercise => {
+            // document.getElementById('exerciseList').innerText = req.body.name
+            // res.redirect('/workouts/newPlan')
+    //     })
+    // })
 })
 
 module.exports = router

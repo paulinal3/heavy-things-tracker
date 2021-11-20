@@ -58,6 +58,6 @@ li {
     text-transform: capitalize;
 }
 
-#addBtn {
+.addBtn {
     font-size: small;
 }

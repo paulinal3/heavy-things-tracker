@@ -8,8 +8,12 @@ const flash = require('connect-flash')
 const isLoggedIn = require('./middleware/isLoggedIn')
 const db = require('./models')
 const methodOverride = require('method-override')
+const multer = require('multer')
+const upload = multer({ dest: './uploads/'})
+const cloudinary = require('cloudinary')
+cloudinary.config(process.env.CLOUDINARY_URL)
 
-// for css
+// static css and js middleware
 app.use('/static',express.static(__dirname + '/static/'))
 
 // views (ejs and layouts) set up
@@ -75,6 +79,13 @@ app.get('/profile', isLoggedIn, (req, res)=>{
     })
     .catch(error => {
         console.error
+    })
+})
+
+// post route to upload images
+app.post('/profile', upload.single('myFile'), (req, res) => {
+    cloudinary.uploader.upload(req.file.path, (result) => {
+        res.send(result)
     })
 })
 

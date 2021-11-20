@@ -44,7 +44,15 @@
         <% }) %> 
     </div>
 
+    <div>
+        <form enctype="multipart/form-data" action="/profile" method="POST">
+            <input type="file" name="myFile">
+            <input type="submit" value="Upload Photo">
+        </form>
+    </div>
+
     <footer>
         <%- include('partials/longFooter') %>
     </footer>
 </div>
+
