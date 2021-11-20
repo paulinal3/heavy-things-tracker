@@ -1,3 +1,5 @@
+
+
 let addedArr = []
 const exerciseList = document.getElementById('exerciseList')
 

@@ -61,3 +61,9 @@ li {
 .addBtn {
     font-size: small;
 }
+
+/* ---------- FEATURE BRANCH NEWPLAN.EJS ---------- */
+
+#buildContainer {
+    display: none;
+}
