@@ -90,6 +90,11 @@ nav {
     overflow-y: scroll;
 }
 
+a {
+    text-decoration: none;
+    text-transform: capitalize;
+}
+
 /* ---------- SHOW.EJS ---------- */
 .exerciseName {
     text-align: center;
