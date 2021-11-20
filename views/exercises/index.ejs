@@ -3,30 +3,160 @@
 </head>
 
 <body>
-    <nav>
-        <div class="navContainer">
-            <div class="profileLink">
-                <a href="/profile" class="searchNav">Profile</a>
+    <header>
+        <nav>
+            <div class="navContainer">
+                <div class="profileLink">
+                    <a href="/profile" class="searchNav">Profile</a>
+                </div>
+                <div class="logLink">
+                    <a href="/workouts/newPlan" class="searchNav">Plan a Workout</a>
+                    <a href="/workouts/new" class="searchNav">Log a Workout</a>
+                </div>
+                <div class="searchLink">
+                    <a href="/auth/logout" class="searchNav">Logout</a>
+                </div>
             </div>
-            <div class="logLink">
-                <a href="/workouts/newPlan" class="searchNav">Plan a Workout</a>
-                <a href="/workouts/new" class="searchNav">Log a Workout</a>
-            </div>
-            <div class="searchLink">
-                <a href="/auth/logout" class="searchNav">Logout</a>
-            </div>
-        </div>
-    </nav>
+        </nav>
+    </header>
     
-    <h1 >Results Based on Your Search:</h1>
-    <ul>
-        <% results.forEach((result) => { %>
-            <li style="list-style-type:none">
-                <% let name = result.name %>
-                <% name.replace('', '%20') %>
-                <a href="/exercises/<%= name %> "><%= result.name %></a>
-            </li>
-       <% }) %> 
-    </ul>
+    <div>
+        <h1 >Results Based on Your Search:</h1>
+    </div>
+    
+    <div id="firstRowRes">
+        <div>
+            Bands: 
+            <ul>
+                <% results.forEach(result => { %>
+                    <% if(result.equipment === 'assisted' || result.equipment === 'band' || result.equipment === 'resistance band') { %>
+                        <% let name = result.name %>
+                        <% name.replace('', '%20') %>
+                        <li>
+                            <a href="/exercises/<%= name %> "><%= result.name %></a>
+                        </li>
+                    <% } %>
+                <% }) %>
+            </ul>
+        </div>
+        <div>
+            Barbells/Trap Bar: 
+            <ul>
+                <% results.forEach(result => { %>
+                    <% if(result.equipment === 'barbell' || result.equipment === 'ez barbell' || result.equipment === 'olympic barbell' || result.equipment === 'trap bar') { %>
+                        <% let name = result.name %>
+                        <% name.replace('', '%20') %>
+                        <li>
+                            <a href="/exercises/<%= name %> "><%= result.name %></a>
+                        </li>
+                    <% } %>
+                <% }) %>
+            </ul>
+        </div>
+        <div>
+            Bodyweight: 
+            <ul>
+                <% results.forEach(result => { %>
+                    <% if(result.equipment === 'body weight') { %>
+                        <% let name = result.name %>
+                        <% name.replace('', '%20') %>
+                        <li>
+                            <a href="/exercises/<%= name %> "><%= result.name %></a>
+                        </li>
+                    <% } %>
+                <% }) %>
+            </ul>
+        </div>
+    </div>
+
+    <div id="secondRowRes">
+        <div>
+            Cable: 
+            <ul>
+                <% results.forEach(result => { %>
+                    <% if(result.equipment === 'cable') { %>
+                        <% let name = result.name %>
+                        <% name.replace('', '%20') %>
+                        <li>
+                            <a href="/exercises/<%= name %> "><%= result.name %></a>
+                        </li>
+                    <% } %>
+                <% }) %>
+            </ul>
+        </div>
+        <div>
+            Dumbbell/Plates: 
+            <ul>
+                <% results.forEach(result => { %>
+                    <% if(result.equipment === 'dumbbell' || result.equipment === 'weighted') { %>
+                        <% let name = result.name %>
+                        <% name.replace('', '%20') %>
+                        <li>
+                            <a href="/exercises/<%= name %> "><%= result.name %></a>
+                        </li>
+                    <% } %>
+                <% }) %>
+            </ul>
+        </div>
+        <div>
+            KettleBell: 
+            <ul>
+                <% results.forEach(result => { %>
+                    <% if(result.equipment === 'kettlebell') { %>
+                        <% let name = result.name %>
+                        <% name.replace('', '%20') %>
+                        <li>
+                            <a href="/exercises/<%= name %> "><%= result.name %></a>
+                        </li>
+                    <% } %>
+                <% }) %>
+            </ul>
+        </div>    
+    </div>
+
+    <div id="thirdRowRes">
+        <div>
+            Medicine/Bosu/Stability Ball: 
+            <ul>
+                <% results.forEach(result => { %>
+                    <% if(result.equipment === 'bosu ball' || result.equipment === 'stability ball' || result.equipment === 'medicine ball') { %>
+                        <% let name = result.name %>
+                        <% name.replace('', '%20') %>
+                        <li>
+                            <a href="/exercises/<%= name %> "><%= result.name %></a>
+                        </li>
+                    <% } %>
+                <% }) %>
+            </ul>
+        </div>
+        <div>
+            Smith Machine: 
+            <ul>
+                <% results.forEach(result => { %>
+                    <% if(result.equipment === 'smith machine') { %>
+                        <% let name = result.name %>
+                        <% name.replace('', '%20') %>
+                        <li>
+                            <a href="/exercises/<%= name %> "><%= result.name %></a>
+                        </li>
+                    <% } %>
+                <% }) %>
+            </ul>
+        </div>
+        <div>
+            Other: 
+            <ul>
+                <% results.forEach(result => { %>
+                    <% if(result.equipment === 'elliptical machine' || result.equipment === 'hammer' || result.equipment === 'leverage machine' || result.equipment === 'roller' || result.equipment === 'rope' || result.equipment === 'skierg machine' || result.equipment === 'sled machine' || result.equipment === 'stepmill machine' || result.equipment === 'tire' || result.equipment === 'upper body ergometer' || result.equipment === 'wheel roller') { %>
+                        <% let name = result.name %>
+                        <% name.replace('', '%20') %>
+                        <li>
+                            <a href="/exercises/<%= name %> "><%= result.name %></a>
+                        </li>
+                    <% } %>
+                <% }) %>
+            </ul>
+        </div>
+    </div>
 </body>
 
