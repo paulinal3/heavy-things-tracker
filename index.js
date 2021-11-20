@@ -8,10 +8,10 @@ const flash = require('connect-flash')
 const isLoggedIn = require('./middleware/isLoggedIn')
 const db = require('./models')
 const methodOverride = require('method-override')
-const multer = require('multer')
-const upload = multer({ dest: './uploads/'})
-const cloudinary = require('cloudinary')
-cloudinary.config(process.env.CLOUDINARY_URL)
+// const multer = require('multer')
+// const upload = multer({ dest: './uploads/'})
+// const cloudinary = require('cloudinary')
+// cloudinary.config(process.env.CLOUDINARY_URL)
 
 // static css and js middleware
 app.use('/static',express.static(__dirname + '/static/'))
@@ -82,12 +82,12 @@ app.get('/profile', isLoggedIn, (req, res)=>{
     })
 })
 
-// post route to upload images
-app.post('/profile', upload.single('myFile'), (req, res) => {
-    cloudinary.uploader.upload(req.file.path, (result) => {
-        res.send(result)
-    })
-})
+// // post route to upload images
+// app.post('/profile', upload.single('myFile'), (req, res) => {
+//     cloudinary.uploader.upload(req.file.path, (result) => {
+//         res.send(result)
+//     })
+// })
 
 app.listen(3000, ()=>{
     console.log("heavy things grind 💪🏼🏋🏽‍♀️")

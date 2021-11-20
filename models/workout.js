@@ -20,7 +20,12 @@ module.exports = (sequelize, DataTypes) => {
     duration: DataTypes.INTEGER,
     type: DataTypes.STRING,
     comments: DataTypes.TEXT,
-    name: DataTypes.STRING,
+    completed: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    },
+    scheduledDate: DataTypes.DATEONLY,
+    img: DataTypes.STRING,
     userId: DataTypes.INTEGER
   }, {
     sequelize,

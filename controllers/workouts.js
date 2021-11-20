@@ -9,10 +9,10 @@ const authHeader = {
         'Authorization': process.env.API_KEY
     }
 }
-const multer = require('multer')
-const upload = multer({ dest: './uploads/'})
-const cloudinary = require('cloudinary')
-cloudinary.config(process.env.CLOUDINARY_URL)
+// const multer = require('multer')
+// const upload = multer({ dest: './uploads/'})
+// const cloudinary = require('cloudinary')
+// cloudinary.config(process.env.CLOUDINARY_URL)
 
 
 // NEW route for user to log a workout
@@ -20,17 +20,14 @@ router.get('/new', isLoggedIn, (req, res) => {
     res.render('workouts/new')
 })
 
-
-// POST route to create workout in db based on user input
-router.post('/new', isLoggedIn, upload.single('myFile'), (req, res) => {
-    cloudinary.uploader.upload(req.file.path, (result) => {
-        const workoutData = req.body
+// // POST route to create workout in db based on user input
+router.post('/new', isLoggedIn, (req, res) => {
+    const workoutData = req.body
         console.log('these are the workout details\n', workoutData)
         db.workout.create({
             date: workoutData.date,
             duration: workoutData.duration,
             type: workoutData.type,
-            img: result.url,
             userId: res.locals.currentUser.id
         })
         .then(createdWorkout => {
@@ -39,9 +36,30 @@ router.post('/new', isLoggedIn, upload.single('myFile'), (req, res) => {
         })
         .catch(error => {
             console.error
-        })
     })
 })
+
+// // POST route to create workout in db based on user input
+// router.post('/new', isLoggedIn, upload.single('myFile'), (req, res) => {
+//     cloudinary.uploader.upload(req.file.path, (result) => {
+//         const workoutData = req.body
+//         console.log('these are the workout details\n', workoutData)
+//         db.workout.create({
+//             date: workoutData.date,
+//             duration: workoutData.duration,
+//             type: workoutData.type,
+//             img: result.url,
+//             userId: res.locals.currentUser.id
+//         })
+//         .then(createdWorkout => {
+//             console.log('workout added to db\n', createdWorkout)
+//             res.redirect('/workouts')
+//         })
+//         .catch(error => {
+//             console.error
+//         })
+//     })
+// })
 
 // GET/INDEX route to display a list of the user's workout histroy
 router.get('/', isLoggedIn, (req, res) => {

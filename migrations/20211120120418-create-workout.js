@@ -20,7 +20,13 @@ module.exports = {
       comments: {
         type: Sequelize.TEXT
       },
-      name: {
+      completed: {
+        type: Sequelize.BOOLEAN
+      },
+      scheduledDate: {
+        type: Sequelize.DATEONLY
+      },
+      img: {
         type: Sequelize.STRING
       },
       userId: {
