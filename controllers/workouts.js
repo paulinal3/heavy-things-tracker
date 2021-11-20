@@ -150,57 +150,55 @@ router.get('/newPlan', isLoggedIn, (req, res) => {
     })
 })
 
-// // POST route that will add a saved exercise to a planned workout
+// ----- adding to db but Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client ----
+// POST route that will add a saved exercise to a planned workout
+router.post('/newPlan', isLoggedIn, (req, res) => {
+    const plannedWorkoutData = req.body
+    console.log('these are the planned workout details\n', plannedWorkoutData)
+    addNameArr = plannedWorkoutData.name
+
+    addNameArr.forEach(exerciseName => {
+        db.workout.findOrCreate({
+            where: {
+                userId: res.locals.currentUser.id,
+                scheduledDate: plannedWorkoutData.scheduledDate,
+                type: plannedWorkoutData.type
+            }
+        })
+        .then(([workout, created]) => {
+            db.exercise.findOrCreate({
+                where: {name: exerciseName}
+            })
+            .then(([exercise, created]) => {
+                workout.addExercise(exercise)
+                })
+                .then(workoutExercise => {
+                    console.log('this is the  workoutExercise\n', workoutExercise)
+                })
+            })
+            res.redirect('/workouts/newPlan')
+    })
+})
+
+// POST route that will add a saved exercise to a planned workout
 // router.post('/newPlan', isLoggedIn, (req, res) => {
-//     db.workout.findOne({
-//         where: {userId: res.locals.currentUser.id},
-//         include: [db.user, db.exercise]
-//     })
-//     .then(foundWorkout => {
-//         foundWorkout.getExercises()
-//         .then(exercise => {
-//             name = exercise.name
+//     const plannedWorkoutData = req.body
+//     console.log('these are the planned workout details\n', plannedWorkoutData)
+//     addNameArr = plannedWorkoutData.name
+//     addNameArr.forEach(exerciseName => {
+//         db.exercise.findOne({
+//             where: {name: exerciseName}
 //         })
-//         .then(foundSavedExercise => {
-//             res.redirect('/workouts/newPlan')
-//         })
-//         .catch(error => {
-//             console.error
+//         .then(foundExercise => {
+//             foundExercise.createWorkout({
+//                 scheduledDate: plannedWorkoutData.date,
+//                 type: plannedWorkoutData.type
+//             })
+//             .then(createdWorkout => {
+//                 res.redirect('/workouts/newPlan')
+//             })
 //         })
 //     })
 // })
-
-// POST route that will add a saved exercise to a planned workout
-router.post('/newPlan', isLoggedIn, (req, res) => {
-    const exerciseData = req.body
-    console.log('these are the exercise details\n', exerciseData.name)
-    addNameArr = exerciseData.name
-    addNameArr.forEach((exerciseName) => {
-        db.exercise.findOne({
-            where: {name: exerciseName}
-        })
-        .then(foundExercise => {
-            foundExercise.createWorkout({
-                scheduledDate: exerciseData.scheduledDate,
-                type: exerciseData.type
-            })
-        })
-    })
-    // db.user.findOne({
-    //     where: {id: res.locals.currentUser.id}
-    // })
-    // .then(foundUser => {
-    //     foundUser.getExercises({
-    //         where: {
-    //             name: req.body.name,
-    //             equipment: req.body.equipment
-    //         }
-    //     })
-    //     .then(foundExercise => {
-            // document.getElementById('exerciseList').innerText = req.body.name
-            res.redirect('/workouts/newPlan')
-    //     })
-    // })
-})
 
 module.exports = router

@@ -17,42 +17,32 @@
             </div>
         </div>
     </nav>
-<!--- STEP 1: CREATE BASED ON SCHEDULED DATE & TYPE --->
-    <div id="stepOne">
-        <!-- <form action="">
-            <label for="schedule">When would you like to schedule this workout?</label>
-            <input id="schedule" type="date" name="scheduledDate">
-            <label for="type">What type of workout would you like to plan</label>
-            <input id="type" name="type" type="text">
-            <input id="stepOneBtn" type="submit" value="Time to Build Your Workout">
-        </form> -->
-    </div>
-<!--- STEP 2: ADD EXERCISES TO BUILD WORKOUT --->
+
     <div id="buildContainer">
         <div id="buildList">
             <h4>Build Your Next Workout</h4>
-            <div id="exerciseList"></div>
-            <form action="/workouts/newPlan" method="POST">
-                <label for="schedule">When would you like to schedule this workout?</label>
-                <input id="schedule" type="date" name="scheduledDate">
-                <label for="type">What type of workout would you like to plan</label>
-                    <ol>
-                        <li>
-                            <input type="text" name="name">
-                        </li>
-                        <li>
-                            <input type="text" name="name">
-                        </li>
-                        <li>
-                            <input type="text" name="name">
-                        </li>
-                        <li>
-                            <input type="text" name="name">
-                        </li>
-                    </ol>
-                    <input type="submit" id="saveBtn" value="Save Workout">
+            <div id="exerciseList">
+                <form action="/workouts/newPlan" method="POST">
+                    <div>
+                        <label for="schedule">Scheduled Workout Date:</label>
+                        <input id="schedule" type="date" name="scheduledDate">
+                    </div>
+                    <div>
+                        <label for="type">Type of Workout:</label>
+                        <input id="type" type="text" name="type">
+                    </div>
+                    <h5>Exercises:</h5>
+                        <ol>
+                            <li>
+                                <input type="text" name="name">
+                            </li>
+                            <li>
+                                <input type="text" name="name">
+                            </li>
+                        </ol>
+                        <input type="submit" id="saveBtn" value="Save Workout">
                 </form>
-            </form>
+            </div>
         </div>
         <div class="overflow-auto">
             <h4>All Your Saved Exercises </h4>
@@ -61,21 +51,13 @@
                     <li>
                         <% let name = exercise.name %>
                         <%= name %>
-                        <!-- <form method="POST" action="/workouts/newPlan">
-                                    <input hidden type="text" id="nameValue" name="name" value="<%= //name %>">
-                                    <% //let equipment = exercise.equipment %>
-                                    <input hidden type="text" name="equipment" value="<%= //equipment %>">
-                                    <button class="addBtn">Add to Workout</button> 
-                                    <-- <input type="submit" class="addBtn" value="Add to Workout"></input>
-                                </form> -->
-                                <br>
                     </li>
                 <% }) %>
             </ul>
         </div>
     </div>
 
-    <script src="/static/js/workouts.js"></script>
+    <!-- <script src="/static/js/workouts.js"></script> -->
 </body>
 
 
