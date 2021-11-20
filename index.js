@@ -70,7 +70,9 @@ app.get('/', (req, res)=>{
 // })
 
 app.get('/profile', isLoggedIn, (req, res)=>{
-    db.workout.findAll()
+    db.workout.findAll({
+        where: {userId: res.locals.currentUser.id}
+    })
     .then(workouts => {
         db.exercise.findAll()
         .then(exercises => {
