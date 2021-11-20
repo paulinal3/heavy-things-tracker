@@ -16,6 +16,13 @@ body {
     text-align: center;
 }
 
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
 /* ---------- LOGIN.EJS ---------- */
 #loginForm {
     display: flex;
@@ -46,5 +53,4 @@ body {
     background-color: #719294;
     color: #D3F2E9;
 }
-
 /* ---------- SIGNUP.EJS ---------- */
