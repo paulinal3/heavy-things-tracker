@@ -32,6 +32,10 @@ nav {
     color: black;
 }
 
+#addedSpace {
+    margin-top: 50px;
+}
+
 /* ---------- SEARCH.EJS ---------- */
 #searchContainer {
     display: flex;
@@ -178,6 +182,7 @@ a {
     width: 30%;
     height: 300px;
     overflow-y: scroll;
+    background-color: #F4FAFA;
 }
 
 .muscleTitle {
