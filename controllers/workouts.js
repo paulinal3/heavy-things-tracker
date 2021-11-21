@@ -15,13 +15,12 @@ const authHeader = {
 // const cloudinary = require('cloudinary')
 // cloudinary.config(process.env.CLOUDINARY_URL)
 
-
 // NEW route for user to log a workout
 router.get('/new', isLoggedIn, (req, res) => {
     res.render('workouts/new')
 })
 
-// // POST route to create workout in db based on user input
+// POST route to create workout in db based on user input
 router.post('/new', isLoggedIn, (req, res) => {
     const workoutData = req.body
     console.log('these are the workout details\n', workoutData)
@@ -40,6 +39,7 @@ router.post('/new', isLoggedIn, (req, res) => {
         })
 })
 
+// --------- add cloudinary to allow uploading of image to workout --------
 // // POST route to create workout in db based on user input
 // router.post('/new', isLoggedIn, upload.single('myFile'), (req, res) => {
 //     cloudinary.uploader.upload(req.file.path, (result) => {
@@ -62,7 +62,7 @@ router.post('/new', isLoggedIn, (req, res) => {
 //     })
 // })
 
-// GET/INDEX route to display a list of the user's workout histroy
+// GET/INDEX route to display a list of the user's workout history
 router.get('/', isLoggedIn, (req, res) => {
     db.workout.findAll({
         where: { userId: res.locals.currentUser.id }
@@ -74,50 +74,6 @@ router.get('/', isLoggedIn, (req, res) => {
             console.error
         })
 })
-
-// GET route to render the edit workout page
-router.get('/edit/:id', isLoggedIn, (req, res) => {
-    let workoutId = req.params.id
-    console.log('this is the workout id\n', workoutId)
-    db.workout.findOne({
-        where: {
-            id: workoutId,
-            userId: res.locals.currentUser.id
-        }
-    })
-        .then(foundWorkout => {
-            res.render('workouts/edit', { workoutId, date: foundWorkout.date, duration: foundWorkout.duration, type: foundWorkout.type })
-        })
-        .catch(error => {
-            console.error
-        })
-})
-
-// PUT route to edit workout
-router.put('/edit/:id', isLoggedIn, (req, res) => {
-    console.log('this button works?')
-    db.workout.findOne({
-        where: {
-            id: req.params.id,
-            userId: res.locals.currentUser.id
-        }
-    })
-        .then(foundWorkout => {
-            console.log('updating workout to this id\n', foundWorkout.id)
-            console.log('this should be the whole workout\n', req.body)
-            foundWorkout.update({
-                date: req.body.date,
-                duration: req.body.duration,
-                type: req.body.type
-            })
-                .then(res.redirect('/workouts'))
-        })
-        .catch(error => {
-            console.error
-        })
-})
-
-
 
 // INDEX route to display all planned workouts
 router.get('/scheduled', isLoggedIn, (req, res) => {
@@ -203,6 +159,29 @@ router.post('/newPlan', isLoggedIn, (req, res) => {
 //     })
 // })
 
+// GET route to render edit planned workout page
+router.get('/scheduled/edit/:scheduledDate/:type', isLoggedIn, (req, res) => {
+    db.workout.findAll({
+        where: {
+            scheduledDate: req.params.scheduledDate,
+            type: req.params.type,
+            userId: res.locals.currentUser.id
+        }
+    })
+    .then(foundWorkout => {
+        console.log('these are the found planned workouts\n', foundWorkout)
+        workout.getExercises()
+        .then(foundWorkoutExercises => {
+            foundWorkoutExercises.forEach(workoutExercise => {
+                console.log('these are the workout exercises\n', workoutExercise)
+            })
+            // console.log('these are the workout exercises\n', foundWorkoutExercises)
+            
+            res.render('workouts/editPlan', { scheduledDate: req.params.scheduledDate, type: req.params.type})
+        })
+    })
+})
+
 // SHOW route to display details of a logged workout
 router.get('/scheduled/:scheduledDate/:type', isLoggedIn, (req, res) => {
     console.log(`this is the scheduled workout date: ${req.params.scheduledDate} and type: ${req.params.type}`)
@@ -215,6 +194,48 @@ router.get('/scheduled/:scheduledDate/:type', isLoggedIn, (req, res) => {
     })
         .then(foundWorkout => {
             res.render('workouts/showPlan', { scheduledDate: req.params.scheduledDate, type: req.params.type})
+        })
+        .catch(error => {
+            console.error
+        })
+})
+
+// GET route to render the edit workout page
+router.get('/edit/:id', isLoggedIn, (req, res) => {
+    let workoutId = req.params.id
+    console.log('this is the workout id\n', workoutId)
+    db.workout.findOne({
+        where: {
+            id: workoutId,
+            userId: res.locals.currentUser.id
+        }
+    })
+        .then(foundWorkout => {
+            res.render('workouts/edit', { workoutId, date: foundWorkout.date, duration: foundWorkout.duration, type: foundWorkout.type })
+        })
+        .catch(error => {
+            console.error
+        })
+})
+
+// PUT route to edit workout
+router.put('/edit/:id', isLoggedIn, (req, res) => {
+    console.log('this button works?')
+    db.workout.findOne({
+        where: {
+            id: req.params.id,
+            userId: res.locals.currentUser.id
+        }
+    })
+        .then(foundWorkout => {
+            console.log('updating workout to this id\n', foundWorkout.id)
+            console.log('this should be the whole workout\n', req.body)
+            foundWorkout.update({
+                date: req.body.date,
+                duration: req.body.duration,
+                type: req.body.type
+            })
+                .then(res.redirect('/workouts'))
         })
         .catch(error => {
             console.error
