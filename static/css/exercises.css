@@ -1,10 +1,10 @@
 body {
-    background-color: #D3F2E9;
+    background-color: #E9FFFF;
     font-family: 'Poiret One', cursive;
 }
 
 nav {
-    background-color: #719294;
+    background-color: #FAFAFA;
     height: 35px;
 }
 
@@ -26,7 +26,6 @@ nav {
 
 .searchNav:link {
     text-decoration: none;
-    color: #D3F2E9
 }
 
 .searchNav:hover{
@@ -50,6 +49,7 @@ nav {
 .searchDiv {
     border: 5px solid #719294;
     padding: 25px 150px 25px 150px;
+    background-color: #F4FAFA;
 }
 
 #searchLabel {
@@ -65,17 +65,21 @@ nav {
     height: 35px;
     width: 125px;
     font-size: 20px;
-    background-color: #D3F2E9;
+    background-color: #E9FFFF;
     color: #719294;
     border: 2px solid #719294;
 }
 
 #searchBtn:hover {
     background-color: #719294;
-    color: #D3F2E9;
+    color: #E9FFFF;
 }
 
 /* ---------- INDEX.EJS ---------- */
+#resHeader {
+    margin-left: 10px;
+}
+
 #firstRowRes, #secondRowRes, #thirdRowRes {
     display: flex;
     flex-direction: row;
@@ -88,6 +92,7 @@ nav {
     width: 30%;
     height: 300px;
     overflow-y: scroll;
+    background-color: #F4FAFA;
 }
 
 a {

@@ -1,5 +1,5 @@
 body {
-    background-color: #D3F2E9;
+    background-color: #E9FFFF;
     font-family: 'Poiret One', cursive;
 }
 
@@ -44,13 +44,13 @@ footer {
     height: 40px;
     width: 125px;
     font-size: 20px;
-    background-color: #D3F2E9;
+    background-color: #E9FFFF;
     color: #719294;
     border: 3px solid #719294;
 }
 
 #loginBtn:hover, #signupBtn:hover {
     background-color: #719294;
-    color: #D3F2E9;
+    color: #E9FFFF;
 }
 /* ---------- SIGNUP.EJS ---------- */
