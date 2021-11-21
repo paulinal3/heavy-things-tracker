@@ -26,7 +26,7 @@
     
     <div id="firstRowRes">
         <div class="resListContainer overflow-auto"">
-            <h3>Bands:</h3>
+            <h3 class="equipmentTitle">Bands:</h3>
             <ul>
                 <% results.forEach(result => { %>
                     <% if(result.equipment === 'assisted' || result.equipment === 'band' || result.equipment === 'resistance band') { %>
@@ -40,7 +40,7 @@
             </ul>
         </div>
         <div class="resListContainer overflow-auto"">
-            <h3>Barbells/Trap Bar:</h3>
+            <h3 class="equipmentTitle">Barbells/Trap Bar:</h3>
             <ul>
                 <% results.forEach(result => { %>
                     <% if(result.equipment === 'barbell' || result.equipment === 'ez barbell' || result.equipment === 'olympic barbell' || result.equipment === 'trap bar') { %>
@@ -54,7 +54,7 @@
             </ul>
         </div>
         <div class="resListContainer overflow-auto"">
-            <h3>Bodyweight:</h3>
+            <h3 class="equipmentTitle">Bodyweight:</h3>
             <ul>
                 <% results.forEach(result => { %>
                     <% if(result.equipment === 'body weight') { %>
@@ -71,7 +71,7 @@
 
     <div id="secondRowRes">
         <div class="resListContainer overflow-auto"">
-            <h3>Cable:</h3>
+            <h3 class="equipmentTitle">Cable:</h3>
             <ul>
                 <% results.forEach(result => { %>
                     <% if(result.equipment === 'cable') { %>
@@ -85,7 +85,7 @@
             </ul>
         </div>
         <div class="resListContainer overflow-auto"">
-            <h3>Dumbbell/Plates:</h3>
+            <h3 class="equipmentTitle">Dumbbell/Plates:</h3>
             <ul>
                 <% results.forEach(result => { %>
                     <% if(result.equipment === 'dumbbell' || result.equipment === 'weighted') { %>
@@ -99,7 +99,7 @@
             </ul>
         </div>
         <div class="resListContainer overflow-auto"">
-            <h3>KettleBell:</h3>
+            <h3 class="equipmentTitle">KettleBell:</h3>
             <ul>
                 <% results.forEach(result => { %>
                     <% if(result.equipment === 'kettlebell') { %>
@@ -116,7 +116,7 @@
 
     <div id="thirdRowRes">
         <div class="resListContainer overflow-auto"">
-            <h3>Medicine/Bosu/Stability Ball:</h3>
+            <h3 class="equipmentTitle">Medicine/Bosu/Stability Ball:</h3>
             <ul>
                 <% results.forEach(result => { %>
                     <% if(result.equipment === 'bosu ball' || result.equipment === 'stability ball' || result.equipment === 'medicine ball') { %>
@@ -130,7 +130,7 @@
             </ul>
         </div>
         <div class="resListContainer overflow-auto"">
-            <h3>Smith Machine:</h3>
+            <h3 class="equipmentTitle">Smith Machine:</h3>
             <ul>
                 <% results.forEach(result => { %>
                     <% if(result.equipment === 'smith machine') { %>
@@ -144,7 +144,7 @@
             </ul>
         </div>
         <div class="resListContainer overflow-auto"">
-            <h3>Other:</h3>
+            <h3 class="equipmentTitle">Other:</h3>
             <ul>
                 <% results.forEach(result => { %>
                     <% if(result.equipment === 'elliptical machine' || result.equipment === 'hammer' || result.equipment === 'leverage machine' || result.equipment === 'roller' || result.equipment === 'rope' || result.equipment === 'skierg machine' || result.equipment === 'sled machine' || result.equipment === 'stepmill machine' || result.equipment === 'tire' || result.equipment === 'upper body ergometer' || result.equipment === 'wheel roller') { %>
@@ -158,4 +158,9 @@
             </ul>
         </div>
     </div>
+    <div id="addedSpace"></div>
+
+    <footer class="shortFooter">
+        <%- include('../partials/shortFooter') %>
+    </footer>
 </body>
