@@ -39,7 +39,7 @@
                 </ul>
             </div>
             <div>
-                <h5>Planned Workouts</h5>
+                <h5><a href="/workouts/scheduled">Planned Workouts</a></h5>
                 <ul>
                     <% results.forEach(workout => { %>
                         <% if(workout.dataValues.completed === false) { %>
@@ -63,17 +63,14 @@
         </div>
     </div>
 
-    <div>
+    <!-- <div>
         <form enctype="multipart/form-data" action="/profile" method="POST">
             <input type="file" name="myFile">
             <input type="submit" value="Upload Photo">
         </form>
-    </div>
+    </div> -->
     
     <footer>
         <%- include('partials/longFooter') %>
     </footer>
 </body>
-
-
-

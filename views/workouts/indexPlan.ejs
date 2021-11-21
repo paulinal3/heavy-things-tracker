@@ -7,7 +7,7 @@
     <% results.forEach(workout => { %>
         <% if(workout.completed === false) { %>
             <p>
-                <%= workout.date %> 
+                <%= workout.dataValues.scheduledDate %>: <%= workout.dataValues.type %> 
             </p>
         <% } %>
     <% }) %>

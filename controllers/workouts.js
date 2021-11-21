@@ -4,6 +4,7 @@ const router = express.Router()
 const axios = require('axios')
 const db = require('../models')
 const isLoggedIn = require('../middleware/isLoggedIn')
+const { application } = require('express')
 const authHeader = {
     headers: {
         'Authorization': process.env.API_KEY
@@ -131,6 +132,20 @@ router.get('/details/:id', isLoggedIn, (req, res) => {
         .catch(error => {
             console.error
         })
+})
+
+// INDEX route to display all planned workouts
+router.get('/scheduled', isLoggedIn, (req, res) => {
+    db.workout.findAll({
+        where: {
+            userId: res.locals.currentUser.id,
+            completed: false
+        }
+    })
+    .then(foundPlannedWorkouts => {
+        console.log('these are the users planned workouts\n', foundPlannedWorkouts)
+        res.render('workouts/indexPlan', {results: foundPlannedWorkouts})
+    })
 })
 
 // NEW route for user to plan a workout
