@@ -1,0 +1,16 @@
+<head>
+    <link rel="stylesheet" href="/static/css/workouts.css">
+</head>
+
+<div>
+    <h5>Planned Workouts</h5>
+    <ul>
+        <% results.forEach(workout => { %>
+            <% if(workout.completed === false) { %>
+                <li>
+                    <a href="/workouts/scheduled/<%= workout.dataValues.scheduledDate %>/<%= workout.dataValues.type %>"><%= workout.dataValues.scheduledDate %>: <%= workout.dataValues.type %></a>
+                </li>
+            <% } %>
+        <% }) %>
+    </ul>
+</div>

@@ -8,10 +8,6 @@ const flash = require('connect-flash')
 const isLoggedIn = require('./middleware/isLoggedIn')
 const db = require('./models')
 const methodOverride = require('method-override')
-// const multer = require('multer')
-// const upload = multer({ dest: './uploads/'})
-// const cloudinary = require('cloudinary')
-// cloudinary.config(process.env.CLOUDINARY_URL)
 
 // static css and js middleware
 app.use('/static',express.static(__dirname + '/static/'))
@@ -58,38 +54,28 @@ app.get('/', (req, res)=>{
     res.render('home')
 })
 
-// profile route
-// app.get('/profile', isLoggedIn, (req, res)=>{
-//     db.workout.findAll()
-//     .then(workouts => {
-//         res.render('profile', {results:  workouts})
-//     })
-//     .catch(error => {
-//         console.error
-//     })
-// })
-
-app.get('/profile', isLoggedIn, (req, res)=>{
-    db.workout.findAll({
-        where: {userId: res.locals.currentUser.id}
-    })
-    .then(workouts => {
-        db.exercise.findAll()
-        .then(exercises => {
-            res.render('profile', {results: workouts, saves: exercises})
+app.get('/profile', isLoggedIn, (req, res) => {
+        db.user.findOne({
+            where: {id: res.locals.currentUser.id}
         })
-    })
-    .catch(error => {
-        console.error
+        .then(user => {
+            user.getExercises()
+            .then(exercise => {
+                console.log('these are the saved exercises\n', exercise)
+                db.workout.findAll({
+                    where: {userId: res.locals.currentUser.id}
+                })
+                .then(workout => {
+                    console.log('these are all the workouts\n', workout)
+
+                    res.render('profile', {results: workout, saves: exercise})
+                })
+            })
+        })
+        .catch(error => {
+            console.error
     })
 })
-
-// // post route to upload images
-// app.post('/profile', upload.single('myFile'), (req, res) => {
-//     cloudinary.uploader.upload(req.file.path, (result) => {
-//         res.send(result)
-//     })
-// })
 
 app.listen(3000, ()=>{
     console.log("heavy things grind 💪🏼🏋🏽‍♀️")

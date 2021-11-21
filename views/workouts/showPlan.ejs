@@ -1,0 +1,17 @@
+<body>
+    <div>
+        Here are the details for your <%= type %> workout scheduled for <%= scheduledDate %> 
+    </div>
+    <div id="editPlan">
+        <form method="GET" action="/workouts/scheduled/edit/<%= scheduledDate %>/<%= type %>">
+            <input type="submit" value="Edit Planned Workout">
+        </form>
+    </div>
+
+    <!-- update workout and change completed to true and transfer to workout history log -->
+    <div id="completedWorkout">
+        <form method="" action="">
+            <input type="submit" value="Completed Workout">
+        </form>
+    </div>
+</body>
