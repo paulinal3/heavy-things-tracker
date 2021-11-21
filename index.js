@@ -69,16 +69,47 @@ app.get('/', (req, res)=>{
 //     })
 // })
 
-app.get('/profile', isLoggedIn, (req, res)=>{
-    db.workout.findAll()
-    .then(workouts => {
-        db.exercise.findAll()
-        .then(exercises => {
-            res.render('profile', {results: workouts, saves: exercises})
+// app.get('/profile', isLoggedIn, (req, res)=>{
+//     db.workout.findAll({
+//         where: {userId: res.locals.currentUser.id},
+//         include: [db.user, db.exercise]
+//     })
+//     .then(workouts => {
+//         console.log('these are all the workouts\n', workouts)
+//         workouts.exercises.forEach(exercise => {
+//             console.log('these are the saved exercises\n', exercise)
+//             res.render('profile', {results: workouts, saves: exercise})
+//         })
+//         // db.exercise.findAll()
+//         // .then(exercises => {
+//         //     res.render('profile', {results: workouts, saves: exercises})
+//         // })
+//     })
+//     .catch(error => {
+//         console.error
+//     })
+// })
+
+app.get('/profile', isLoggedIn, (req, res) => {
+        db.user.findOne({
+            where: {id: res.locals.currentUser.id}
         })
-    })
-    .catch(error => {
-        console.error
+        .then(user => {
+            user.getExercises()
+            .then(exercise => {
+                console.log('these are the saved exercises\n', exercise)
+                db.workout.findAll({
+                    where: {userId: res.locals.currentUser.id}
+                })
+                .then(workout => {
+                    console.log('these are all the workouts\n', workout)
+
+                    res.render('profile', {results: workout, saves: exercise})
+                })
+            })
+        })
+        .catch(error => {
+            console.error
     })
 })
 

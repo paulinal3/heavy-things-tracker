@@ -55,11 +55,20 @@ footer {
 }
 
 /* ---------- PROFILE.EJS ---------- */
-/* .profileNav {
-    
-} */
 #profileCol {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    column-gap: 25%;
+}
+
+.profileBox {
     border: 5px solid black;
+}
+
+#profileRow {
+    display: flex;
+    flex-direction: column;
 }
 
 #profileName {

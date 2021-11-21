@@ -150,8 +150,7 @@ router.get('/newPlan', isLoggedIn, (req, res) => {
         })
 })
 
-// ----- adding to db but Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client ----
-// POST route that will add a saved exercise to a planned workout
+// POST route to add a planned workout to db
 router.post('/newPlan', isLoggedIn, (req, res) => {
     const plannedWorkoutData = req.body
     console.log('these are the planned workout details\n', plannedWorkoutData)
