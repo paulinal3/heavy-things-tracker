@@ -1,19 +1,13 @@
 require('dotenv').config()
 const express = require('express')
 const router = express.Router()
-const axios = require('axios')
 const db = require('../models')
 const isLoggedIn = require('../middleware/isLoggedIn')
-const { application } = require('express')
-const authHeader = {
-    headers: {
-        'Authorization': process.env.API_KEY
-    }
-}
-// const multer = require('multer')
-// const upload = multer({ dest: './uploads/'})
-// const cloudinary = require('cloudinary')
-// cloudinary.config(process.env.CLOUDINARY_URL)
+// const { application } = require('express')
+const multer = require('multer')
+const upload = multer({ dest: './uploads/'})
+const cloudinary = require('cloudinary')
+cloudinary.config(process.env.CLOUDINARY_URL)
 
 // NEW route for user to log a workout
 router.get('/new', isLoggedIn, (req, res) => {
@@ -21,37 +15,17 @@ router.get('/new', isLoggedIn, (req, res) => {
 })
 
 // POST route to create workout in db based on user input
-router.post('/new', isLoggedIn, (req, res) => {
-    const workoutData = req.body
-    console.log('these are the workout details\n', workoutData)
-    db.workout.create({
-        date: workoutData.date,
-        duration: workoutData.duration,
-        type: workoutData.type,
-        userId: res.locals.currentUser.id
-    })
-        .then(createdWorkout => {
-            console.log('workout added to db\n', createdWorkout)
-            res.redirect('/workouts')
-        })
-        .catch(error => {
-            console.error
-        })
-})
-
-// --------- add cloudinary to allow uploading of image to workout --------
-// // POST route to create workout in db based on user input
-// router.post('/new', isLoggedIn, upload.single('myFile'), (req, res) => {
-//     cloudinary.uploader.upload(req.file.path, (result) => {
-//         const workoutData = req.body
-//         console.log('these are the workout details\n', workoutData)
-//         db.workout.create({
-//             date: workoutData.date,
-//             duration: workoutData.duration,
-//             type: workoutData.type,
-//             img: result.url,
-//             userId: res.locals.currentUser.id
-//         })
+// router.post('/new', isLoggedIn, (req, res) => {
+//     const workoutData = req.body
+//     console.log('these are the workout details\n', workoutData)
+//     db.workout.create({
+//         date: workoutData.date,
+//         duration: workoutData.duration,
+//         type: workoutData.type,
+//         completed: true,
+//         comments: workoutData.comments,
+//         userId: res.locals.currentUser.id
+//     })
 //         .then(createdWorkout => {
 //             console.log('workout added to db\n', createdWorkout)
 //             res.redirect('/workouts')
@@ -59,8 +33,32 @@ router.post('/new', isLoggedIn, (req, res) => {
 //         .catch(error => {
 //             console.error
 //         })
-//     })
 // })
+
+// // POST route to create workout in db based on user input
+router.post('/new', isLoggedIn, upload.single('myFile'), (req, res) => {
+    const workoutData = req.body
+    console.log('these are the workout details\n', workoutData)
+    cloudinary.uploader.upload(req.file.path, (result) => {
+        console.log('this is the img result\n', result)
+        db.workout.create({
+            date: workoutData.date,
+            duration: workoutData.duration,
+            type: workoutData.type,
+            completed: true,
+            comments: workoutData.comments,
+            img: result.url,
+            userId: res.locals.currentUser.id
+        })
+        .then(createdWorkout => {
+            console.log('workout added to db\n', createdWorkout)
+            res.redirect('/workouts')
+        })
+        .catch(error => {
+            console.error
+        })
+    })
+})
 
 // GET/INDEX route to display a list of the user's workout history
 router.get('/', isLoggedIn, (req, res) => {
