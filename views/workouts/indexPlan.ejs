@@ -4,11 +4,14 @@
 
 <div>
     <h5>Planned Workouts</h5>
-    <% results.forEach(workout => { %>
-        <% if(workout.completed === false) { %>
-            <p>
-                <%= workout.dataValues.scheduledDate %>: <%= workout.dataValues.type %> 
-            </p>
-        <% } %>
-    <% }) %>
+    <ul>
+        <% results.forEach(workout => { %>
+            <% if(workout.completed === false) { %>
+                <li>
+                    <a href="/workouts/scheduled/<%= workout.dataValues.scheduledDate %>/<%= workout.dataValues.type %>"><%= workout.dataValues.scheduledDate %>: <%= workout.dataValues.type %></a>
+                </li>
+            <% } %>
+        <% }) %>
+
+    </ul>
 </div>

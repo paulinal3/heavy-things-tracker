@@ -117,22 +117,7 @@ router.put('/edit/:id', isLoggedIn, (req, res) => {
         })
 })
 
-// SHOW route to display details of a logged workout
-router.get('/details/:id', isLoggedIn, (req, res) => {
-    console.log('this is the workout id\n', req.params.id)
-    db.workout.findOne({
-        where: {
-            id: req.params.id,
-            userId: res.locals.currentUser.id
-        }
-    })
-        .then(foundWorkout => {
-            res.render('workouts/show', { workoutId: req.params.id, date: foundWorkout.date, duration: foundWorkout.duration, type: foundWorkout.type })
-        })
-        .catch(error => {
-            console.error
-        })
-})
+
 
 // INDEX route to display all planned workouts
 router.get('/scheduled', isLoggedIn, (req, res) => {
@@ -217,5 +202,40 @@ router.post('/newPlan', isLoggedIn, (req, res) => {
 //         })
 //     })
 // })
+
+// SHOW route to display details of a logged workout
+router.get('/scheduled/:scheduledDate/:type', isLoggedIn, (req, res) => {
+    console.log(`this is the scheduled workout date: ${req.params.scheduledDate} and type: ${req.params.type}`)
+    db.workout.findOne({
+        where: {
+            scheduledDate: req.params.scheduledDate,
+            type: req.params.type,
+            userId: res.locals.currentUser.id
+        }
+    })
+        .then(foundWorkout => {
+            res.render('workouts/showPlan', { scheduledDate: req.params.scheduledDate, type: req.params.type})
+        })
+        .catch(error => {
+            console.error
+        })
+})
+
+// SHOW route to display details of a logged workout
+router.get('/:id', isLoggedIn, (req, res) => {
+    console.log('this is the workout id\n', req.params.id)
+    db.workout.findOne({
+        where: {
+            id: req.params.id,
+            userId: res.locals.currentUser.id
+        }
+    })
+        .then(foundWorkout => {
+            res.render('workouts/show', { workoutId: req.params.id, date: foundWorkout.date, duration: foundWorkout.duration, type: foundWorkout.type })
+        })
+        .catch(error => {
+            console.error
+        })
+})
 
 module.exports = router
