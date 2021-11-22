@@ -1,5 +1,8 @@
 # Heavy Things Tracker
 
+## RESTful Routes
+![RESTful Routes Table](./pitch-images/RESTfulRoutes.png)
+
 ## Install
 1. Go to https://www.exercisedb.io/ and sign up for free acocount
 2. Download code to your terminal, then run then install the following packages: 
