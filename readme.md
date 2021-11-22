@@ -13,7 +13,7 @@
 4. In browser, go to https://www.exercisedb.io/ and sign up for free acocount for API token
 5. Once account is verified, click on Dashboard, then API TOKEN
 6. Uncover your token to copy and paste in the `.env` file
-7. `env` file should look like this:
+7. `.env` file should look like this:
      ```js
      API_KEY=Token_<yourApiToken>
      SUPER_SECRET_SECRET=<anyWordYouWant>
@@ -23,6 +23,7 @@
 * Postgres
 * Express
 * Node.JS
+* CSS/Bootstrap
 
 ## Wireframes
 * Welcome Page

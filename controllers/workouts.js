@@ -3,11 +3,23 @@ const express = require('express')
 const router = express.Router()
 const db = require('../models')
 const isLoggedIn = require('../middleware/isLoggedIn')
-// const { application } = require('express')
 // const multer = require('multer')
 // const upload = multer({ dest: './uploads/'})
 // const cloudinary = require('cloudinary')
 // cloudinary.config(process.env.CLOUDINARY_URL)
+
+// INDEX route to display a list of the user's workout history
+router.get('/', isLoggedIn, (req, res) => {
+    db.workout.findAll({
+        where: { userId: res.locals.currentUser.id }
+    })
+        .then(workouts => {
+            res.render('workouts/index', { results: workouts })
+        })
+        .catch(error => {
+            console.error
+        })
+})
 
 // NEW route for user to log a workout
 router.get('/new', isLoggedIn, (req, res) => {
@@ -15,7 +27,7 @@ router.get('/new', isLoggedIn, (req, res) => {
 })
 
 // POST route to create workout in db based on user input
-router.post('/new', isLoggedIn, (req, res) => {
+router.post('/', isLoggedIn, (req, res) => {
     const workoutData = req.body
     console.log('these are the workout details\n', workoutData)
     db.workout.create({
@@ -60,18 +72,7 @@ router.post('/new', isLoggedIn, (req, res) => {
 //     })
 // })
 
-// GET/INDEX route to display a list of the user's workout history
-router.get('/', isLoggedIn, (req, res) => {
-    db.workout.findAll({
-        where: { userId: res.locals.currentUser.id }
-    })
-        .then(workouts => {
-            res.render('workouts/index', { results: workouts })
-        })
-        .catch(error => {
-            console.error
-        })
-})
+
 
 // INDEX route to display all planned workouts
 router.get('/scheduled', isLoggedIn, (req, res) => {

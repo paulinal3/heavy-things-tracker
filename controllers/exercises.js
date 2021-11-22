@@ -45,7 +45,7 @@ router.get('/saves', isLoggedIn, (req, res) => {
 })
 
 // POST route that will save exercise
-router.post('/saves/', isLoggedIn, (req, res) => {
+router.post('/', isLoggedIn, (req, res) => {
     const exerciseData = JSON.parse(JSON.stringify(req.body))
     // console.log('this is the exercise data to be saved', exerciseData)
     db.user.findOne({
