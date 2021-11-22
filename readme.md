@@ -11,9 +11,9 @@
 5. Once account is verified, click on Dashboard, then API TOKEN
 6. Uncover your token to copy and paste in the `.env` file
 7. `env` file should look like this:
-     ```
-     API_KEY=Token_<Your API Token>
-     SUPER_SECRET_SECRET=<Any word you want>
+     ```js
+     API_KEY=Token_<yourApiToken>
+     SUPER_SECRET_SECRET=<anyWordYouWant>
      ```
 
 ## Tech Stack
@@ -40,44 +40,51 @@
 ![ERD](./pitch-images/erd.png)
 
 ## Examples of API Data
-API root = https://wger.de/api/v2/<:param>/?language=2
-* Exercise = exercise/
-     1. Name = results.name
-     2. Description = results.description
-     3. Muscle group = results.category
-     4. Primary muscle = results.muscles
-     5. Secondary muscles = results.muscles_secondary
-* Image = exerciseimage/
-     1. Image = results.image
-* Muscle Group = exercisecategory/
-     1. id = results.id
-     2. name = results.name
-* Muscles = muscle/
-     1. id = results.id
-     2. name = results.name
-* Cues = exercisecomment/
-     1. id = results.id
-     2. name = results.name
-     3. cue = results.comment
+API root = https://v1.exercisedb.io/api/exercises/<:param>
+* Body Part = bodyPart/{bodyPart}
+     1. "back"
+     2. "chest",
+     3. "lower arms",
+     4. "lower legs",
+     5. "shoulders",
+     6. "upper arms",
+     7. "upper legs",
+     8. "waist"
+* API results:
+```js
+[
+  {
+    "bodyPart": "string",
+    "equipment": "string",
+    "id": "string",
+    "name": "string",
+    "target": "string",
+    "gifUrl": "string"
+  }
+]
+```
 
 ## MVP
-* Welcome page that renders login/sign up
-* User profile page that displays basic user info, favorited exercises, and exercises user saved for next workout
-* Categorize save for next workout list by muscle group
-* User will be able to search for exercises with option to add to two lists:
-     1. favorite exercises
-     2. save for next workout
-* User will be able to go to their own page for favorites and saves
-     * each with their own delete button
-     * saves will have a comment section for user to add notes on when/what type of workout they're saving exercise for
+* Welcome/home page that renders login/sign up
+* User profile page that displays user's saved exercises and logged workouts
+* User will be able to search for exercises based on body part
+* User will be able to save an exercise and their saved exercise index/list will be categorized by muscle group
+* User will be able to log completed workouts with details of:
+     * date completed
+     * duration of workout
+     * type of workout
+     * comments on workout
 
 ## Stretch Goals
+* Create second CRUD allowing users to
+     * create planned workouts
+     * display all planned workouts
+     * update planned workouts
+     * mark planned workouts as complete and display on workout history
 * Use a second API to call for inspirational fitness quotes
-* Create a workout tracker for users
-* Allow users to upload progress photos
+* Allow users to upload progress photos/photos from workout
 * Styling
 
 ## Potential Roadblocks
-* Some of the data returned might be in German
 * Narrowing down what to search by
 * Adding on too many ideas/changing which idea I want to develop
