@@ -24,8 +24,10 @@ nav {
     padding-right: 10px;
 }
 
-.searchNav:link {
+a {
     text-decoration: none;
+    text-transform: capitalize;
+    color: #008686;
 }
 
 .searchNav:hover{
@@ -100,6 +102,8 @@ nav {
     text-transform: capitalize;
     text-align: center;
     padding-top: 25px;
+    font-size: 50px;
+    color: #52848A;
 }
 
 #homeRow {
@@ -107,56 +111,26 @@ nav {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    text-align: center;
     padding: 0 -50px 0 -50px;
     margin-top: 25px;
-    gap: 25px;
+    gap: 50px;
 }
 
 .profileContainer {
     border: 5px solid #719294;
-    width: 25%;
+    width: 30%;
     height: 500px;
     padding: 10px 15px 0 15px;
     background-color: rgba(0, 0, 0, 0.05);
+    overflow-y: scroll;
 }
 
-#profileCol {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    column-gap: 25%;
-}
-
-.profileBox {
-    border: 3px solid #719294;
-}
-
-#profileRow {
-    display: flex;
-    flex-direction: column;
-}
-
-#profileName {
+.containerTitle {
     text-align: center;
-    font-size: 50px;
-    color: #52848A;
 }
 
-.profileListTitle {
-    color: #52848A;
-}
-
-.profileListResults {
-    font-family: 'Poiret One', cursive;
-    font-size: 20px;
-}
-.savedList {
-    font-family: 'Poiret One', cursive;
+.profileList {
+    list-style-type: none;
     text-transform: capitalize;
-    font-weight: 900;
-}
-
-.indexSavesTitle {
-    font-family: 'Poiret One', cursive;
+    font-size: 20px;
 }

@@ -28,75 +28,29 @@
     </div>
 
     <div id="homeRow">
-        <div class="profileContainer">
-            <h3><a href="/workouts">Workout History</a></h3>
+        <div class="profileContainer overflow-auto">
+            <h3 class="containerTitle"><a href="/workouts">Workout History</a></h3>
             <ul>
                 <% results.forEach(workout => { %>
                     <% if(workout.dataValues.completed === true) { %>
-                    <li>
-                        <%= workout.dataValues.date %>
+                    <li class="profileList">
+                        <%= workout.dataValues.date %>: <%= workout.dataValues.type %> 
                     </li>
                     <% } %>
                 <% }) %> 
             </ul>
         </div>
-        <div class="profileContainer">
-            <h3><a href="/exercises/saves">Saved Exercises</a></h3>
+        <div class="profileContainer overflow-auto">
+            <h3 class="containerTitle"><a href="/exercises/saves">Saved Exercises</a></h3>
             <ul>
                 <% saves.forEach(save => { %>
-                    <li>
+                    <li class="profileList">
                         <%= save.dataValues.name %>
                     </li>
                 <% }) %> 
             </ul>
         </div>
     </div>
-
-    <div id="profileCol">
-        <div id="profileRow">
-            <div class="profileBox" id="profileRow">
-                <h5 class="profileListTitle"><a href="/workouts">Workout History</a></h5>
-                <ul>
-                    <% results.forEach(workout => { %>
-                        <% if(workout.dataValues.completed === true) { %>
-                        <li>
-                            <%= workout.dataValues.date %>
-                        </li>
-                        <% } %>
-                    <% }) %> 
-                </ul>
-            </div>
-            <div>
-                <h5><a href="/workouts/scheduled">Planned Workouts</a></h5>
-                <ul>
-                    <% results.forEach(workout => { %>
-                        <% if(workout.dataValues.completed === false) { %>
-                            <li>
-                                <%= workout.dataValues. scheduledDate %> 
-                            </li>
-                        <% } %>
-                    <% }) %>
-                </ul>
-            </div>
-        </div>
-        <div class="profileBox">
-            <h5 class="profileListTitle"><a href="/exercises/saves">Saved for Later Exercises</a></h5>
-            <ul>
-                <% saves.forEach(save => { %>
-                    <li>
-                        <%= save.dataValues.name %>
-                    </li>
-                <% }) %> 
-            </ul>
-        </div>
-    </div>
-
-    <!-- <div>
-        <form enctype="multipart/form-data" action="/profile" method="POST">
-            <input type="file" name="myFile">
-            <input type="submit" value="Upload Photo">
-        </form>
-    </div> -->
     
     <footer class="shortFooter">
         <%- include('partials/shortFooter') %>

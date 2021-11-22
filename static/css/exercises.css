@@ -192,7 +192,7 @@ a {
 }
 
 #chest, #back, #legs, #shoulders, #arms, #calves, #abs {
-    border: 2px solid #719294;
+    border: 3px solid #719294;
     width: 30%;
     height: 300px;
     overflow-y: scroll;
