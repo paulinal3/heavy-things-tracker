@@ -3,25 +3,47 @@
 </head>
 
 <body>
-    
-</body>
+    <header>
+        <nav>
+            <div class="navContainer">
+                <div class="newSearchLink">
+                    <a href="/auth/logout" class="profileNav">Logout</a>
+                    <a href="/profile" class="profileNav">Profile</a>
+                </div>
+                <div class="logLink">
+                    <a href="/workouts/newPlan" class="profileNav">Plan a Workout</a>
+                    <a href="/workouts/new" class="profileNav">Log a Workout</a>
+                    <a class="profileNav" href="/exercises/search">Search for Exercises</a>
+                </div>
+            </div>
+        </nav>
+    </header>
 
-<div class="text-center">
-    <h1>Edit Workout</h1>
-    <form method="POST" action="/workouts/edit/<%= workoutId %>/?_method=PUT">
-        <h3>
-            <label for="date">Date:</label>
-            <input id="date" type="date" name="date" value="<%= date %>">
-        </h3>
-        <h3>
-            <label for="type">Type of Workout:</label>
-            <input id="type" type="text" name="type" value="<%= type %>">
-        </h3>
-        <h3>
-            <label for="duration">Duration in Minutes:</label>
-            <input id="duration" type="number" name=
-            "duration" value="<%= duration %>">
-        </h3>
-        <input type="submit" value="Log Workout"></input>
-    </form>
-</div>
+    <div id="editWorkoutTitle">
+        <h1>Edit Your Workout</h1>
+    </div>
+        <form method="POST" action="/workouts/edit/<%= workoutId %>/?_method=PUT">
+            <div id="logRow">
+                <div id="firstCol">
+                    <label for="date">Date Completed:</label>
+                    <label for="workoutType">Type of Workout:</label>
+                    <label for="duration">Duration (minutes):</label>
+                    <label for="comments">Comments:</label>
+                </div>
+                <div id="secondCol">
+                    <input id="date" type="date" name="date" value="<%= date %>">
+                    <input id="workoutType" type="text" name="type" value="<%= type %>">
+                    <input id="duration" type="number" name="duration" value="<%= duration %>">
+                    <input id="comments" type="text" name="comments" value="<%= comments %>">
+                </div>
+            </div>
+            <!-- <div>enctype="multipart/form-data"
+                <label for="img">Upload a Photo: </label>
+                <input id="img" type="file" name="myFile">
+            </div> -->
+            <div id="btnDiv">
+                <input type="submit" value="Update Workout" id="updateBtn"></input>
+            </div>
+        </form>
+    </div>
+</body>

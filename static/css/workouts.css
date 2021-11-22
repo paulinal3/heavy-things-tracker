@@ -31,6 +31,7 @@ body {
 /* ---------- NEW.EJS ---------- */
 #logWorkoutTitle {
     text-align: center;
+    padding: 25px 0 10px 0;
 }
 
 #logRow {
@@ -44,10 +45,84 @@ body {
     display: flex;
     flex-direction: column;
     font-size: 20px;
+    row-gap: 15px;
 }
 
 #firstCol {
     font-size: 25px;
+}
+
+#logRow {
+    margin-top: 20px;
+}
+
+#btnContainer {
+    text-align: center;
+    margin-top: 35px;
+}
+
+#logBtn {
+    height: 50px;
+    width: 200px;
+    font-size: 25px;
+    background-color: #E9FFFF;
+    color: #719294;
+    border: 3px solid #719294;
+}
+
+#logBtn:hover{
+    background-color: #719294;
+    color: #D3F2E9;
+}
+
+/* ---------- INDEX.EJS ----------- */
+#historyContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#historyTitle {
+    text-align: center;
+    padding: 25px 0 10px 0;
+}
+
+#completedList {
+    border: 3px solid #719294;
+    width: 30%;
+    height: 500px;
+    padding: 10px 15px 0 15px;
+    background-color: rgba(0, 0, 0, 0.05);
+    overflow-y: scroll;
+}
+
+#historyList {
+    font-size: 20px;
+}
+
+/* ---------- EDIT.EJS ----------- */
+#editWorkoutTitle {
+    text-align: center;
+    padding: 25px 0 10px 0;
+}
+
+#btnDiv {
+    text-align: center;
+    margin-top: 35px;
+}
+
+#updateBtn {
+    height: 50px;
+    width: 200px;
+    font-size: 25px;
+    background-color: #E9FFFF;
+    color: #719294;
+    border: 3px solid #719294;
+}
+
+#updateBtn:hover{
+    background-color: #719294;
+    color: #D3F2E9;
 }
 /* ---------- NEWPLAN.EJS ----------- */
 #buildContainer {

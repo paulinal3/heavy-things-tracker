@@ -137,36 +137,36 @@ router.post('/newPlan', isLoggedIn, (req, res) => {
 })
 
 // POST route to add a planned workout to db
-router.post('/newPlan', isLoggedIn, (req, res) => {
-    const plannedWorkoutData = req.body
-    console.log('these are the planned workout details\n', plannedWorkoutData)
-    addNameArr = plannedWorkoutData.name
+// router.post('/newPlan', isLoggedIn, (req, res) => {
+//     const plannedWorkoutData = req.body
+//     console.log('these are the planned workout details\n', plannedWorkoutData)
+//     addNameArr = plannedWorkoutData.name
 
-    addNameArr.forEach(exerciseName => {
-        db.workout.findOrCreate({
-            where: {
-                userId: res.locals.currentUser.id,
-                scheduledDate: plannedWorkoutData.scheduledDate,
-                type: plannedWorkoutData.type
-            }
-        })
-            .then(([workout, created]) => {
-                db.exercise.findOrCreate({
-                    where: { name: exerciseName }
-                })
-                    .then(([exercise, created]) => {
-                        console.log('these are the exercises\n', exercise)
-                        res.redirect('/workouts/newPlan')
-                    })
-                    // .then(workoutExercise => {
-                    //     console.log('this is the  workoutExercise\n', workoutExercise)
-                    // })
-            })
-    })
-    .catch(error => {
-        console.error
-    })
-})
+//     addNameArr.forEach(exerciseName => {
+//         db.workout.findOrCreate({
+//             where: {
+//                 userId: res.locals.currentUser.id,
+//                 scheduledDate: plannedWorkoutData.scheduledDate,
+//                 type: plannedWorkoutData.type
+//             }
+//         })
+//             .then(([workout, created]) => {
+//                 db.exercise.findOrCreate({
+//                     where: { name: exerciseName }
+//                 })
+//                     .then(([exercise, created]) => {
+//                         console.log('these are the exercises\n', exercise)
+//                         res.redirect('/workouts/newPlan')
+//                     })
+//                     // .then(workoutExercise => {
+//                     //     console.log('this is the  workoutExercise\n', workoutExercise)
+//                     // })
+//             })
+//     })
+//     .catch(error => {
+//         console.error
+//     })
+// })
 
 
 // GET route to render edit planned workout page
@@ -221,7 +221,7 @@ router.get('/edit/:id', isLoggedIn, (req, res) => {
         }
     })
         .then(foundWorkout => {
-            res.render('workouts/edit', { workoutId, date: foundWorkout.date, duration: foundWorkout.duration, type: foundWorkout.type })
+            res.render('workouts/edit', { workoutId, date: foundWorkout.date, duration: foundWorkout.duration, type: foundWorkout.type, comments: foundWorkout.comments })
         })
         .catch(error => {
             console.error
@@ -243,7 +243,8 @@ router.put('/edit/:id', isLoggedIn, (req, res) => {
             foundWorkout.update({
                 date: req.body.date,
                 duration: req.body.duration,
-                type: req.body.type
+                type: req.body.type,
+                comments: req.body.comments
             })
                 .then(res.redirect('/workouts'))
         })
@@ -262,7 +263,7 @@ router.get('/:id', isLoggedIn, (req, res) => {
         }
     })
         .then(foundWorkout => {
-            res.render('workouts/show', { workoutId: req.params.id, date: foundWorkout.date, duration: foundWorkout.duration, type: foundWorkout.type })
+            res.render('workouts/show', { workoutId: req.params.id, date: foundWorkout.date, duration: foundWorkout.duration, type: foundWorkout.type, comments: foundWorkout.comments })
         })
         .catch(error => {
             console.error

@@ -4,57 +4,56 @@
 
 <body>
     <header>
-        <header>
-            <nav>
-                <div class="navContainer">
-                    <div class="newSearchLink">
-                        <a href="/auth/logout" class="profileNav">Logout</a>
-                        <a href="/profile" class="profileNav">Profile</a>
-                    </div>
-                    <div class="logLink">
-                        <a href="/workouts/newPlan" class="profileNav">Plan a Workout</a>
-                        <a href="/workouts/new" class="profileNav">Log a Workout</a>
-                        <a class="profileNav" href="/exercises/search">Search for Exercises</a>
-                    </div>
+        <nav>
+            <div class="navContainer">
+                <div class="newSearchLink">
+                    <a href="/auth/logout" class="profileNav">Logout</a>
+                    <a href="/profile" class="profileNav">Profile</a>
                 </div>
-            </nav>
-        </header>
+                <div class="logLink">
+                    <a href="/workouts/newPlan" class="profileNav">Plan a Workout</a>
+                    <a href="/workouts/new" class="profileNav">Log a Workout</a>
+                    <a class="profileNav" href="/exercises/search">Search for Exercises</a>
+                </div>
+            </div>
+        </nav>
     </header>
 
-    <div>
-        <h1>Your Workouts</h1>
-    </div>
-    
-    <div id="allWorkoutsContainer">
-        <div>
-            <h3>Planned Workouts:</h3>
+    <div id="historyContainer">
+        <div id="historyTitle">
+            <h1>Your Workout History</h1>
+        </div>
+        <div id="completedList"> 
             <ol>
-                <% const removeRepeat = (arr => { %>
-                    <% return arr.filter((value, index) => { %>
-                        <% arr.indexOf(value) === index %>
-                    <% }) %>
+                <% results.forEach(workout=> { %>
+                    <% if(workout.dataValues.completed===true) { %>
+                        <li id="historyList">
+                            <a href="/workouts/<%= workout.id %>">
+                                <%= workout.dataValues.date %>: <%= workout.dataValues.type %>
+                            </a>
+                        </li>
+                     <% } %>
                 <% }) %>
-                <% const filteredRes = removeRepeat(results) %>
-                <% filteredRes.forEach(workout => { %>
-                    <% if(workout.dataValues.completed === false) { %>
-                    <li>
-                        <a href="/workouts/scheduled/<%= workout.scheduledDate %>/<%= workout.type %> "><%= workout.dataValues.scheduledDate %>: <%= workout.dataValues.type %> </a>
-                    </li>
-                    <% } %>
-                <% }) %> 
-            </ol>
-        </div>
-        <div>
-            <h3>Completed Workouts:</h3>
-            <ol>
-                <% results.forEach(workout => { %>
-                    <% if(workout.dataValues.completed === true) { %>
-                    <li>
-                        <a href="/workouts/<%= workout.id %>"><%= workout.dataValues.date %>: <%= workout.dataValues.type %> </a>
-                    </li>
-                    <% } %>
-                <% }) %> 
             </ol>
         </div>
     </div>
+
+    <!-- <div>
+        <h3>Your Workouts History</h3>
+        <ol>
+            <% //const removeRepeat = (arr => { %>
+                <% //return arr.filter((value, index) => { %>
+                    <% //arr.indexOf(value) === index %>
+                <% //}) %>
+            <% //}) %>
+            <% //const filteredRes = removeRepeat(results) %>
+            <% //filteredRes.forEach(workout => { %>
+                <% //if(workout.dataValues.completed === false) { %>
+                <li>
+                    <a href="/workouts/scheduled/<%= //workout.scheduledDate %>/<%= //workout.type %> "><%= //workout.dataValues.scheduledDate %>: <%= //workout.dataValues.type %> </a>
+                </li>
+                <% //} %>
+            <% //}) %> 
+        </ol>
+    </div> -->
 </body>

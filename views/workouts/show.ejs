@@ -3,48 +3,34 @@
 </head>
 
 <body>
-    
-</body>
-<div class="row">
-    <div class="col">
-        <nav class="nav">
-            <ul class="nav">
-                <% if (!currentUser) { %>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/auth/signup">Sign Up</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/auth/login">Login</a>
-                    </li>
-                    <% } else { %>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/auth/logout">Logout</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/profile">Profile</a>
-                        </li>
-            </ul>
-            <% } %>
+    <header>
+        <nav>
+            <div class="navContainer">
+                <div class="newSearchLink">
+                    <a href="/auth/logout" class="profileNav">Logout</a>
+                    <a href="/profile" class="profileNav">Profile</a>
+                </div>
+                <div class="logLink">
+                    <a href="/workouts/newPlan" class="profileNav">Plan a Workout</a>
+                    <a href="/workouts/new" class="profileNav">Log a Workout</a>
+                    <a class="profileNav" href="/exercises/search">Search for Exercises</a>
+                </div>
+            </div>
         </nav>
+    </header>
+
+    <div>
+        <h3>Completed a <%= type %> workout in <%= duration %> minutes on <%= date %> </h3>
     </div>
-    <div class="col">
-        <ul class="nav justify-content-end">
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/workouts/newPlan">Plan a Workout</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/workouts/new">Log a Workout</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/exercises/search">Search for Exercises</a>
-            </li>
-        </ul>
+    <div>
+        <div>
+            <h4>Your Comments:</h4>
+        </div>
+        <div>
+            <%= comments %> 
+        </div>
     </div>
-</div>
-    
-<h3>Workout completed on <%= date %> </h3>
-<h5>Completed a <%= type %> workout</h5>
-<h5>Worked out for <%= duration %> minutes</h5>
+</body>
 
 <form method="GET" action="/workouts/edit/<%= workoutId %>">
     <input type="submit" value="Edit Workout">
