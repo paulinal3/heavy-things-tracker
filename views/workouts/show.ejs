@@ -20,18 +20,27 @@
     </header>
 
     <div>
-        <h3>Completed a <%= type %> workout in <%= duration %> minutes on <%= date %> </h3>
+        <div id="showTitle">
+            <h1>Completed a <%= type %> workout in <%= duration %> minutes on <%= date %> </h1>
+        </div>
+        <div id="showCol">
+            <div>
+                <h3>Your Comments About this Workout:</h3>
+            </div>
+            <div id="commentsDiv">
+                <% if (comments === null) { %>
+                    <h4 id="comment">You did not log any comments</h4>
+                    <% } else { %>
+                        <%= comments %> 
+                    <% } %>
+            </div>
+        </div>
     </div>
-    <div>
-        <div>
-            <h4>Your Comments:</h4>
-        </div>
-        <div>
-            <%= comments %> 
-        </div>
+
+
+    <div id="editContainer">
+        <form method="GET" action="/workouts/edit/<%= workoutId %>">
+            <input type="submit" value="Edit Workout" id="editBtn">
+        </form>
     </div>
 </body>
-
-<form method="GET" action="/workouts/edit/<%= workoutId %>">
-    <input type="submit" value="Edit Workout">
-</form>

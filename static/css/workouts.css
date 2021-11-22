@@ -80,6 +80,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 
 #historyTitle {
@@ -98,6 +99,48 @@ body {
 
 #historyList {
     font-size: 20px;
+}
+
+/* ---------- SHOW.EJS ----------- */
+#showTitle {
+    text-align: center;
+    padding: 25px 0 10px 0;
+}
+
+#showCol {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+#commentsDiv {
+    background-color: rgba(0, 0, 0, 0.05);
+    width: 25%;
+    display: flex;
+    justify-self: center;
+    font-size: 20px;
+}
+
+#editContainer {
+    text-align: center;
+    margin-top: 35px;
+}
+
+#editBtn {
+    height: 50px;
+    width: 200px;
+    font-size: 25px;
+    background-color: #E9FFFF;
+    color: #719294;
+    border: 3px solid #719294;
+}
+
+#editBtn:hover{
+    background-color: #719294;
+    color: #D3F2E9;
 }
 
 /* ---------- EDIT.EJS ----------- */

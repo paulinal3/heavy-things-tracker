@@ -119,6 +119,7 @@ router.post('/newPlan', isLoggedIn, (req, res) => {
             }
         })
             .then(([workout, created]) => {
+                console.log('found or created workout\n', workout)
                 db.exercise.findOrCreate({
                     where: { name: exerciseName }
                 })
