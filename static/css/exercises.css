@@ -88,8 +88,8 @@ footer {
 
 /* ---------- INDEX.EJS ---------- */
 #resHeader {
-    margin-left: 10px;
-    margin-top: 15px;
+    text-align: center;
+    padding: 25px 0 10px 0;
 }
 
 #firstRowRes, #secondRowRes, #thirdRowRes {
@@ -104,20 +104,30 @@ footer {
     width: 30%;
     height: 300px;
     overflow-y: scroll;
-    background-color: #F4FAFA;
+    background-color: rgba(0, 0, 0, 0.05);
+    padding-top: 10px;
 }
+
+/* .resList {
+    list-style-type: none;
+    text-transform: capitalize;
+    font-size: 20px;
+} */
 
 .equipmentTitle {
-    margin-left: 10px;
-    margin-top: 5px;
+    text-align: center;
 }
 
-a {
-    text-decoration: none;
-    text-transform: capitalize;
-    color: #719294;
+li {
+    font-size: 20px;
 }
 
+#indexFooter {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+}
 /* ---------- SHOW.EJS ---------- */
 .exerciseName {
     text-align: center;
@@ -194,7 +204,7 @@ a {
 #chest, #back, #legs, #shoulders, #arms, #calves, #abs {
     border: 3px solid #719294;
     width: 30%;
-    height: 300px;
+    height: 250px;
     overflow-y: scroll;
     background-color: rgba(0, 0, 0, 0.05);
     padding-top: 10px;
@@ -212,4 +222,10 @@ a {
 
 li {
     list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+    text-transform: capitalize;
+    color: #008686;
 }
