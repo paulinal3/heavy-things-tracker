@@ -134,3 +134,8 @@ a {
     text-transform: capitalize;
     font-size: 20px;
 }
+
+#id {
+    position: absolute;
+    left: 50;
+}

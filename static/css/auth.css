@@ -3,6 +3,33 @@ body {
     font-family: 'Poiret One', cursive;
 }
 
+nav {
+    background-color: rgba(0, 0, 0, 0.05);
+    height: 35px;
+}
+
+.navContainer {
+    display: flex;
+    flex-direction: row;
+    font-size: 20px;
+    text-decoration: none;
+    justify-content: space-between;
+}
+
+.profileLink, .newSearchLink {
+    padding-left: 10px;
+}
+
+.searchLink {
+    padding-right: 10px;
+}
+
+a {
+    text-decoration: none;
+    text-transform: capitalize;
+    color: #008686;
+}
+
 #loginContainer, #signupContainer {
     display: flex;
     justify-content: center;
