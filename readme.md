@@ -34,7 +34,7 @@
 ![Wireframe](./pitch-images/detailed-exercise.png)
 
 ## API
-* wger Workout Manager
+* ExerciseDB
 
 ## ERD
 ![ERD](./pitch-images/erd.png)
