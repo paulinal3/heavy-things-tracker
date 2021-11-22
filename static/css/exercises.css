@@ -4,7 +4,7 @@ body {
 }
 
 nav {
-    background-color: #FAFAFA;
+    background-color: rgba(0, 0, 0, 0.05);
     height: 35px;
 }
 
@@ -60,7 +60,7 @@ footer {
 .searchDiv {
     border: 5px solid #719294;
     padding: 25px 150px 25px 150px;
-    background-color: #F4FAFA;
+    background-color: rgba(0, 0, 0, 0.05);
 }
 
 #searchLabel {
@@ -196,7 +196,8 @@ a {
     width: 30%;
     height: 300px;
     overflow-y: scroll;
-    background-color: #F4FAFA;
+    background-color: rgba(0, 0, 0, 0.05);
+    padding-top: 10px;
 }
 
 .muscleTitle {

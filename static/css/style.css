@@ -4,7 +4,7 @@ body {
 }
 
 nav {
-    background-color: #FAFAFA;
+    background-color: rgba(0, 0, 0, 0.05);
     height: 35px;
 }
 
@@ -86,7 +86,9 @@ nav {
 .homeContainer {
     border: 5px solid #719294;
     width: 45%;
-    height: 150px;
+    height: 250px;
+    padding: 10px 15px 0 15px;
+    background-color: rgba(0, 0, 0, 0.05);
 }
 
 #addedSpace {
@@ -96,6 +98,27 @@ nav {
 /* ---------- PROFILE.EJS ---------- */
 #profileName {
     text-transform: capitalize;
+    text-align: center;
+    padding-top: 25px;
+}
+
+#homeRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 -50px 0 -50px;
+    margin-top: 25px;
+    gap: 25px;
+}
+
+.profileContainer {
+    border: 5px solid #719294;
+    width: 25%;
+    height: 500px;
+    padding: 10px 15px 0 15px;
+    background-color: rgba(0, 0, 0, 0.05);
 }
 
 #profileCol {

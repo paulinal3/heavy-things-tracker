@@ -136,26 +136,38 @@ router.post('/newPlan', isLoggedIn, (req, res) => {
     })
 })
 
-// POST route that will add a saved exercise to a planned workout
-// router.post('/newPlan', isLoggedIn, (req, res) => {
-//     const plannedWorkoutData = req.body
-//     console.log('these are the planned workout details\n', plannedWorkoutData)
-//     addNameArr = plannedWorkoutData.name
-//     addNameArr.forEach(exerciseName => {
-//         db.exercise.findOne({
-//             where: {name: exerciseName}
-//         })
-//         .then(foundExercise => {
-//             foundExercise.createWorkout({
-//                 scheduledDate: plannedWorkoutData.date,
-//                 type: plannedWorkoutData.type
-//             })
-//             .then(createdWorkout => {
-//                 res.redirect('/workouts/newPlan')
-//             })
-//         })
-//     })
-// })
+// POST route to add a planned workout to db
+router.post('/newPlan', isLoggedIn, (req, res) => {
+    const plannedWorkoutData = req.body
+    console.log('these are the planned workout details\n', plannedWorkoutData)
+    addNameArr = plannedWorkoutData.name
+
+    addNameArr.forEach(exerciseName => {
+        db.workout.findOrCreate({
+            where: {
+                userId: res.locals.currentUser.id,
+                scheduledDate: plannedWorkoutData.scheduledDate,
+                type: plannedWorkoutData.type
+            }
+        })
+            .then(([workout, created]) => {
+                db.exercise.findOrCreate({
+                    where: { name: exerciseName }
+                })
+                    .then(([exercise, created]) => {
+                        console.log('these are the exercises\n', exercise)
+                        res.redirect('/workouts/newPlan')
+                    })
+                    // .then(workoutExercise => {
+                    //     console.log('this is the  workoutExercise\n', workoutExercise)
+                    // })
+            })
+    })
+    .catch(error => {
+        console.error
+    })
+})
+
 
 // GET route to render edit planned workout page
 router.get('/scheduled/edit/:scheduledDate/:type', isLoggedIn, (req, res) => {

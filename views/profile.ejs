@@ -27,6 +27,31 @@
         </h1>
     </div>
 
+    <div id="homeRow">
+        <div class="profileContainer">
+            <h3><a href="/workouts">Workout History</a></h3>
+            <ul>
+                <% results.forEach(workout => { %>
+                    <% if(workout.dataValues.completed === true) { %>
+                    <li>
+                        <%= workout.dataValues.date %>
+                    </li>
+                    <% } %>
+                <% }) %> 
+            </ul>
+        </div>
+        <div class="profileContainer">
+            <h3><a href="/exercises/saves">Saved Exercises</a></h3>
+            <ul>
+                <% saves.forEach(save => { %>
+                    <li>
+                        <%= save.dataValues.name %>
+                    </li>
+                <% }) %> 
+            </ul>
+        </div>
+    </div>
+
     <div id="profileCol">
         <div id="profileRow">
             <div class="profileBox" id="profileRow">
