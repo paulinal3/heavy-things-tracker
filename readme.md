@@ -42,13 +42,17 @@ https://heavy-things-tracker.herokuapp.com/
 * Welcome Page
 ![Wireframe](./pitch-images/welcome-page.png)
 * User Profile
-![Wireframe](./pitch-images/user-profile.png)
+![Wireframe](./pitch-images/profile.png)
 * Search
 ![Wireframe](./pitch-images/search.png)
-* Same Layout for Results and Saved Lists
-![Wireframe](./pitch-images/list-page.png)
+* Similar Layout for Search Results and Saved Lists
+![Wireframe](./pitch-images/search-saved-list.png)
 * Detailed Exercise
 ![Wireframe](./pitch-images/detailed-exercise.png)
+* Similar Layout for Creating/Editing Workouts
+![Wireframe](./pitch-images/log-workout.png)
+* List of All Logged Workouts
+![Wireframe](./pitch-images/workout-list.png)
 
 ## API
 * ExerciseDB
