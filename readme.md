@@ -1,4 +1,5 @@
 # Heavy Things Tracker
+A fullstack application that allows users to search over 1300 exercises to save for their next workout! User also have the ability to log details of a completed workout and view all logged workouts through their workout history.
 
 ## RESTful Routes
 ![RESTful Routes Table](./pitch-images/RESTfulRoutes.png)
@@ -9,6 +10,9 @@
      * `npm i`
      * `npm axios`
      * `npm method_override`
+     * `npm cloudinary`
+     * `npm multer`
+
 3. Open code
 4. In browser, go to https://www.exercisedb.io/ and sign up for free acocount for API token
 5. Once account is verified, click on Dashboard, then API TOKEN
@@ -17,6 +21,12 @@
      ```js
      API_KEY=Token_<yourApiToken>
      SUPER_SECRET_SECRET=<anyWordYouWant>
+     ```
+8. Go to https://cloudinary.com/ and sign up for a free account
+9. Once you verify your account, go to Dashboard and copy your API Environment variable
+10. Paste into your `.env` on a new line
+     ```js
+     CLOUDINARY_URL=<cloudinary://**************:**************@paulinal3>
      ```
 
 ## Tech Stack
@@ -32,7 +42,7 @@
 ![Wireframe](./pitch-images/user-profile.png)
 * Search
 ![Wireframe](./pitch-images/search.png)
-* Same Layout for Results, Favorites, & Saved Lists
+* Same Layout for Results and Saved Lists
 ![Wireframe](./pitch-images/list-page.png)
 * Detailed Exercise
 ![Wireframe](./pitch-images/detailed-exercise.png)
