@@ -15,7 +15,7 @@ router.get('/search', (req, res) => {
     res.render('exercises/search')
 })
 
-// GET/INDEX route based on search results
+// INDEX route based on search results
 router.get('/', (req, res) => {
     const rootApi = 'https://v1.exercisedb.io/api/exercises'
     let muscleTargeted = req.query.bodyPart
@@ -28,19 +28,6 @@ router.get('/', (req, res) => {
     })
     .catch(error => {
         console.error
-    })
-})
-
-// GET/INDEX route that will display all saved exercises
-router.get('/saves', isLoggedIn, (req, res) => {
-    db.user.findOne({
-        where: {id: res.locals.currentUser.id}
-    })
-    .then(user => {
-        user.getExercises()
-        .then(saves => {
-            res.render('exercises/indexSaves', {exerciseSaves: saves})
-        })
     })
 })
 
@@ -66,6 +53,19 @@ router.post('/', isLoggedIn, (req, res) => {
     })
     .catch(error => {
         console.error
+    })
+})
+
+// INDEX route that will display all saved exercises
+router.get('/saves', isLoggedIn, (req, res) => {
+    db.user.findOne({
+        where: {id: res.locals.currentUser.id}
+    })
+    .then(user => {
+        user.getExercises()
+        .then(saves => {
+            res.render('exercises/indexSaves', {exerciseSaves: saves})
+        })
     })
 })
 

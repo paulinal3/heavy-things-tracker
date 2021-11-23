@@ -3,10 +3,10 @@ const express = require('express')
 const router = express.Router()
 const db = require('../models')
 const isLoggedIn = require('../middleware/isLoggedIn')
-// const multer = require('multer')
-// const upload = multer({ dest: './uploads/'})
-// const cloudinary = require('cloudinary')
-// cloudinary.config(process.env.CLOUDINARY_URL)
+const multer = require('multer')
+const upload = multer({ dest: './uploads/'})
+const cloudinary = require('cloudinary')
+cloudinary.config(process.env.CLOUDINARY_URL)
 
 // INDEX route to display a list of the user's workout history
 router.get('/', isLoggedIn, (req, res) => {
@@ -27,41 +27,17 @@ router.get('/new', isLoggedIn, (req, res) => {
 })
 
 // POST route to create workout in db based on user input
-router.post('/', isLoggedIn, (req, res) => {
-    const workoutData = req.body
-    console.log('these are the workout details\n', workoutData)
-    db.workout.create({
-        date: workoutData.date,
-        duration: workoutData.duration,
-        type: workoutData.type,
-        completed: true,
-        comments: workoutData.comments,
-        userId: res.locals.currentUser.id
-    })
-        .then(createdWorkout => {
-            console.log('workout added to db\n', createdWorkout)
-            res.redirect('/workouts')
-        })
-        .catch(error => {
-            console.error
-        })
-})
-
-// // POST route to create workout in db based on user input
-// router.post('/new', isLoggedIn, upload.single('myFile'), (req, res) => {
+// router.post('/', isLoggedIn, (req, res) => {
 //     const workoutData = req.body
 //     console.log('these are the workout details\n', workoutData)
-//     cloudinary.uploader.upload(req.file.path, (result) => {
-//         console.log('this is the img result\n', result)
-//         db.workout.create({
-//             date: workoutData.date,
-//             duration: workoutData.duration,
-//             type: workoutData.type,
-//             completed: true,
-//             comments: workoutData.comments,
-//             img: result.url,
-//             userId: res.locals.currentUser.id
-//         })
+//     db.workout.create({
+//         date: workoutData.date,
+//         duration: workoutData.duration,
+//         type: workoutData.type,
+//         completed: true,
+//         comments: workoutData.comments,
+//         userId: res.locals.currentUser.id
+//     })
 //         .then(createdWorkout => {
 //             console.log('workout added to db\n', createdWorkout)
 //             res.redirect('/workouts')
@@ -69,10 +45,32 @@ router.post('/', isLoggedIn, (req, res) => {
 //         .catch(error => {
 //             console.error
 //         })
-//     })
 // })
 
-
+// // POST route to create workout in db based on user input
+router.post('/', isLoggedIn, upload.single('myFile'), (req, res) => {
+    const workoutData = req.body
+    console.log('these are the workout details\n', workoutData)
+    cloudinary.uploader.upload(req.file.path, (result) => {
+        console.log('this is the img result\n', result)
+        db.workout.create({
+            date: workoutData.date,
+            duration: workoutData.duration,
+            type: workoutData.type,
+            completed: true,
+            comments: workoutData.comments,
+            img: result.url,
+            userId: res.locals.currentUser.id
+        })
+        .then(createdWorkout => {
+            console.log('workout added to db\n', createdWorkout)
+            res.redirect('/workouts')
+        })
+        .catch(error => {
+            console.error
+        })
+    })
+})
 
 // INDEX route to display all planned workouts
 router.get('/scheduled', isLoggedIn, (req, res) => {
@@ -194,7 +192,7 @@ router.get('/scheduled/edit/:scheduledDate/:type', isLoggedIn, (req, res) => {
     })
 })
 
-// SHOW route to display details of a logged workout
+// SHOW route to display details of a planned workout
 router.get('/scheduled/:scheduledDate/:type', isLoggedIn, (req, res) => {
     console.log(`this is the scheduled workout date: ${req.params.scheduledDate} and type: ${req.params.type}`)
     db.workout.findOne({
@@ -223,6 +221,7 @@ router.get('/edit/:id', isLoggedIn, (req, res) => {
         }
     })
         .then(foundWorkout => {
+            console.log('these are the found workout details\n', foundWorkout)
             res.render('workouts/edit', { workoutId, date: foundWorkout.date, duration: foundWorkout.duration, type: foundWorkout.type, comments: foundWorkout.comments })
         })
         .catch(error => {
@@ -265,7 +264,7 @@ router.get('/:id', isLoggedIn, (req, res) => {
         }
     })
         .then(foundWorkout => {
-            res.render('workouts/show', { workoutId: req.params.id, date: foundWorkout.date, duration: foundWorkout.duration, type: foundWorkout.type, comments: foundWorkout.comments })
+            res.render('workouts/show', { workoutId: req.params.id, date: foundWorkout.date, duration: foundWorkout.duration, type: foundWorkout.type, comments: foundWorkout.comments, img: foundWorkout.img })
         })
         .catch(error => {
             console.error

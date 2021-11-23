@@ -22,7 +22,7 @@
     <div id="logWorkoutTitle">
         <h1>Log Your Latest Workout!</h1>
     </div>
-        <form method="POST" action="/workouts">
+        <form method="POST" action="/workouts" enctype="multipart/form-data">
             <div id="logRow">
                 <div id="firstCol">
                     <label for="date">Date Completed:</label>
@@ -37,10 +37,10 @@
                     <input id="comments" type="text" name="comments">
                 </div>
             </div>
-            <!-- <div>enctype="multipart/form-data"
+            <div>
                 <label for="img">Upload a Photo: </label>
                 <input id="img" type="file" name="myFile">
-            </div> -->
+            </div>
             <div id="btnContainer">
                 <input type="submit" value="Log Workout" id="logBtn"></input>
             </div>
