@@ -42,6 +42,7 @@
 
 ## ERD
 ![ERD](./pitch-images/erd.png)
+![ERD](./pitch-images/erd.png))
 
 ## Examples of API Data
 API root = https://v1.exercisedb.io/api/exercises/<:param>
