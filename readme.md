@@ -1,6 +1,9 @@
 # Heavy Things Tracker
 A fullstack application that allows users to search over 1300 exercises to save for their next workout! User also have the ability to log details of a completed workout and view all logged workouts through their workout history.
 
+## Deployed App
+https://heavy-things-tracker.herokuapp.com/
+
 ## RESTful Routes
 ![RESTful Routes Table](./pitch-images/RESTfulRoutes.png)
 
