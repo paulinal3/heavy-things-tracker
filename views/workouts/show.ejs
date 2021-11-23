@@ -28,18 +28,22 @@
                 <h3>Your Comments About this Workout:</h3>
             </div>
             <div id="commentsDiv">
-                <% if (comments === null) { %>
-                    <h4 id="comment">You did not log any comments</h4>
+                <% if (comments === null || comments === '') { %>
+                    <h4 id="comment">You did not log any comments for this workout.</h4>
                     <% } else { %>
                         <%= comments %> 
                     <% } %>
             </div>
             <div>
-                <img src="<%= img %>" alt="photo uploaded by user for this workout">
+                <% if (img === null) { %>
+                    <h4 id="comment">You did not upload a photo for this workout.</h4>
+                    <% } else { %>
+                        <img src="<%= img %>" alt="photo uploaded by user for this workout">
+                    <% } %>
+
             </div>
         </div>
     </div>
-
 
     <div id="editContainer">
         <form method="GET" action="/workouts/edit/<%= workoutId %>">

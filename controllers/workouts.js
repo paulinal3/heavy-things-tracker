@@ -222,7 +222,7 @@ router.get('/edit/:id', isLoggedIn, (req, res) => {
     })
         .then(foundWorkout => {
             console.log('these are the found workout details\n', foundWorkout)
-            res.render('workouts/edit', { workoutId, date: foundWorkout.date, duration: foundWorkout.duration, type: foundWorkout.type, comments: foundWorkout.comments })
+            res.render('workouts/edit', { workoutId, date: foundWorkout.date, duration: foundWorkout.duration, type: foundWorkout.type, comments: foundWorkout.comments, img: foundWorkout.img })
         })
         .catch(error => {
             console.error
