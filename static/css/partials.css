@@ -2,3 +2,13 @@
 #longFooter {
     background-color: rgba(0, 0, 0, 0.05);
 }
+
+#footerRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#firstCol {
+    width: 400px;
+}
