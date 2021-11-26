@@ -9,7 +9,7 @@ https://heavy-things-tracker.herokuapp.com/
 
 ## Install
 1. Go to https://www.exercisedb.io/ and sign up for free acocount
-2. Download code to your terminal, then run then install the following packages: 
+2. Download code to your terminal, then install the following packages: 
      * `npm i`
      * `npm axios`
      * `npm method_override`
