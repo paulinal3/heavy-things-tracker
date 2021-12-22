@@ -6,7 +6,7 @@ const db = require('../models')
 const isLoggedIn = require('../middleware/isLoggedIn')
 const authHeader = {
     headers: {
-        'Authorization': process.env.API_KEY
+        'x-rapidapi-key': process.env.RAPID_API_KEY
     }
 }
 
@@ -17,7 +17,7 @@ router.get('/search', (req, res) => {
 
 // INDEX route based on search results
 router.get('/', (req, res) => {
-    const rootApi = 'https://v1.exercisedb.io/api/exercises'
+    const rootApi = 'https://exercisedb.p.rapidapi.com/exercises'
     let muscleTargeted = req.query.bodyPart
 
     axios.get(`${rootApi}/bodyPart/${muscleTargeted}`, authHeader)
@@ -71,7 +71,7 @@ router.get('/saves', isLoggedIn, (req, res) => {
 
 // SHOW route based on exercise clicked on
 router.get('/:exercise_name', (req, res) => {
-    const rootApi = 'https://v1.exercisedb.io/api/exercises'
+    const rootApi = 'https://exercisedb.p.rapidapi.com/exercises'
     let exerciseName = req.params.exercise_name
 
     axios.get(`${rootApi}/name/${exerciseName}`, authHeader)
