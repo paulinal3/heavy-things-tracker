@@ -5,17 +5,7 @@
 <body>
     <header>
         <nav>
-            <div class="navContainer">
-                <div class="profileLink">
-                    <a href="/profile" class="searchNav">Profile</a>
-                </div>
-                <div class="logLink">
-                    <a href="/workouts/new" class="searchNav">Log a Workout</a>
-                </div>
-                <div class="searchLink">
-                    <a href="/auth/logout" class="searchNav">Logout</a>
-                </div>
-            </div>
+            <%- include('../partials/userNavBar') %>
         </nav>
     </header>
 
@@ -133,7 +123,7 @@
     </div>
     <div id="addedSpace"></div>
 
-    <footer class="shortFooter">
+    <!-- <footer class="shortFooter">
         <%- include('../partials/shortFooter') %>
-    </footer>
+    </footer> -->
 </body>

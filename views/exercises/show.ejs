@@ -3,19 +3,11 @@
 </head>
 
 <body>
-    <nav>
-        <div class="navContainer">
-            <div class="newSearchLink">
-                <a href="/exercises/search" class="searchNav">Start a New Search</a>
-            </div>
-            <div class="logLink">
-                <a href="/workouts/new" class="searchNav">Log a Workout</a>
-            </div>
-            <div class="searchLink">
-                <a href="/auth/logout" class="searchNav">Logout</a>
-            </div>
-        </div>
-    </nav>
+    <header>
+        <nav>
+            <%- include('../partials/userNavBar') %>
+        </nav>
+    </header>
 
     <div class="exerciseName">
         <h1><%= name %></h1>
@@ -47,4 +39,8 @@
             <button type="submit" id="saveBtn">Save for Later!</button>
         </form>
     </div>
+
+    <footer class="shortFooter">
+        <%- include('../partials/shortFooter') %>
+    </footer>
 </body>

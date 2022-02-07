@@ -5,16 +5,7 @@
 <body>
     <header>
         <nav>
-            <div class="navContainer">
-                <div class="newSearchLink">
-                    <a href="/auth/logout" class="profileNav">Logout</a>
-                    <a href="/profile" class="profileNav">Profile</a>
-                </div>
-                <div class="logLink">
-                    <a href="/workouts/new" class="profileNav">Log a Workout</a>
-                    <a class="profileNav" href="/exercises/search">Search for Exercises</a>
-                </div>
-            </div>
+            <%- include('../partials/userNavBar') %>
         </nav>
     </header>
 
@@ -41,4 +32,8 @@
             </div>
         </form>
     </div>
+
+    <footer class="shortFooter">
+        <%- include('../partials/shortFooter') %>
+    </footer>
 </body>

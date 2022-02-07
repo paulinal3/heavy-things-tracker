@@ -16,6 +16,15 @@ nav {
     justify-content: space-between;
 }
 
+.middleLink {
+    display: flex;
+    flex-direction: row;
+    column-gap: 2%;
+    width: 100%;
+    justify-content: center;
+    align-content: center;
+}
+
 .profileLink, .newSearchLink {
     padding-left: 10px;
 }
