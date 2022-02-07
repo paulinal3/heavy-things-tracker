@@ -1,3 +1,13 @@
+/* ---------- USERNAVBAR.EJS ---------- */
+.middleLink {
+    display: flex;
+    flex-direction: row;
+    column-gap: 2%;
+    width: 100%;
+    justify-content: center;
+    align-content: center;
+}
+
 /* ---------- LONGFOOTER.EJS ---------- */
 #longFooter {
     background-color: rgba(0, 0, 0, 0.05);
