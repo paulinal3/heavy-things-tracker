@@ -9,13 +9,11 @@ https://heavy-things-tracker.herokuapp.com/
 
 ## Install
 1. Go to https://www.exercisedb.io/ and sign up for free acocount
-2. Download code to your terminal, then install the following packages: 
-     * `npm i`
-     * `npm axios`
-     * `npm method_override`
-     * `npm cloudinary`
-     * `npm multer`
-
+2. Download code to your terminal, then run `npm i` to install the following packages: 
+     * `axios`
+     * `method_override`
+     * `cloudinary`
+     * `multer`
 3. Open code
 4. In browser, go to https://www.exercisedb.io/ and sign up for free acocount for API token
 5. Once account is verified, click on Dashboard, then API TOKEN
