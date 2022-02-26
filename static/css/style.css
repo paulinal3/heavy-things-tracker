@@ -40,6 +40,39 @@ body {
 
 }
 
+@media (min-width: 1200px) {
+    #landing-page {
+        background-image: url(https://integrisok.com/-/media/Blog/18-July-Aug-Sept-Oct-Nov/Woman-lifting-weights.ashx?as=1&mh=405&mw=720&revision=31ef0144-e01a-4c2d-9e19-60ac0f0045bd&hash=FC96853DAE3BDFCA08403EF90C9B1E20);
+        background: linear-gradient(rgba(31, 108, 94, 0.65), rgba(31, 44, 108, 0.65)), rgba(0, 0, 0, 0.55) url("https://integrisok.com/-/media/Blog/18-July-Aug-Sept-Oct-Nov/Woman-lifting-weights.ashx?as=1&mh=405&mw=720&revision=31ef0144-e01a-4c2d-9e19-60ac0f0045bd&hash=FC96853DAE3BDFCA08403EF90C9B1E20") no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        color: white;
+        box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+        height: 100vh;
+    }
+
+    #landing-page nav h1 {
+        font-size: 30px;
+        color: whitesmoke;
+        text-align: center;
+        padding-top: 0%;
+        width: 100%;
+        top: 0%
+    }
+
+    #auth-nav {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        font-size: 20px;
+        margin-top: 0%;
+        position: absolute;
+        width: 100%;
+        margin-top: -50px;
+        background-color: rgba(255, 255, 255, 0);
+    }
+}
+
 .home-info .home-row {
     display: flex;
     flex-direction: column;
@@ -64,6 +97,26 @@ body {
 
 .home-info .home-container h5 {
     font-size: 15px;
+}
+
+@media (min-width: 1200px) {
+    .home-info .home-row {
+        flex-direction: row;
+        justify-content: center;
+        text-align: center;
+        padding: 0px -50px 0px -50px;
+        margin-top: 25px;
+        gap: 25px;
+    }
+
+    .home-info .home-container {
+        /* border: 5px solid #719294; */
+        width: 45%;
+        height: 250px;
+        padding: 10px 15px 0 15px;
+        background-color: rgba(255, 255, 255, 0.1);
+        color: whitesmoke;
+    }
 }
 
 @media (min-width: 1200px) {
@@ -124,28 +177,6 @@ body {
         right: 0;
     }
 
-    /* ---------- HOME.EJS ---------- */
-    .homeNav {
-        height: 50px;
-    }
-
-    #landing-page nav h1 {
-        font-size: 25px;
-        color: whitesmoke;
-        text-align: center;
-        position: absolute;
-        left: 40%;
-        right: 40%;
-        padding-top: 0%;
-    }
-
-    #auth-nav {
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-end;
-        font-size: 20px;
-    }
-
     .profileLink, .newSearchLink {
         padding-left: 10px;
     }
@@ -154,45 +185,11 @@ body {
         padding-right: 10px;
     }
 
-    #firstRowInfo, #secondRowInfo {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        padding: 0 -50px 0 -50px;
-        margin-top: 25px;
-        gap: 25px;
-    }
+    
 
-    #firstRowInfo {
+    /* #addedSpace {
         margin-top: 75px;
-    }
-
-    .home-container {
-        border: 5px solid #719294;
-        width: 45%;
-        height: 250px;
-        padding: 10px 15px 0 15px;
-        background-color: rgba(255, 255, 255, 0.1);
-        color: whitesmoke;
-    }
-
-    #addedSpace {
-        margin-top: 75px;
-    }
-
-    #landing-page {
-        background-image: url(https://integrisok.com/-/media/Blog/18-July-Aug-Sept-Oct-Nov/Woman-lifting-weights.ashx?as=1&mh=405&mw=720&revision=31ef0144-e01a-4c2d-9e19-60ac0f0045bd&hash=FC96853DAE3BDFCA08403EF90C9B1E20);
-        background: linear-gradient(rgba(31, 108, 94, 0.65), rgba(31, 44, 108, 0.65)), rgba(0, 0, 0, 0.55) url("https://integrisok.com/-/media/Blog/18-July-Aug-Sept-Oct-Nov/Woman-lifting-weights.ashx?as=1&mh=405&mw=720&revision=31ef0144-e01a-4c2d-9e19-60ac0f0045bd&hash=FC96853DAE3BDFCA08403EF90C9B1E20") no-repeat;
-        background-attachment: fixed;
-        background-size: cover;
-        color: white;
-        box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-        height: 100vh;
-    }
-
-
+    } */
 
     /* ---------- PROFILE.EJS ---------- */
     #profileName {
