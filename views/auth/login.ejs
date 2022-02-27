@@ -16,11 +16,9 @@
         </nav>
     </header>
 
-    <div id="loginContainer">
-        <!-- <div>
-            <h1>Login</h1>
-        </div>  -->
-        <div id="loginForm">
+    <div id="login-container">
+        <!-- laptop size -->
+        <div id="large-login-form">
             <form action="/auth/login" method="POST">
                 <label class="loginLabel" for="auth-email">Email</label>
                 <input class="loginInput" id="auth-email" type="email" name="email">
@@ -29,6 +27,23 @@
                 <input id="loginBtn" type="submit" value="Log In">
             </form>
         </div>
+        <!-- phone & tablet size -->
+        <div id="small-login-form">
+            <form action="/auth/login" method="POST">
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="floatingEmail" name="email"
+                        placeholder="name@example.com">
+                    <label for="floatingEmail">Email</label>
+                </div>
+                <div class="form-floating">
+                    <input type="password" class="form-control" id="floatingPassword" name="password"
+                        placeholder="Password">
+                    <label for="floatingPassword">Password</label>
+                </div>
+                <input id="login-btn" type="submit" value="Log In">
+            </form>
+        </div>
+    </div>
     </div>
 
     <footer>

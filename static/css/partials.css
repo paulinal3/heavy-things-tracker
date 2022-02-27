@@ -48,6 +48,10 @@
     color: #008686;
 }
 
+#long-footer #footer-row .footer-col a:hover {
+    color: black;
+}
+
 @media (min-width: 768px) {
     #long-footer #footer-row {
         flex-direction: row;
