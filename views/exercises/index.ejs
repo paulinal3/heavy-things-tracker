@@ -7,146 +7,173 @@
         <nav>
             <%- include('../partials/userNavBar') %>
         </nav>
+        <div id="res-header">
+            <h1>Exercise Results</h1>
+        </div>
     </header>
-    
-    <div id="resHeader">
-        <h1>Results Based on Your Search</h1>
-    </div>
-    
-    <div id="firstRowRes">
-        <div class="resListContainer overflow-auto"">
-            <h3 class="equipmentTitle">Bands:</h3>
-            <ul>
-                <% results.forEach(result => { %>
-                    <% if(result.equipment === 'assisted' || result.equipment === 'band' || result.equipment === 'resistance band') { %>
-                        <% let name = result.name %>
-                        <% name.replace('', '%20') %>
-                        <li>
-                            <a href="/exercises/<%= name %> "><%= result.name %></a>
-                        </li>
-                    <% } %>
-                <% }) %>
-            </ul>
-        </div>
-        <div class="resListContainer overflow-auto"">
-            <h3 class="equipmentTitle">Barbells/Trap Bar:</h3>
-            <ul>
-                <% results.forEach(result => { %>
-                    <% if(result.equipment === 'barbell' || result.equipment === 'ez barbell' || result.equipment === 'olympic barbell' || result.equipment === 'trap bar') { %>
-                        <% let name = result.name %>
-                        <% name.replace('', '%20') %>
-                        <li>
-                            <a href="/exercises/<%= name %> "><%= result.name %></a>
-                        </li>
-                    <% } %>
-                <% }) %>
-            </ul>
-        </div>
-        <div class="resListContainer overflow-auto"">
-            <h3 class="equipmentTitle">Bodyweight:</h3>
-            <ul>
-                <% results.forEach(result => { %>
-                    <% if(result.equipment === 'body weight') { %>
-                        <% let name = result.name %>
-                        <% name.replace('', '%20') %>
-                        <li>
-                            <a href="/exercises/<%= name %> "><%= result.name %></a>
-                        </li>
-                    <% } %>
-                <% }) %>
-            </ul>
-        </div>
-    </div>
 
-    <div id="secondRowRes">
-        <div class="resListContainer overflow-auto"">
-            <h3 class="equipmentTitle">Cable:</h3>
-            <ul>
-                <% results.forEach(result => { %>
-                    <% if(result.equipment === 'cable') { %>
-                        <% let name = result.name %>
-                        <% name.replace('', '%20') %>
-                        <li>
-                            <a href="/exercises/<%= name %> "><%= result.name %></a>
-                        </li>
-                    <% } %>
-                <% }) %>
-            </ul>
+    <main class="exercise-res-container">
+        <div class="exercise-res-row" id="firstRowRes">
+            <div class="res-list-container overflow-auto"">
+            <h3 class="equipment-title">Bands:</h3>
+                <ul>
+                    <% results.forEach(result=> { %>
+                        <% if(result.equipment==='assisted' || result.equipment==='band' ||
+                            result.equipment==='resistance band' ) { %>
+                            <% let name=result.name %>
+                                <% name.replace('', '%20' ) %>
+                                    <li>
+                                        <a href="/exercises/<%= name %> ">
+                                            <%= result.name %>
+                                        </a>
+                                    </li>
+                            <% } %>
+                    <% }) %>
+                </ul>
+            </div>
+            <div class="res-list-container overflow-auto"">
+            <h3 class="equipment-title">Barbells/Trap Bar:</h3>
+                <ul>
+                    <% results.forEach(result=> { %>
+                        <% if(result.equipment==='barbell' || result.equipment==='ez barbell' ||
+                            result.equipment==='olympic barbell' || result.equipment==='trap bar' ) { %>
+                            <% let name=result.name %>
+                                <% name.replace('', '%20' ) %>
+                                    <li>
+                                        <a href="/exercises/<%= name %> ">
+                                            <%= result.name %>
+                                        </a>
+                                    </li>
+                            <% } %>
+                        <% }) %>
+                </ul>
+            </div>
+            <div class="res-list-container overflow-auto"">
+            <h3 class="equipment-title">Bodyweight:</h3>
+                <ul>
+                    <% results.forEach(result=> { %>
+                        <% if(result.equipment==='body weight' ) { %>
+                            <% let name=result.name %>
+                                <% name.replace('', '%20' ) %>
+                                    <li>
+                                        <a href="/exercises/<%= name %> ">
+                                            <%= result.name %>
+                                        </a>
+                                    </li>
+                            <% } %>
+                        <% }) %>
+                </ul>
+            </div>
         </div>
-        <div class="resListContainer overflow-auto"">
-            <h3 class="equipmentTitle">Dumbbell/Plates:</h3>
-            <ul>
-                <% results.forEach(result => { %>
-                    <% if(result.equipment === 'dumbbell' || result.equipment === 'weighted') { %>
-                        <% let name = result.name %>
-                        <% name.replace('', '%20') %>
-                        <li>
-                            <a href="/exercises/<%= name %> "><%= result.name %></a>
-                        </li>
-                    <% } %>
-                <% }) %>
-            </ul>
-        </div>
-        <div class="resListContainer overflow-auto"">
-            <h3 class="equipmentTitle">Kettlebell:</h3>
-            <ul>
-                <% results.forEach(result => { %>
-                    <% if(result.equipment === 'kettlebell') { %>
-                        <% let name = result.name %>
-                        <% name.replace('', '%20') %>
-                        <li>
-                            <a href="/exercises/<%= name %> "><%= result.name %></a>
-                        </li>
-                    <% } %>
-                <% }) %>
-            </ul>
-        </div>    
-    </div>
 
-    <div id="thirdRowRes">
-        <div class="resListContainer overflow-auto"">
-            <h3 class="equipmentTitle">Medicine/Bosu/Stability Ball:</h3>
-            <ul>
-                <% results.forEach(result => { %>
-                    <% if(result.equipment === 'bosu ball' || result.equipment === 'stability ball' || result.equipment === 'medicine ball') { %>
-                        <% let name = result.name %>
-                        <% name.replace('', '%20') %>
-                        <li>
-                            <a href="/exercises/<%= name %> "><%= result.name %></a>
-                        </li>
-                    <% } %>
-                <% }) %>
-            </ul>
+        <div class="exercise-res-row" id="secondRowRes">
+            <div class="res-list-container overflow-auto"">
+            <h3 class="equipment-title">Cable:</h3>
+                <ul>
+                    <% results.forEach(result=> { %>
+                        <% if(result.equipment==='cable' ) { %>
+                            <% let name=result.name %>
+                                <% name.replace('', '%20' ) %>
+                                    <li>
+                                        <a href="/exercises/<%= name %> ">
+                                            <%= result.name %>
+                                        </a>
+                                    </li>
+                            <% } %>
+                        <% }) %>
+                </ul>
+            </div>
+            <div class="res-list-container overflow-auto"">
+            <h3 class="equipment-title">Dumbbell/Plates:</h3>
+                <ul>
+                    <% results.forEach(result=> { %>
+                        <% if(result.equipment==='dumbbell' || result.equipment==='weighted' ) { %>
+                            <% let name=result.name %>
+                                <% name.replace('', '%20' ) %>
+                                    <li>
+                                        <a href="/exercises/<%= name %> ">
+                                            <%= result.name %>
+                                        </a>
+                                    </li>
+                            <% } %>
+                        <% }) %>
+                </ul>
+            </div>
+            <div class="res-list-container overflow-auto"">
+            <h3 class="equipment-title">Kettlebell:</h3>
+                <ul>
+                    <% results.forEach(result=> { %>
+                        <% if(result.equipment==='kettlebell' ) { %>
+                            <% let name=result.name %>
+                                <% name.replace('', '%20' ) %>
+                                    <li>
+                                        <a href="/exercises/<%= name %> ">
+                                            <%= result.name %>
+                                        </a>
+                                    </li>
+                            <% } %>
+                        <% }) %>
+                </ul>
+            </div>
         </div>
-        <div class="resListContainer overflow-auto"">
-            <h3 class="equipmentTitle">Smith Machine:</h3>
-            <ul>
-                <% results.forEach(result => { %>
-                    <% if(result.equipment === 'smith machine') { %>
-                        <% let name = result.name %>
-                        <% name.replace('', '%20') %>
-                        <li>
-                            <a href="/exercises/<%= name %> "><%= result.name %></a>
-                        </li>
-                    <% } %>
-                <% }) %>
-            </ul>
+
+        <div class="exercise-res-row" id="thirdRowRes">
+            <div class="res-list-container overflow-auto"">
+            <h3 class="equipment-title">Medicine/Bosu/Stability Ball:</h3>
+                <ul>
+                    <% results.forEach(result=> { %>
+                        <% if(result.equipment==='bosu ball' || result.equipment==='stability ball' ||
+                            result.equipment==='medicine ball' ) { %>
+                            <% let name=result.name %>
+                                <% name.replace('', '%20' ) %>
+                                    <li>
+                                        <a href="/exercises/<%= name %> ">
+                                            <%= result.name %>
+                                        </a>
+                                    </li>
+                                    <% } %>
+                                        <% }) %>
+                </ul>
+            </div>
+            <div class="res-list-container overflow-auto"">
+            <h3 class="equipment-title">Smith Machine:</h3>
+                <ul>
+                    <% results.forEach(result=> { %>
+                        <% if(result.equipment==='smith machine' ) { %>
+                            <% let name=result.name %>
+                                <% name.replace('', '%20' ) %>
+                                    <li>
+                                        <a href="/exercises/<%= name %> ">
+                                            <%= result.name %>
+                                        </a>
+                                    </li>
+                                    <% } %>
+                                        <% }) %>
+                </ul>
+            </div>
+            <div class="res-list-container overflow-auto"">
+            <h3 class="equipment-title">Other:</h3>
+                <ul>
+                    <% results.forEach(result=> { %>
+                        <% if(result.equipment==='elliptical machine' || result.equipment==='hammer' ||
+                            result.equipment==='leverage machine' || result.equipment==='roller' ||
+                            result.equipment==='rope' || result.equipment==='skierg machine' ||
+                            result.equipment==='sled machine' || result.equipment==='stepmill machine' ||
+                            result.equipment==='tire' || result.equipment==='upper body ergometer' ||
+                            result.equipment==='wheel roller' ) { %>
+                            <% let name=result.name %>
+                                <% name.replace('', '%20' ) %>
+                                    <li>
+                                        <a href="/exercises/<%= name %> ">
+                                            <%= result.name %>
+                                        </a>
+                                    </li>
+                                    <% } %>
+                                        <% }) %>
+                </ul>
+            </div>
         </div>
-        <div class="resListContainer overflow-auto"">
-            <h3 class="equipmentTitle">Other:</h3>
-            <ul>
-                <% results.forEach(result => { %>
-                    <% if(result.equipment === 'elliptical machine' || result.equipment === 'hammer' || result.equipment === 'leverage machine' || result.equipment === 'roller' || result.equipment === 'rope' || result.equipment === 'skierg machine' || result.equipment === 'sled machine' || result.equipment === 'stepmill machine' || result.equipment === 'tire' || result.equipment === 'upper body ergometer' || result.equipment === 'wheel roller') { %>
-                        <% let name = result.name %>
-                        <% name.replace('', '%20') %>
-                        <li>
-                            <a href="/exercises/<%= name %> "><%= result.name %></a>
-                        </li>
-                    <% } %>
-                <% }) %>
-            </ul>
-        </div>
-    </div>
+    </main>
     <div id="addedSpace"></div>
 
     <!-- <footer class="shortFooter">
