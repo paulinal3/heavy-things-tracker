@@ -7,11 +7,12 @@
         <nav>
             <%- include('../partials/userNavBar') %>
         </nav>
+
+        <div class="exercise-name">
+            <h1><%= name %></h1>
+        </div>
     </header>
 
-    <div class="exerciseName">
-        <h1><%= name %></h1>
-    </div>
     <div class="exerciseBody">
         <div>
             <img src="<%= demoVid %>" alt = "animation demo of <%= name %> ">

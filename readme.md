@@ -4,6 +4,8 @@ A fullstack application that allows users to search over 1300 exercises to save 
 ## Deployed App
 https://heavy-things-tracker.herokuapp.com/
 
+## Userflow
+![Userflow-diagram](./pitch-images/user-flowchart.png)
 ## RESTful Routes
 ![RESTful Routes Table](./pitch-images/RESTfulRoutes.png)
 
@@ -15,12 +17,12 @@ https://heavy-things-tracker.herokuapp.com/
      * `cloudinary`
      * `multer`
 3. Open code
-4. In browser, go to https://www.exercisedb.io/ and sign up for free acocount for API token
+4. In browser, go to https://rapidapi.com/justin-WFnsXH_t6/api/exercisedb/ and sign up for free acocount for API token
 5. Once account is verified, click on Dashboard, then API TOKEN
 6. Uncover your token to copy and paste in the `.env` file
 7. `.env` file should look like this:
      ```js
-     API_KEY=Token_<yourApiToken>
+     RAPID_API_KEY=Token_<yourApiToken>
      SUPER_SECRET_SECRET=<anyWordYouWant>
      ```
 8. Go to https://cloudinary.com/ and sign up for a free account
@@ -59,7 +61,7 @@ https://heavy-things-tracker.herokuapp.com/
 ![ERD](./pitch-images/erd.png)
 
 ## Examples of API Data
-API root = https://v1.exercisedb.io/api/exercises/<:param>
+API root = https://exercisedb.p.rapidapi.com/exercises/<:param>
 * Body Part = bodyPart/{bodyPart}
      1. "back"
      2. "chest",
