@@ -91,12 +91,13 @@ nav {
 @media (min-width: 768px) {
     #search-container .search-div {
         padding: 25px 150px 25px 150px;
-        width: 90%;
-        margin-left: 5%;
+        width: 96%;
+        margin-left: 2%;
     }
 
     #search-label {
         font-size: 35px;
+        width: 100%;
     }
 
     #search-container .search-div select {
