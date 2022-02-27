@@ -178,9 +178,9 @@ body {
 
 @media (min-width: 1200px) {
     .exercise-res-container {
-        gap: 50px; 
+        gap: 50px;
     }
-    
+
     .exercise-res-container .exercise-res-row {
         flex-direction: row;
         justify-content: space-evenly;
@@ -197,42 +197,61 @@ body {
 header .exercise-name {
     text-align: center;
     text-transform: capitalize;
+    padding-top: 25px;
 }
+
+.exercise-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-transform: capitalize;
+    font-size: 25px;
+    gap: 20px;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.exercise-body .exercise-info-container .exercise-info {
+    padding-top: 20px;
+}
+
+.exercise-body #save-btn {
+    height: 50px;
+    width: 200px;
+    font-size: 25px;
+    background-color: #E9FFFF;
+    color: #719294;
+    border: 3px solid #719294;
+}
+
 @media (min-width: 1200px) {
-    .exercise-name {
-        text-align: center;
-        text-transform: capitalize;
-        padding: 25px 0 10px 0;
+    header .exercise-name {
+        padding-top: 50px;
     }
 
-    .exerciseBody {
+    .exercise-body {
+        gap: 35px;
+    }
+
+    .exercise-body .exercise-info-container {
         display: flex;
-        flex-direction: row;
+        gap: 35px;
+        width: 100%;
         justify-content: center;
-        text-transform: capitalize;
-        font-size: 25px;
-        gap: 20px;
     }
 
-    .exerciseInfo {
+    .exercise-body .exercise-info-container .exercise-info {
         display: flex;
         flex-direction: column;
         border: 5px solid #719294;
-        width: 35%;
+        width: 30%;
         text-align: center;
-    }
-
-    .info {
-        padding-top: 20%;
-    }
-
-    #saveForm, .showForm {
-        margin-top: 35px;
-        display: flex;
         justify-content: center;
+        padding-top: 0%;
     }
 
-    #saveBtn, #unsaveBtn {
+    .exercise-body #save-form #save-btn {
         height: 50px;
         width: 200px;
         font-size: 25px;
@@ -241,7 +260,29 @@ header .exercise-name {
         border: 3px solid #719294;
     }
 
-    #saveBtn:hover, #unsaveBtn:hover {
+    .exercise-body #save-form #save-btn:hover {
+        background-color: #719294;
+        color: #D3F2E9;
+    }
+}
+
+@media (min-width: 1200px) {
+    #saveForm, .showForm {
+        margin-top: 35px;
+        display: flex;
+        justify-content: center;
+    }
+
+    #save-btn, #unsaveBtn {
+        height: 50px;
+        width: 200px;
+        font-size: 25px;
+        background-color: #E9FFFF;
+        color: #719294;
+        border: 3px solid #719294;
+    }
+
+    #unsaveBtn:hover {
         background-color: #719294;
         color: #D3F2E9;
     }
@@ -310,12 +351,12 @@ header .exercise-name {
         padding-top: 0%;
         height: 50px;
     }
-    
+
     .nav-container .nav-link-container {
         display: flex;
         align-items: center;
     }
-    
+
     .nav-container .middle-link {
         display: flex;
         flex-direction: row;
