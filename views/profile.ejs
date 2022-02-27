@@ -32,7 +32,7 @@
             <ul>
                 <% results.forEach(workout => { %>
                     <% if(workout.dataValues.completed === true) { %>
-                    <li class="profileList">
+                    <li class="profile-list">
                         <%= workout.dataValues.date %>: <%= workout.dataValues.type %> 
                     </li>
                     <% } %>
@@ -43,7 +43,7 @@
             <h3 class="container-title"><a href="/exercises/saves">Saved Exercises</a></h3>
             <ul>
                 <% saves.forEach(save => { %>
-                    <li class="profileList">
+                    <li class="profile-list">
                         <%= save.dataValues.name %>
                     </li>
                 <% }) %> 
