@@ -40,6 +40,10 @@ footer {
     width: 100%;
 }
 
+#login-container #large-login-form {
+    display: none;
+}
+
 #login-container #small-login-form {
     display: flex;
     justify-content: center;
@@ -57,6 +61,10 @@ footer {
     width: 80%;
 }
 
+#login-container #small-login-form .form-floating {
+    border: 3px solid #719294;
+}
+
 #login-container #small-login-form #login-btn {
     height: 40px;
     width: 100%;
@@ -65,10 +73,6 @@ footer {
     color: #719294;
     border: 3px solid #719294;
     margin-top: 15px;
-}
-
-#login-container #large-login-form {
-    display: none;
 }
 
 #login-container #small-login-form #login-btn:hover {
@@ -87,7 +91,57 @@ footer {
 }
 
 @media (min-width: 1200px) {
-#login-container, #signupContainer {
+    #login-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        position: absolute;
+        width: 100%;
+        height: 20px;
+        top: 50%;
+        margin-top: -10px;
+        text-align: center;
+    }
+
+    /* ---------- LOGIN.EJS ---------- */
+    #large-login-form {
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .loginLabel, .signupLabel {
+        font-size: 35px;
+    }
+
+    #auth-password, #new-password, #new-email, #new-name {
+        height: 35px;
+        width: 200px;
+    }
+
+    #loginBtn, #signupBtn {
+        height: 40px;
+        width: 125px;
+        font-size: 20px;
+        background-color: #E9FFFF;
+        color: #719294;
+        border: 3px solid #719294;
+    }
+
+    #loginBtn:hover, #signupBtn:hover {
+        background-color: #719294;
+        color: #E9FFFF;
+    }
+}
+
+/* <-------------------- SIGNUP.EJS --------------------> */
+#signup-container {
+    width: 100%;
+}
+
+#signup-container #small-signup-form {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -100,38 +154,67 @@ footer {
     text-align: center;
 }
 
-
-
-/* ---------- LOGIN.EJS ---------- */
-#large-login-form {
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-    align-items: center;
+#signup-container #small-signup-form form {
+    width: 80%;
 }
 
-.loginLabel, .signupLabel {
-    font-size: 35px;
+#signup-container #small-signup-form .form-floating {
+    border: 3px solid #719294;
 }
 
-#auth-password, #new-password, #new-email, #new-name {
-    height: 35px;
-    width: 200px;
-}
-
-#loginBtn, #signupBtn {
+#signup-container #small-signup-form #signup-btn {
     height: 40px;
-    width: 125px;
+    width: 100%;
     font-size: 20px;
     background-color: #E9FFFF;
     color: #719294;
     border: 3px solid #719294;
+    margin-top: 15px;
 }
 
-#loginBtn:hover, #signupBtn:hover {
+#signup-container #large-signup-form {
+    display: none;
+}
+
+#signup-container #small-signup-form #signup-btn:hover {
     background-color: #719294;
     color: #E9FFFF;
 }
 
-/* ---------- SIGNUP.EJS ---------- */
+#signup-container #small-signup-form #signup-btn {
+    height: 40px;
+    width: 100%;
+    font-size: 20px;
+    background-color: #E9FFFF;
+    color: #719294;
+    border: 3px solid #719294;
+    margin-top: 15px;
+}
+
+#signup-container #small-signup-form #signup-btn:hover {
+    background-color: #719294;
+    color: #E9FFFF;
+}
+
+@media (min-width: 1200px) {
+    #signup-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        position: absolute;
+        width: 100%;
+        height: 20px;
+        top: 50%;
+        margin-top: -10px;
+        text-align: center;
+    }
+    
+    #signup-container #large-signup-form {
+        display: block;
+    }
+
+    #signup-container #small-signup-form {
+        display: none;
+    }
 }
