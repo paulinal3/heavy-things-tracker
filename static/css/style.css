@@ -204,8 +204,28 @@ header #profile-name {
     color: black
 }
 
+@media (min-width: 768px) {
+    #home-row {
+        gap: 50px;
+    }
+    
+    #home-row .profile-container {
+        height: 350px;
+        width: 75%;
+    } 
+}
+
 .short-footer {
     margin-top: 50px;
+}
+
+@media (min-width: 768px) {
+    .short-footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    } 
 }
 
 @media (min-width: 1200px) {
