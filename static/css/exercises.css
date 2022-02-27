@@ -9,10 +9,10 @@ body {
     font-family: 'Poiret One', cursive;
 }
 
-nav {
+/* nav {
     background-color: rgba(0, 0, 0, 0.05);
     height: 35px;
-}
+} */
 
 .navContainer {
     display: flex;
@@ -191,8 +191,10 @@ nav {
     .exercise-res-container .exercise-res-row .res-list-container li {
         font-size: 20px;
     }
+}
 
-    /* ---------- SHOW.EJS ---------- */
+/* <-------------------- SHOW.EJS --------------------> */
+@media (min-width: 1200px) {
     .exerciseName {
         text-align: center;
         text-transform: capitalize;

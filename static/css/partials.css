@@ -9,20 +9,36 @@
 }
 
 /* ---------- LONGFOOTER.EJS ---------- */
-#longFooter {
-    background-color: rgba(0, 0, 0, 0.05);
-}
-
-#footerRow {
+#long-footer #footer-row {
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+    flex-direction: column;
+    gap: 25px;
 }
 
-#firstCol {
-    width: 400px;
+#long-footer #footer-row .col-info-container p {
+    padding: 0px 25px 0px 25px;
 }
 
-h6 {
-    margin-bottom: 20px;
+#long-footer #footer-row .footer-col a {
+    text-decoration: none;
+    color: #008686;
+}
+
+@media (min-width: 768px) {
+    #long-footer #footer-row {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    #long-footer #footer-row .col-info-container p {
+        text-align: left;
+    }
+
+    #long-footer #footer-row #first-col {
+        width: 400px;
+    }
+
+    h6 {
+        margin-bottom: 20px;
+    }
 }
