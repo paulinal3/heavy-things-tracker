@@ -139,6 +139,7 @@ nav {
     flex-direction: column;
     gap: 25px;
     align-items: center;
+    width: 100%;
 }
 
 .exercise-res-container .exercise-res-row .res-list-container {
@@ -169,42 +170,26 @@ nav {
     color: #008686;
 }
 
+@media (min-width: 768px) {
+    .exercise-res-container .exercise-res-row {
+        width: 75%;
+    }
+}
+
 @media (min-width: 1200px) {
-    #firstRowRes, #secondRowRes, #thirdRowRes {
-        display: flex;
+    .exercise-res-container {
+        gap: 50px; 
+    }
+    
+    .exercise-res-container .exercise-res-row {
         flex-direction: row;
         justify-content: space-evenly;
-        margin: 20px 0 20px 0;
+        gap: 50px;
+        width: 90%;
     }
 
-    .res-list-container {
-        border: 2px solid #719294;
-        width: 30%;
-        height: 300px;
-        overflow-y: scroll;
-        background-color: rgba(0, 0, 0, 0.05);
-        padding-top: 10px;
-    }
-
-    /* .resList {
-    list-style-type: none;
-    text-transform: capitalize;
-    font-size: 20px;
-} */
-
-    .equipmentTitle {
-        text-align: center;
-    }
-
-    li {
+    .exercise-res-container .exercise-res-row .res-list-container li {
         font-size: 20px;
-    }
-
-    #indexFooter {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
     }
 
     /* ---------- SHOW.EJS ---------- */
