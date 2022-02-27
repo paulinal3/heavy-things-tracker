@@ -9,39 +9,6 @@ body {
     font-family: 'Poiret One', cursive;
 }
 
-/* nav {
-    background-color: rgba(0, 0, 0, 0.05);
-    height: 35px;
-} */
-
-.navContainer {
-    display: flex;
-    flex-direction: row;
-    font-size: 20px;
-    text-decoration: none;
-    justify-content: space-between;
-}
-
-.profileLink, .newSearchLink {
-    padding-left: 10px;
-}
-
-.searchLink {
-    padding-right: 10px;
-}
-
-.searchNav:link {
-    text-decoration: none;
-}
-
-.searchNav:hover {
-    color: black;
-}
-
-#addedSpace {
-    margin-top: 100px;
-}
-
 .shortFooter {
     position: fixed;
     bottom: 0;
@@ -132,6 +99,7 @@ body {
     align-items: center;
     gap: 25px;
     margin-top: 15px;
+    padding-bottom: 50px;
 }
 
 .exercise-res-container .exercise-res-row {
@@ -278,6 +246,7 @@ header #saved-header {
     align-items: center;
     gap: 25px;
     margin-top: 15px;
+    padding-bottom: 50px;
 }
 
 .saved-res-container .saved-res-row {
@@ -291,7 +260,7 @@ header #saved-header {
 .saved-res-container .saved-res-row .saved-list-container {
     border: 3px solid #719294;
     /* border-radius: 5%; */
-    width: 90%;
+    width: 30%;
     height: 300px;
     background-color: rgba(0, 0, 0, 0.05);
     overflow-y: scroll;
@@ -339,82 +308,7 @@ header #saved-header {
     }
 }
 
-@media (min-width: 1200px) {
-    #saveForm, .showForm {
-        margin-top: 35px;
-        display: flex;
-        justify-content: center;
-    }
-
-    #save-btn, #unsaveBtn {
-        height: 50px;
-        width: 200px;
-        font-size: 25px;
-        background-color: #E9FFFF;
-        color: #719294;
-        border: 3px solid #719294;
-    }
-
-    #unsaveBtn:hover {
-        background-color: #719294;
-        color: #D3F2E9;
-    }
-
-    /* ---------- INDEXSAVES.EJS ---------- */
-    #savedTitle {
-        text-align: center;
-        padding: 25px 0 10px 0;
-    }
-
-    #firstRow {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
-        margin: 20px 0 20px 0;
-    }
-
-    #secondRow {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
-        margin: 20px 0 20px 0;
-    }
-
-    #thirdRow {
-        display: flex;
-        justify-content: center;
-    }
-
-    #chest, #back, #legs, #shoulders, #arms, #calves, #abs {
-        border: 3px solid #719294;
-        width: 30%;
-        height: 250px;
-        overflow-y: scroll;
-        background-color: rgba(0, 0, 0, 0.05);
-        padding-top: 10px;
-    }
-
-    .muscleTitle {
-        text-align: center;
-    }
-
-    .exerciseDetails:link {
-        text-decoration: none;
-        text-transform: capitalize;
-        font-size: 20px;
-    }
-
-    li {
-        list-style-type: none;
-    }
-
-    a {
-        text-decoration: none;
-        text-transform: capitalize;
-        color: #008686;
-    }
-}
-
+/* <-------------------- SHOWSAVES.EJS --------------------> */
 @media (min-width: 768px) {
     .nav-container {
         display: flex;
@@ -424,12 +318,22 @@ header #saved-header {
         padding-top: 0%;
         height: 50px;
     }
-
+    
     .nav-container .nav-link-container {
         display: flex;
         align-items: center;
     }
 
+    .nav-container .nav-link-container a {
+        text-decoration: none;
+        color: #008686;
+        font-size: 20px;
+    }
+    
+    .nav-container .nav-link-container a:hover {
+        color: black;
+    }
+    
     .nav-container .middle-link {
         display: flex;
         flex-direction: row;
@@ -437,5 +341,78 @@ header #saved-header {
         width: 100%;
         justify-content: center;
         align-content: center;
+    }
+}
+
+header .saved-exercise-name {
+    text-align: center;
+    text-transform: capitalize;
+    padding-top: 25px;
+    font-size: 20px;
+}
+
+.saved-exercise-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-transform: capitalize;
+    font-size: 25px;
+    gap: 20px;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.saved-exercise-body .saved-exercise-info-container .exercise-info {
+    padding-top: 20px;
+}
+
+.saved-exercise-body #unsave-btn {
+    height: 50px;
+    width: 200px;
+    font-size: 25px;
+    background-color: #E9FFFF;
+    color: #719294;
+    border: 3px solid #719294;
+}
+
+@media (min-width: 1200px) {
+    header .saved-exercise-name {
+        padding-top: 50px;
+    }
+
+    .saved-exercise-body {
+        gap: 35px;
+    }
+
+    .saved-exercise-body .saved-exercise-info-container {
+        display: flex;
+        gap: 35px;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .saved-exercise-body .saved-exercise-info-container .exercise-info {
+        display: flex;
+        flex-direction: column;
+        border: 5px solid #719294;
+        width: 30%;
+        text-align: center;
+        justify-content: center;
+        padding-top: 0%;
+    }
+
+    .saved-exercise-body #save-form #unsave-btn {
+        height: 50px;
+        width: 200px;
+        font-size: 25px;
+        background-color: #E9FFFF;
+        color: #719294;
+        border: 3px solid #719294;
+    }
+
+    .saved-exercise-body #save-form #unsave-btn:hover {
+        background-color: #719294;
+        color: #D3F2E9;
     }
 }
