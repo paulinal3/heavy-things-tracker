@@ -7,16 +7,15 @@
         <nav>
             <%- include('../partials/userNavBar') %>
         </nav>
+        <div id="saved-header">
+            <h1>All Your Saved Exercises </h1>
+        </div>
     </header>
-
-    <div id="savedTitle">
-        <h1>All Your Saved Exercises </h1>
-    </div>
     
-    <div id="savedContainer">
-        <div id="firstRow">
-            <div id="chest" class="overflow-auto">
-                <h3 class="muscleTitle">Chest:</h3>
+    <main class="saved-res-container id="savedContainer">
+        <div class="saved-res-row" id="firstRow">
+            <div id="chest" class="saved-list-container overflow-auto">
+                <h3 class="muscle-title">Chest:</h3>
                 <ul>
                     <% exerciseSaves.forEach(exercise => { %>
                         <% if(exercise.bodyPart === 'chest') { %>
@@ -29,8 +28,8 @@
                     <% }) %> 
                 </ul>
             </div>
-            <div id="back" class="overflow-auto">
-                <h3 class="muscleTitle">Back:</h3>
+            <div id="back" class="saved-list-container overflow-auto">
+                <h3 class="muscle-title">Back:</h3>
                 <ul>
                     <% exerciseSaves.forEach(exercise => { %>
                         <% if(exercise.bodyPart === 'back') { %>
@@ -43,8 +42,8 @@
                     <% }) %> 
                 </ul>
             </div>
-            <div id="legs" class="overflow-auto">
-                <h3 class="muscleTitle">Legs:</h3>
+            <div id="legs" class="saved-list-container overflow-auto">
+                <h3 class="muscle-title">Legs:</h3>
                 <ul>
                     <% exerciseSaves.forEach(exercise => { %>
                         <% if(exercise.bodyPart === 'upper legs') { %>
@@ -59,9 +58,9 @@
             </div>
         </div>
     
-        <div id="secondRow">
-            <div id="shoulders" class="overflow-auto">
-                <h3 class="muscleTitle">Shoulders:</h3>
+        <div class="saved-res-row" id="secondRow">
+            <div id="shoulders" class="saved-list-container overflow-auto">
+                <h3 class="muscle-title">Shoulders:</h3>
                 <ul>
                     <% exerciseSaves.forEach(exercise => { %>
                         <% if(exercise.bodyPart === 'shoulders') { %>
@@ -74,8 +73,8 @@
                     <% }) %> 
                 </ul>
             </div>
-            <div id="arms">
-                <h3 class="muscleTitle" class="overflow-auto">Arms:</h3>
+            <div id="arms" class="saved-list-container overflow-auto">
+                <h3 class="muscle-title" >Arms:</h3>
                 <ul>
                     <% exerciseSaves.forEach(exercise => { %>
                         <% if(exercise.bodyPart === 'upper arms' || exercise.bodyPart === 'lower arms') { %>
@@ -88,8 +87,8 @@
                     <% }) %> 
                 </ul>
             </div>
-            <div id="calves">
-                <h3 class="muscleTitle" class="overflow-auto">Calves:</h3>
+            <div id="calves" class="saved-list-container overflow-auto">
+                <h3 class="muscle-title">Calves:</h3>
                 <ul>
                     <% exerciseSaves.forEach(exercise => { %>
                         <% if(exercise.bodyPart === 'lower legs') { %>
@@ -104,9 +103,9 @@
             </div>
         </div>
     
-        <div id="thirdRow">
-            <div id="abs" class="class="overflow-auto">
-                <h3 class="muscleTitle overflow-auto">Abs:</h3>
+        <div class="saved-res-row" id="thirdRow">
+            <div id="abs" class="saved-list-container overflow-auto overflow-auto">
+                <h3 class="muscle-title">Abs:</h3>
                 <ul>
                     <% exerciseSaves.forEach(exercise => { %>
                         <% if(exercise.bodyPart === 'waist') { %>
@@ -120,7 +119,7 @@
                 </ul>
             </div>
         </div>
-    </div>
+    </main>
     <div id="addedSpace"></div>
 
     <!-- <footer class="shortFooter">
