@@ -10,24 +10,23 @@ https://heavy-things-tracker.herokuapp.com/
 ![RESTful Routes Table](./pitch-images/RESTfulRoutes.png)
 
 ## Install
-1. Go to https://www.exercisedb.io/ and sign up for free acocount
-2. Download code to your terminal, then run `npm i` to install the following packages: 
+1. Download code to your terminal, then run `npm i` to install the following packages: 
      * `axios`
      * `method_override`
      * `cloudinary`
      * `multer`
-3. Open code
-4. In browser, go to https://rapidapi.com/justin-WFnsXH_t6/api/exercisedb/ and sign up for free acocount for API token
-5. Once account is verified, click on Dashboard, then API TOKEN
-6. Uncover your token to copy and paste in the `.env` file
-7. `.env` file should look like this:
+2. Open code
+3. In browser, go to https://rapidapi.com/justin-WFnsXH_t6/api/exercisedb/ and sign up for free acocount for API key
+4. Once account is verified, click on Dashboard, then API TOKEN
+5. Uncover your token to copy and paste in the `.env` file
+6. `.env` file should look like this:
      ```js
-     RAPID_API_KEY=Token_<yourApiToken>
+     RAPID_API_KEY=Token_<yourApiKey>
      SUPER_SECRET_SECRET=<anyWordYouWant>
      ```
-8. Go to https://cloudinary.com/ and sign up for a free account
-9. Once you verify your account, go to Dashboard and copy your API Environment variable
-10. Paste into your `.env` on a new line
+7. Go to https://cloudinary.com/ and sign up for a free account
+8. Once you verify your account, go to Dashboard and copy your API Environment variable
+9. Paste into your `.env` on a new line
      ```js
      CLOUDINARY_URL=<cloudinary://**************:**************@paulinal3>
      ```
