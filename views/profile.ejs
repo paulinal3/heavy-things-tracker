@@ -4,24 +4,25 @@
 
 <body>
     <header>
-        <nav>
-            <div class="navContainer">
-                <div class="profileLink">
-                    <a href="/" class="searchNav">Home</a>
+        <nav id="profile-nav">
+            <div class="nav-container">
+                <div class="left-link nav-link-container">
+                    <a href="/" class="nav-links">Home</a>
                 </div>
-                <div class="logLink middleLink">
-                    <!-- <a href="/workouts/newPlan" class="searchNav">Plan a Workout</a> -->
-                    <a href="/workouts/new" class="searchNav" id="log">Log a Workout</a>
-                    <a href="/exercises/search" class="Search Exercises">Search Exercises</a>
+                <div class="middle-link nav-link-container">
+                    <!-- <a href="/workouts/newPlan" class="nav-links">Plan a Workout</a> -->
+                    <a href="/workouts/new" class="nav-links" id="log">Log Workout</a>
+                    <a href="/exercises/search" class="search-exercises nav-links">Search Exercises</a>
                 </div>
-                <div class="searchLink">
-                    <a href="/auth/logout" class="searchNav">Logout</a>
+                <div class="right-link nav-link-container">
+                    <a href="/auth/logout" class="nav-links">Logout</a>
                 </div>
+            </div>
         </nav>
 
         <div id="profile-name">
             <h1>
-                <%= currentUser.name %>'s Profile 
+                <%= currentUser.name %>'s Profile
             </h1>
         </div>
     </header>
@@ -30,27 +31,27 @@
         <div class="profile-container overflow-auto">
             <h3 class="container-title"><a href="/workouts">Workout History</a></h3>
             <ul>
-                <% results.forEach(workout => { %>
-                    <% if(workout.dataValues.completed === true) { %>
-                    <li class="profile-list">
-                        <%= workout.dataValues.date %>: <%= workout.dataValues.type %> 
-                    </li>
-                    <% } %>
-                <% }) %> 
+                <% results.forEach(workout=> { %>
+                    <% if(workout.dataValues.completed===true) { %>
+                        <li class="profile-list">
+                            <%= workout.dataValues.date %>: <%= workout.dataValues.type %>
+                        </li>
+                        <% } %>
+                            <% }) %>
             </ul>
         </div>
         <div class="profile-container overflow-auto">
             <h3 class="container-title"><a href="/exercises/saves">Saved Exercises</a></h3>
             <ul>
-                <% saves.forEach(save => { %>
+                <% saves.forEach(save=> { %>
                     <li class="profile-list">
                         <%= save.dataValues.name %>
                     </li>
-                <% }) %> 
+                    <% }) %>
             </ul>
         </div>
     </main>
-    
+
     <footer class="short-footer">
         <%- include('partials/shortFooter') %>
     </footer>

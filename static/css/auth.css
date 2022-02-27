@@ -3,31 +3,31 @@ body {
     font-family: 'Poiret One', cursive;
 }
 
-nav {
-    background-color: rgba(0, 0, 0, 0.05);
-    height: 35px;
-}
+@media (min-width: 768px) {
+    .nav-container {
+        display: flex;
+        flex-direction: row;
+        padding: 0px 25px 0 25px;
+        background-color: rgba(0, 0, 0, 0.05);
+        justify-content: space-between;
+        padding-top: 0%;
+        height: 50px;
+    }
+    
+    .nav-container .nav-link-container {
+        display: flex;
+        align-items: center;
+    }
 
-.navContainer {
-    display: flex;
-    flex-direction: row;
-    font-size: 20px;
-    text-decoration: none;
-    justify-content: space-between;
-}
-
-.profileLink, .newSearchLink {
-    padding-left: 10px;
-}
-
-.searchLink {
-    padding-right: 10px;
-}
-
-a {
-    text-decoration: none;
-    text-transform: capitalize;
-    color: #008686;
+    .nav-container .nav-link-container a {
+        text-decoration: none;
+        color: #008686;
+        font-size: 20px;
+    }
+    
+    .nav-container .nav-link-container a:hover {
+        color: black;
+    }
 }
 
 #loginContainer, #signupContainer {

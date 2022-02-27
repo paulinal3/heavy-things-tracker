@@ -87,7 +87,7 @@ body {
 
 .home-info .home-container {
     border: 3px solid #719294;
-    border-radius: 5%;
+    /* border-radius: 5%; */
     width: 90%;
     height: 300px;
     padding: 10px 15px 0 15px;
@@ -160,62 +160,37 @@ body {
 
 /* <-------------------- PROFILE.EJS --------------------> */
 @media (min-width: 1200px) {
-    nav {
-        background-color: rgba(0, 0, 0, 0);
-        height: 35px;
-        padding-top: 1%;
-        color: whitesmoke;
-    }
-
-    .navContainer {
+    .nav-container {
         display: flex;
         flex-direction: row;
-        font-size: 20px;
+        padding: 0px 25px 0 25px;
+        background-color: rgba(0, 0, 0, 0.05);
+        padding-top: 0%;
+        height: 50px;
+    }
+    
+    .nav-container .nav-link-container {
+        display: flex;
+        align-items: center;
+    }
+
+    .nav-container .nav-link-container a {
         text-decoration: none;
-        justify-content: space-between;
+        color: #008686;
+        font-size: 20px;
     }
-
-    .nav-link {
-        color: whitesmoke;
+    
+    .nav-container .nav-link-container a:hover {
+        color: black;
     }
-
-    .nav-link:hover {
-        color: #E9FFFF;
-    }
-
-    .middleLink {
+    
+    .nav-container .middle-link {
         display: flex;
         flex-direction: row;
         column-gap: 2%;
         width: 100%;
         justify-content: center;
         align-content: center;
-    }
-
-    .profileLink, .newSearchLink {
-        padding-left: 10px;
-    }
-
-    .searchLink {
-        padding-right: 10px;
-    }
-
-    a {
-        text-decoration: none;
-        text-transform: capitalize;
-        color: #008686;
-    }
-
-    .searchNav:hover {
-        color: black;
-    }
-
-    .profileLink, .newSearchLink {
-        padding-left: 10px;
-    }
-
-    .searchLink {
-        padding-right: 10px;
     }
 }
 
@@ -243,7 +218,7 @@ header #profile-name {
 
 #home-row .profile-container {
     border: 3px solid #719294;
-    border-radius: 5%;
+    /* border-radius: 5%; */
     width: 90%;
     height: 300px;
     background-color: rgba(0, 0, 0, 0.05);
