@@ -23,7 +23,7 @@ body {
 
 #landing-page nav h1 {
     text-align: center;
-    padding-top: 5%;
+    padding-top: 25px;
     font-size: 25px;
     color: whitesmoke;
 }
@@ -40,22 +40,30 @@ body {
 
 }
 
+@media (min-width: 768px) {
+    #landing-page {
+        height: 100vh;
+    }
+}
+
 @media (min-width: 1200px) {
     #landing-page {
         background-image: url(https://integrisok.com/-/media/Blog/18-July-Aug-Sept-Oct-Nov/Woman-lifting-weights.ashx?as=1&mh=405&mw=720&revision=31ef0144-e01a-4c2d-9e19-60ac0f0045bd&hash=FC96853DAE3BDFCA08403EF90C9B1E20);
         background: linear-gradient(rgba(31, 108, 94, 0.65), rgba(31, 44, 108, 0.65)), rgba(0, 0, 0, 0.55) url("https://integrisok.com/-/media/Blog/18-July-Aug-Sept-Oct-Nov/Woman-lifting-weights.ashx?as=1&mh=405&mw=720&revision=31ef0144-e01a-4c2d-9e19-60ac0f0045bd&hash=FC96853DAE3BDFCA08403EF90C9B1E20") no-repeat;
         background-attachment: fixed;
         background-size: cover;
+        background-position: center;
         color: white;
         box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
         height: 100vh;
+        padding-bottom: 0%;
     }
 
     #landing-page nav h1 {
         font-size: 30px;
         color: whitesmoke;
         text-align: center;
-        padding-top: 0%;
+        /* padding-top: 0%; */
         width: 100%;
         top: 0%
     }
@@ -99,23 +107,28 @@ body {
     font-size: 15px;
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 768px) {
+    .home-info {
+        padding-top: 25px;
+    }
+
     .home-info .home-row {
         flex-direction: row;
         justify-content: center;
         text-align: center;
         padding: 0px -50px 0px -50px;
-        margin-top: 25px;
-        gap: 25px;
+        margin-top: 5%;
+        gap: 5%;
     }
 
     .home-info .home-container {
         /* border: 5px solid #719294; */
-        width: 45%;
-        height: 250px;
+        width: 35%;
+        height: 400px;
         padding: 10px 15px 0 15px;
         background-color: rgba(255, 255, 255, 0.1);
         color: whitesmoke;
+        margin-top: 0%;
     }
 }
 
@@ -184,12 +197,6 @@ body {
     .searchLink {
         padding-right: 10px;
     }
-
-    
-
-    /* #addedSpace {
-        margin-top: 75px;
-    } */
 
     /* ---------- PROFILE.EJS ---------- */
     #profileName {
