@@ -1,3 +1,9 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     background-color: #E9FFFF;
     font-family: 'Poiret One', cursive;
@@ -28,7 +34,7 @@ nav {
     text-decoration: none;
 }
 
-.searchNav:hover{
+.searchNav:hover {
     color: black;
 }
 
@@ -43,8 +49,8 @@ nav {
     right: 0;
 }
 
-/* ---------- SEARCH.EJS ---------- */
-#searchContainer {
+/* <-------------------- SEARCH.EJS --------------------> */
+#search-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -57,175 +63,205 @@ nav {
     text-align: center;
 }
 
-.searchDiv {
-    border: 5px solid #719294;
-    padding: 25px 150px 25px 150px;
+#search-container .search-div {
+    border: 3px solid #719294;
+    /* border-radius: 5%; */
+    width: 350px;
+    padding: 25px 0px 25px 0px;
     background-color: rgba(0, 0, 0, 0.05);
 }
 
-#searchLabel {
-    font-size: 35px;
+#search-container .search-div select {
+    height: 30px;
 }
 
-#muscleTargeted {
-    font: 30px;
-    height: 35px;
-}
-
-#searchBtn {
-    height: 35px;
-    width: 125px;
-    font-size: 20px;
+#search-container .search-div input {
+    height: 30px;
+    width: 100px;
     background-color: #E9FFFF;
     color: #719294;
     border: 2px solid #719294;
 }
 
-#searchBtn:hover {
+#search-container .search-div input:hover {
     background-color: #719294;
     color: #E9FFFF;
 }
 
-/* ---------- INDEX.EJS ---------- */
-#resHeader {
-    text-align: center;
-    padding: 25px 0 10px 0;
+@media (min-width: 768px) {
+    #search-container .search-div {
+        padding: 25px 150px 25px 150px;
+        width: 90%;
+        margin-left: 5%;
+    }
+
+    #search-label {
+        font-size: 35px;
+    }
+
+    #search-container .search-div select {
+        font: 30px;
+        height: 35px;
+    }
+
+    #search-container .search-div input {
+        height: 35px;
+        width: 125px;
+        font-size: 20px;
+    }
 }
 
-#firstRowRes, #secondRowRes, #thirdRowRes {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    margin: 20px 0 20px 0;
+@media (min-width: 1200px) {
+    #search-container .search-div {
+        padding: 25px 150px 25px 150px;
+        width: 100%;
+        margin-left: 0%;
+    }
 }
 
-.resListContainer {
-    border: 2px solid #719294;
-    width: 30%;
-    height: 300px;
-    overflow-y: scroll;
-    background-color: rgba(0, 0, 0, 0.05);
-    padding-top: 10px;
-}
+/* <-------------------- INDEX.EJS --------------------> */
+@media (min-width: 1200px) {
+    #resHeader {
+        text-align: center;
+        padding: 25px 0 10px 0;
+    }
 
-/* .resList {
+    #firstRowRes, #secondRowRes, #thirdRowRes {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        margin: 20px 0 20px 0;
+    }
+
+    .resListContainer {
+        border: 2px solid #719294;
+        width: 30%;
+        height: 300px;
+        overflow-y: scroll;
+        background-color: rgba(0, 0, 0, 0.05);
+        padding-top: 10px;
+    }
+
+    /* .resList {
     list-style-type: none;
     text-transform: capitalize;
     font-size: 20px;
 } */
 
-.equipmentTitle {
-    text-align: center;
-}
+    .equipmentTitle {
+        text-align: center;
+    }
 
-li {
-    font-size: 20px;
-}
+    li {
+        font-size: 20px;
+    }
 
-#indexFooter {
+    #indexFooter {
         position: fixed;
         bottom: 0;
         left: 0;
         right: 0;
-}
-/* ---------- SHOW.EJS ---------- */
-.exerciseName {
-    text-align: center;
-    text-transform: capitalize;
-    padding: 25px 0 10px 0;
-}
+    }
 
-.exerciseBody {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    text-transform: capitalize;
-    font-size: 25px;
-    gap: 20px;
-}
+    /* ---------- SHOW.EJS ---------- */
+    .exerciseName {
+        text-align: center;
+        text-transform: capitalize;
+        padding: 25px 0 10px 0;
+    }
 
-.exerciseInfo {
-    display: flex;
-    flex-direction: column;
-    border: 5px solid #719294;
-    width: 35%;
-    text-align: center;
-}
+    .exerciseBody {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        text-transform: capitalize;
+        font-size: 25px;
+        gap: 20px;
+    }
 
-.info {
-    padding-top: 20%;
-}
+    .exerciseInfo {
+        display: flex;
+        flex-direction: column;
+        border: 5px solid #719294;
+        width: 35%;
+        text-align: center;
+    }
 
-#saveForm, .showForm {
-    margin-top: 35px;
-    display: flex;
-    justify-content: center;
-}
+    .info {
+        padding-top: 20%;
+    }
 
-#saveBtn, #unsaveBtn {
-    height: 50px;
-    width: 200px;
-    font-size: 25px;
-    background-color: #E9FFFF;
-    color: #719294;
-    border: 3px solid #719294;
-}
+    #saveForm, .showForm {
+        margin-top: 35px;
+        display: flex;
+        justify-content: center;
+    }
 
-#saveBtn:hover, #unsaveBtn:hover {
-    background-color: #719294;
-    color: #D3F2E9;
-}
+    #saveBtn, #unsaveBtn {
+        height: 50px;
+        width: 200px;
+        font-size: 25px;
+        background-color: #E9FFFF;
+        color: #719294;
+        border: 3px solid #719294;
+    }
 
-/* ---------- INDEXSAVES.EJS ---------- */
-#savedTitle {
-    text-align: center;
-    padding: 25px 0 10px 0;
-}
+    #saveBtn:hover, #unsaveBtn:hover {
+        background-color: #719294;
+        color: #D3F2E9;
+    }
 
-#firstRow{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    margin: 20px 0 20px 0;
-}
+    /* ---------- INDEXSAVES.EJS ---------- */
+    #savedTitle {
+        text-align: center;
+        padding: 25px 0 10px 0;
+    }
 
-#secondRow{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    margin: 20px 0 20px 0;
-}
+    #firstRow {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        margin: 20px 0 20px 0;
+    }
 
-#thirdRow{
-    display: flex;
-    justify-content: center;
-}
+    #secondRow {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        margin: 20px 0 20px 0;
+    }
 
-#chest, #back, #legs, #shoulders, #arms, #calves, #abs {
-    border: 3px solid #719294;
-    width: 30%;
-    height: 250px;
-    overflow-y: scroll;
-    background-color: rgba(0, 0, 0, 0.05);
-    padding-top: 10px;
-}
+    #thirdRow {
+        display: flex;
+        justify-content: center;
+    }
 
-.muscleTitle {
-    text-align: center;
-}
+    #chest, #back, #legs, #shoulders, #arms, #calves, #abs {
+        border: 3px solid #719294;
+        width: 30%;
+        height: 250px;
+        overflow-y: scroll;
+        background-color: rgba(0, 0, 0, 0.05);
+        padding-top: 10px;
+    }
 
-.exerciseDetails:link {
-    text-decoration: none;
-    text-transform: capitalize;
-    font-size: 20px;
-}
+    .muscleTitle {
+        text-align: center;
+    }
 
-li {
-    list-style-type: none;
-}
+    .exerciseDetails:link {
+        text-decoration: none;
+        text-transform: capitalize;
+        font-size: 20px;
+    }
 
-a {
-    text-decoration: none;
-    text-transform: capitalize;
-    color: #008686;
+    li {
+        list-style-type: none;
+    }
+
+    a {
+        text-decoration: none;
+        text-transform: capitalize;
+        color: #008686;
+    }
 }

@@ -17,14 +17,14 @@
         </div>
     </nav>
 
-    <div id="searchContainer">
+    <main id="search-container">
         <form method="GET" action="/exercises">
-            <div class="searchDiv">
-                <label for="exercise name input" id="searchLabel">Search By Muscle You Would Like to Target:</label>
+            <div class="search-div">
+                <label for="exercise name input" id="search-label">Search By Muscle You Would Like to Target:</label>
     
                 <br> <br>
     
-                <select name="bodyPart" id="muscleTargeted">
+                <select name="bodyPart" id="muscle-targeted">
                     <option value="waist">Abs</option>
                     <option value="back">Back</option>
                     <option value="upper%20arms">Biceps & Triceps</option>
@@ -34,10 +34,10 @@
                     <option value="upper%20legs">Legs</option>
                     <option value="shoulders">Shoulders</option>
                 </select>
-                <input id="searchBtn" type="submit" value="See Results!">
+                <input id="search-btn" type="submit" value="See Results!">
             </div>
         </form>    
-    </div>
+    </main>
 
     <footer class="shortFooter">
         <%- include('../partials/shortFooter') %>
