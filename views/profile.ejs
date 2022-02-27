@@ -18,17 +18,17 @@
                     <a href="/auth/logout" class="searchNav">Logout</a>
                 </div>
         </nav>
+
+        <div id="profile-name">
+            <h1>
+                <%= currentUser.name %>'s Profile 
+            </h1>
+        </div>
     </header>
 
-    <div id="profileName">
-        <h1>
-            <%= currentUser.name %>'s Profile 
-        </h1>
-    </div>
-
-    <div id="homeRow">
-        <div class="profileContainer overflow-auto">
-            <h3 class="containerTitle"><a href="/workouts">Workout History</a></h3>
+    <main id="home-row">
+        <div class="profile-container overflow-auto">
+            <h3 class="container-title"><a href="/workouts">Workout History</a></h3>
             <ul>
                 <% results.forEach(workout => { %>
                     <% if(workout.dataValues.completed === true) { %>
@@ -39,8 +39,8 @@
                 <% }) %> 
             </ul>
         </div>
-        <div class="profileContainer overflow-auto">
-            <h3 class="containerTitle"><a href="/exercises/saves">Saved Exercises</a></h3>
+        <div class="profile-container overflow-auto">
+            <h3 class="container-title"><a href="/exercises/saves">Saved Exercises</a></h3>
             <ul>
                 <% saves.forEach(save => { %>
                     <li class="profileList">
@@ -49,9 +49,9 @@
                 <% }) %> 
             </ul>
         </div>
-    </div>
+    </main>
     
-    <footer class="shortFooter">
+    <footer class="short-footer">
         <%- include('partials/shortFooter') %>
     </footer>
 </body>
