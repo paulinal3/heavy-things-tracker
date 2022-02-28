@@ -184,6 +184,10 @@ header .exercise-name {
     padding-top: 20px;
 }
 
+.exercise-body #save-form {
+    padding-bottom: 25px;
+}
+
 .exercise-body #save-btn {
     height: 50px;
     width: 200px;
