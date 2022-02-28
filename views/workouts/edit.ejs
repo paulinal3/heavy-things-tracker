@@ -7,31 +7,57 @@
         <nav>
             <%- include('../partials/userNavBar') %>
         </nav>
+        <div id="edit-workout-title">
+            <h1>Edit Your Workout</h1>
+        </div>
     </header>
 
-    <div id="editWorkoutTitle">
-        <h1>Edit Your Workout</h1>
-    </div>
-        <form method="POST" action="/workouts/edit/<%= workoutId %>/?_method=PUT">
-            <div id="logRow">
-                <div id="firstCol">
-                    <label for="date">Date Completed:</label>
-                    <label for="workoutType">Type of Workout:</label>
-                    <label for="duration">Duration (minutes):</label>
-                    <label for="comments">Comments:</label>
+    <main id="edit-workout-container">
+        <!-- laptop size -->
+        <div id="large-edit-workout-form">
+            <form method="POST" action="/workouts/edit/<%= workoutId %>/?_method=PUT">
+                <div id="edit-row">
+                    <div class="edit-workout-col" id="first-col">
+                        <label for="date">Date Completed:</label>
+                        <label for="workoutType">Type of Workout:</label>
+                        <label for="duration">Duration (minutes):</label>
+                        <label for="comments">Comments:</label>
+                    </div>
+                    <div class="edit-workout-col" id="second-col">
+                        <input id="date" type="date" name="date" value="<%= date %>">
+                        <input id="workoutType" type="text" name="type" value="<%= type %>">
+                        <input id="duration" type="number" name="duration" value="<%= duration %>">
+                        <input id="comments" type="text" name="comments" value="<%= comments %>">
+                    </div>
                 </div>
-                <div id="secondCol">
-                    <input id="date" type="date" name="date" value="<%= date %>">
-                    <input id="workoutType" type="text" name="type" value="<%= type %>">
-                    <input id="duration" type="number" name="duration" value="<%= duration %>">
-                    <input id="comments" type="text" name="comments" value="<%= comments %>">
+                <div id="edit-btn-container">
+                    <input type="submit" value="Update Workout" class="edit-btn"></input>
                 </div>
-            </div>
-            <div id="btnDiv">
-                <input type="submit" value="Update Workout" id="updateBtn"></input>
-            </div>
-        </form>
-    </div>
+            </form>
+        </div>
+        <!-- phone & tablet size -->
+        <div id="small-edit-workout-form">
+            <form action="/workouts/edit/<%= workoutId %>/?_method=PUT" method="POST">
+                <div class="form-floating mb-3">
+                    <input type="date" class="form-control" id="floating-date" name="date" placeholder="01/01/1901">
+                    <label for="floating-date">Date Completed</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floating-type" name="type" placeholder="Cardio">
+                    <label for="floating-type">Type of Workout</label>
+                </div>
+                <div class="form-floating">
+                    <input type="number" class="form-control" id="floating-duration" name="duration" placeholder="60">
+                    <label for="floating-duration">Duration (minutes)</label>
+                </div>
+                <div class="form-floating">
+                    <input type="text" class="form-control" id="floating-comments" name="comments" placeholder="60">
+                    <label for="floating-comments">Comments</label>
+                </div>
+                <input class="edit-btn" type="submit" value="Update Workout">
+            </form>
+        </div>
+    </main>
 
     <footer class="short-footer">
         <%- include('../partials/shortFooter') %>
