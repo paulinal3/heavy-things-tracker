@@ -20,7 +20,7 @@ https://heavy-things-tracker.herokuapp.com/
 4. Copy your X-RapidApi-Key and paste in the `.env` file
 5. `.env` file should look like this:
      ```js
-     RAPID_API_KEY=Token_<yourApiKey>
+     RAPID_API_KEY=<yourApiKey>
      SUPER_SECRET_SECRET=<anyWordYouWant>
      ```
 6. Go to https://cloudinary.com/ and sign up for a free account
