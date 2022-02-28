@@ -54,6 +54,7 @@ https://heavy-things-tracker.herokuapp.com/
 
 ## API
 * ExerciseDB
+* Cloudinary
 
 ## ERD
 ![ERD](./pitch-images/erd.png)
