@@ -10,52 +10,97 @@ body {
     right: 0;
 }
 
-/* ---------- NEW.EJS ---------- */
-#logWorkoutTitle {
+/* <-------------------- NEW.EJS --------------------> */
+header #log-workout-title {
     text-align: center;
     padding: 25px 0 10px 0;
 }
 
-#logRow {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    column-gap: 5px;
+#log-workout-container {
+    width: 100%;
 }
 
-#firstCol, #secondCol {
+#log-workout-container #large-log-workout-form {
+    display: none;
+}
+
+#log-workout-container #small-log-workout-form {
+    display: flex;
+    justify-content: center;
+    padding-top: 25px;
+}
+
+#log-workout-container #small-log-workout-form form {
     display: flex;
     flex-direction: column;
-    font-size: 20px;
-    row-gap: 15px;
+    gap: 25px;
+    width: 90%;
 }
 
-#firstCol {
-    font-size: 25px;
+#log-workout-container #small-log-workout-form .mb-3 {
+    margin-bottom: 0% !important;
 }
 
-#logRow {
-    margin-top: 20px;
-}
-
-#btnContainer {
-    text-align: center;
-    margin-top: 35px;
-}
-
-#logBtn {
+#log-workout-container .log-btn {
     height: 50px;
-    width: 200px;
+    width: 100%;
     font-size: 25px;
     background-color: #E9FFFF;
     color: #719294;
     border: 3px solid #719294;
 }
 
-#logBtn:hover{
+#log-workout-container .log-btn:hover {
     background-color: #719294;
     color: #D3F2E9;
 }
+
+@media (min-width: 1200px) {
+    #log-workout-container #large-log-workout-form {
+        display: block;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        padding-top: 25px;
+    }
+
+    #log-workout-container #small-log-workout-form {
+        display: none;
+    }
+    
+    #log-workout-container #large-log-workout-form #log-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        column-gap: 20px;
+        margin-top: 20px;
+        width: 100%;
+    }
+    
+    #log-workout-container #large-log-workout-form .log-workout-col {
+        display: flex;
+        flex-direction: column;
+        font-size: 20px;
+        gap: 25px;
+    }
+    
+    #log-workout-container #large-log-workout-form #first-col {
+        font-size: 25px;
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+    }
+    
+    #log-workout-container #large-log-workout-form #log-btn-container {
+        text-align: center;
+        margin-top: 35px;
+    }
+
+    #log-workout-container .log-btn {
+        width: 100%;
+    }
+}
+
 
 /* <-------------------- INDEX.EJS --------------------> */
 #history-title {

@@ -7,35 +7,63 @@
         <nav>
             <%- include('../partials/userNavBar') %>
         </nav>
+
+        <div id="log-workout-title">
+            <h1>Log Your Latest Workout!</h1>
+        </div>
     </header>
 
-    <div id="logWorkoutTitle">
-        <h1>Log Your Latest Workout!</h1>
-    </div>
-    <form method="POST" action="/workouts" enctype="multipart/form-data">
-        <div id="logRow">
-            <div id="firstCol">
-                <label for="date">Date Completed:</label>
-                <label for="workoutType">Type of Workout:</label>
-                <label for="duration">Duration (minutes):</label>
-                <label for="comments">Comments:</label>
-                <label for="img">Upload a Photo: </label>
-            </div>
-            <div id="secondCol">
-                <input id="date" type="date" name="date" required>
-                <input id="workoutType" type="text" name="type">
-                <input id="duration" type="number" name="duration">
-                <input id="comments" type="text" name="comments">
-                <input id="img" type="file" name="myFile">
-            </div>
+    <main id="log-workout-container">
+        <!-- laptop size -->
+        <div id="large-log-workout-form">
+            <form method="POST" action="/workouts" enctype="multipart/form-data">
+                <div id="log-row">
+                    <div class="log-workout-col" id="first-col">
+                        <label for="date">Date Completed:</label>
+                        <label for="workoutType">Type of Workout:</label>
+                        <label for="duration">Duration (minutes):</label>
+                        <label for="comments">Comments:</label>
+                        <label for="img">Upload a Photo: </label>
+                    </div>
+                    <div class="log-workout-col" id="secondCol">
+                        <input id="date" type="date" name="date" required>
+                        <input id="workoutType" type="text" name="type">
+                        <input id="duration" type="number" name="duration">
+                        <input id="comments" type="text" name="comments">
+                        <input id="img" type="file" name="myFile">
+                    </div>
+                </div>
+                <div id="log-btn-container">
+                    <input type="submit" value="Log Workout" class="log-btn"></input>
+                </div>
+            </form>
         </div>
-        <div id="btnContainer">
-            <input type="submit" value="Log Workout" id="logBtn"></input>
+        <!-- phone & tablet size -->
+        <div id="small-log-workout-form">
+            <form action="/workouts" method="POST" enctype="multipart/form-data">
+                <div class="form-floating mb-3">
+                    <input type="date" class="form-control" id="floating-date" name="date" placeholder="01/01/1901">
+                    <label for="floating-date">Date Completed</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floating-type" name="type" placeholder="Cardio">
+                    <label for="floating-type">Type of Workout</label>
+                </div>
+                <div class="form-floating">
+                    <input type="number" class="form-control" id="floating-duration" name="duration" placeholder="60">
+                    <label for="floating-duration">Duration (minutes)</label>
+                </div>
+                <div class="form-floating">
+                    <input type="text" class="form-control" id="floating-comments" name="comments" placeholder="60">
+                    <label for="floating-comments">Comments</label>
+                </div>
+                <input class="log-btn" type="submit" value="Log Workout">
+            </form>
         </div>
-    </form>
-    </div>
+        </div>
+    </main>
 
-    <footer class="shortFooter">
+    <footer class="short-footer">
         <%- include('../partials/shortFooter') %>
     </footer>
 </body>
