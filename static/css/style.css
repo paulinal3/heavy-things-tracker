@@ -99,10 +99,13 @@ body {
 .home-info .home-container h3 {
     font-size: 20px;
     text-align: center;
+    text-decoration: underline;
 }
 
 .home-info .home-container h5 {
-    font-size: 15px;
+    font-size: 14px;
+    padding-top: 15px;
+    text-align: left;
 }
 
 @media (min-width: 768px) {
@@ -139,10 +142,19 @@ body {
 }
 
 @media (min-width: 1200px) {
+    .home-info {
+        padding-top: 0%;
+    }
+
+    .home-info .home-row {
+        gap: 3%;
+        margin-top: 3%;
+    }
+
     .home-info .home-container {
-        width: 35%;
+        width: 45%;
         height: 400px;
-        padding: 10px 15px 0 15px;
+        padding: 10px 50px 0 50px;
         background-color: rgba(255, 255, 255, 0.1);
         color: whitesmoke;
         margin-top: 0%;
