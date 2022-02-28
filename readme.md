@@ -6,8 +6,6 @@ https://heavy-things-tracker.herokuapp.com/
 
 ## Userflow
 ![Userflow-diagram](./pitch-images/user-flowchart.png)
-## RESTful Routes
-![RESTful Routes Table](./pitch-images/RESTfulRoutes.png)
 
 ## Install
 1. Download code to your terminal, then run `npm i` to install the following packages: 
@@ -52,12 +50,15 @@ https://heavy-things-tracker.herokuapp.com/
 * List of All Logged Workouts
 ![Wireframe](./pitch-images/workout-list.png)
 
+## ERD
+![ERD](./pitch-images/erd.png)
+
+## RESTful Routes
+![RESTful Routes Table](./pitch-images/RESTfulRoutes.png)
+
 ## API
 * ExerciseDB
 * Cloudinary
-
-## ERD
-![ERD](./pitch-images/erd.png)
 
 ## Examples of API Data
 API root = https://exercisedb.p.rapidapi.com/exercises/<:param>
