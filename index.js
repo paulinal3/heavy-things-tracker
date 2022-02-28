@@ -78,5 +78,5 @@ app.get('/profile', isLoggedIn, (req, res) => {
 })
 
 app.listen(process.env.PORT || 3000, ()=>{
-    console.log("heavy things grind 💪🏼🏋🏽‍♀️")
+    console.log("heavy things grind 3000 💪🏼🏋🏽‍♀️")
 })

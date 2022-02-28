@@ -25,7 +25,10 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: false
     },
     scheduledDate: DataTypes.DATEONLY,
-    img: DataTypes.STRING,
+    img: {
+      type: DataTypes.STRING,
+      defaultValue: null
+    },
     userId: DataTypes.INTEGER
   }, {
     sequelize,
