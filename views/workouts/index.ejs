@@ -7,17 +7,17 @@
         <nav>
             <%- include('../partials/userNavBar') %>
         </nav>
-    </header>
-
-    <div id="historyContainer">
-        <div id="historyTitle">
+        <div id="history-title">
             <h1>Your Workout History</h1>
         </div>
-        <div id="completedList"> 
+    </header>
+
+    <div id="history-container">
+        <div id="completed-list"> 
             <ol>
                 <% results.forEach(workout=> { %>
                     <% if(workout.dataValues.completed===true) { %>
-                        <li id="historyList">
+                        <li id="history-list">
                             <a href="/workouts/<%= workout.id %>">
                                 <%= workout.dataValues.date %>: <%= workout.dataValues.type %>
                             </a>
@@ -28,7 +28,7 @@
         </div>
     </div>
 
-    <footer class="shortFooter">
+    <footer class="short-footer">
         <%- include('../partials/shortFooter') %>
     </footer>
 

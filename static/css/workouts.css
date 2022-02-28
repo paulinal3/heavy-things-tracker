@@ -3,6 +3,13 @@ body {
     font-family: 'Poiret One', cursive;
 }
 
+.short-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
 /* ---------- NEW.EJS ---------- */
 #logWorkoutTitle {
     text-align: center;
@@ -50,32 +57,57 @@ body {
     color: #D3F2E9;
 }
 
-/* ---------- INDEX.EJS ----------- */
-#historyContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-#historyTitle {
+/* <-------------------- INDEX.EJS --------------------> */
+#history-title {
     text-align: center;
     padding: 25px 0 10px 0;
 }
 
-#completedList {
+#history-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+#history-container #completed-list {
     border: 3px solid #719294;
-    width: 30%;
+    width: 90%;
     height: 500px;
     padding: 10px 15px 0 15px;
     background-color: rgba(0, 0, 0, 0.05);
     overflow-y: scroll;
 }
 
-#historyList {
+#history-container #completed-list ol {
+    list-style-type: none;
+}
+
+#history-container #completed-list a {
+    text-decoration: none;
+    color: #008686;
+}
+
+#history-container #completed-list a:hover {
+    color: black;
+}
+
+#history-container #completed-list #history-list {
     font-size: 20px;
 }
 
+@media (min-width: 768px) {
+    #history-container #completed-list {
+        width: 70%;
+    }
+}
+
+@media (min-width: 1200px) {
+    #history-container #completed-list {
+        width: 30%;
+    }
+}
 /* ---------- SHOW.EJS ----------- */
 #showTitle {
     text-align: center;
@@ -177,9 +209,3 @@ li {
     display: none;
 } */
 
-.shortFooter {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-}
