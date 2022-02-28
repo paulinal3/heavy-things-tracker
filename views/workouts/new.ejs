@@ -42,11 +42,11 @@
         <div id="small-log-workout-form">
             <form action="/workouts" method="POST" enctype="multipart/form-data">
                 <div class="form-floating mb-3">
-                    <input type="date" class="form-control" id="floating-date" name="date" placeholder="01/01/1901">
+                    <input type="date" class="form-control" id="floating-date" name="date" placeholder="01/01/1901" required>
                     <label for="floating-date">Date Completed</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="floating-type" name="type" placeholder="Cardio">
+                    <input type="text" class="form-control" id="floating-type" name="type" placeholder="Cardio" required>
                     <label for="floating-type">Type of Workout</label>
                 </div>
                 <div class="form-floating">
@@ -59,7 +59,7 @@
                 </div>
                 <div class="upload-photo">
                     <label for="img">Upload a Photo: </label>
-                    <input id="img" type="file" name="myFile">
+                    <input id="img" type="file" name="myFile" required>
                 </div>
                 <input class="log-btn" type="submit" value="Log Workout">
             </form>
