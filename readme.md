@@ -16,17 +16,16 @@ https://heavy-things-tracker.herokuapp.com/
      * `cloudinary`
      * `multer`
 2. Open code
-3. In browser, go to https://rapidapi.com/justin-WFnsXH_t6/api/exercisedb/ and sign up for free acocount for API key
-4. Once account is verified, click on Dashboard, then API TOKEN
-5. Uncover your token to copy and paste in the `.env` file
-6. `.env` file should look like this:
+3. In browser, go to https://rapidapi.com/justin-WFnsXH_t6/api/exercisedb/ and sign up for free account and subscribe to ExeciseDB API
+4. Copy your X-RapidApi-Key and paste in the `.env` file
+5. `.env` file should look like this:
      ```js
      RAPID_API_KEY=Token_<yourApiKey>
      SUPER_SECRET_SECRET=<anyWordYouWant>
      ```
-7. Go to https://cloudinary.com/ and sign up for a free account
-8. Once you verify your account, go to Dashboard and copy your API Environment variable
-9. Paste into your `.env` on a new line
+6. Go to https://cloudinary.com/ and sign up for a free account
+7. Once you verify your account, go to Dashboard and copy your API Environment variable
+8. Paste into your `.env` on a new line
      ```js
      CLOUDINARY_URL=<cloudinary://**************:**************@paulinal3>
      ```

@@ -260,7 +260,7 @@ header #saved-header {
 .saved-res-container .saved-res-row .saved-list-container {
     border: 3px solid #719294;
     /* border-radius: 5%; */
-    width: 30%;
+    width: 90%;
     height: 300px;
     background-color: rgba(0, 0, 0, 0.05);
     overflow-y: scroll;
@@ -301,6 +301,10 @@ header #saved-header {
         justify-content: space-evenly;
         gap: 50px;
         width: 90%;
+    }
+
+    .saved-res-container .saved-res-row .saved-list-container {
+        width: 30%;
     }
 
     .saved-res-container .saved-res-row .saved-list-container li {

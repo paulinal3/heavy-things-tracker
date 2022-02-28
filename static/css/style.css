@@ -159,7 +159,7 @@ body {
 }
 
 /* <-------------------- PROFILE.EJS --------------------> */
-@media (min-width: 1200px) {
+@media (min-width: 768px) {
     .nav-container {
         display: flex;
         flex-direction: row;
@@ -199,12 +199,17 @@ header #profile-name {
     text-align: center;
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 768px) {
     header #profile-name {
         margin-top: 25px;
-        padding-top: 25px;
         font-size: 50px;
         color: #52848A;
+    }
+}
+
+@media (min-width: 1200px) {
+    header #profile-name {
+        padding-top: 25px;
     }
 }
 
