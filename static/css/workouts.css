@@ -109,7 +109,6 @@ header #log-workout-title {
     }
 }
 
-
 /* <-------------------- INDEX.EJS --------------------> */
 #history-title {
     text-align: center;
@@ -161,13 +160,13 @@ header #log-workout-title {
         width: 30%;
     }
 }
-/* ---------- SHOW.EJS ----------- */
-#showTitle {
+/* <-------------------- SHOW.EJS --------------------> */
+.show-workout-container #show-workout-completed {
     text-align: center;
-    padding: 25px 0 10px 0;
+    padding: 50px 25px 10px 25px;
 }
 
-#showCol {
+.show-workout-container #show-col {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -176,7 +175,7 @@ header #log-workout-title {
     margin-top: 20px;
 }
 
-#commentsDiv {
+.show-workout-container #show-col #comments-container {
     background-color: rgba(0, 0, 0, 0.05);
     width: 25%;
     display: flex;
@@ -184,12 +183,23 @@ header #log-workout-title {
     font-size: 20px;
 }
 
-#editContainer {
-    text-align: center;
-    margin-top: 35px;
+.show-workout-container #show-col #workout-photo {
+    max-height: 500px;
+    max-width: 500px;
 }
 
-#editBtn {
+#edit-btn-container {
+    text-align: center;
+    padding: 35px 0px 35px 0px;
+}
+
+@media (min-width: 1200px) {
+    .show-workout-container #show-workout-completed {
+        padding: 50px 0 10px 0;
+    }
+}
+
+#edit-btn-container #edit-btn {
     height: 50px;
     width: 200px;
     font-size: 25px;
@@ -198,7 +208,7 @@ header #log-workout-title {
     border: 3px solid #719294;
 }
 
-#editBtn:hover{
+#edit-btn-container #edit-btn:hover{
     background-color: #719294;
     color: #D3F2E9;
 }

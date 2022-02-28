@@ -9,15 +9,15 @@
         </nav>
     </header>
 
-    <div>
-        <div id="showTitle">
+    <main class="show-workout-container">
+        <div id="show-workout-completed">
             <h1>Completed a <%= type %> workout in <%= duration %> minutes on <%= date %> </h1>
         </div>
-        <div id="showCol">
+        <div id="show-col">
             <div>
                 <h3>Your Comments About this Workout:</h3>
             </div>
-            <div id="commentsDiv">
+            <div id="comments-container">
                 <% if (comments === null || comments === '') { %>
                     <h4 id="comment">You did not log any comments for this workout.</h4>
                     <% } else { %>
@@ -25,24 +25,24 @@
                     <% } %>
             </div>
             <br>
-            <div>
+            <div id="workout-photo-container">
                 <% if (img === null) { %>
                     <h4 id="comment">You did not upload a photo for this workout.</h4>
                     <% } else { %>
-                        <img src="<%= img %>" alt="photo uploaded by user for this workout">
+                        <img src="<%= img %>" alt="photo uploaded by user for this workout" id="workout-photo">
                     <% } %>
 
             </div>
         </div>
-    </div>
+    </main>
 
-    <div id="editContainer">
+    <div id="edit-btn-container">
         <form method="GET" action="/workouts/edit/<%= workoutId %>">
-            <input type="submit" value="Edit Workout" id="editBtn">
+            <input type="submit" value="Edit Workout" id="edit-btn">
         </form>
     </div>
 
-    <footer class="short-footer">
+    <!-- <footer class="short-footer">
         <%- include('../partials/shortFooter') %>
-    </footer>
+    </footer> -->
 </body>
