@@ -6,6 +6,13 @@
     <header>
         <nav id="profile-nav">
             <div class="nav-container">
+                <div class="hamburger">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-list"
+                        viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
+                    </svg>
+                </div>
                 <div class="left-link nav-link-container">
                     <a href="/" class="nav-links">Home</a>
                 </div>
@@ -20,6 +27,13 @@
             </div>
         </nav>
 
+        <aside class="hamburger-menu">
+            <a href="/" class="nav-links">Home</a>
+            <a href="/workouts/new" class="nav-links" id="log">Log Workout</a>
+            <a href="/exercises/search" class="search-exercises nav-links">Search Exercises</a>
+            <a href="/auth/logout" class="nav-links">Logout</a>
+        </aside>
+    
         <div id="profile-name">
             <h1>
                 <%= currentUser.name %>'s Profile
@@ -55,4 +69,6 @@
     <footer class="short-footer">
         <%- include('partials/shortFooter') %>
     </footer>
+    
+    <script src="../static/js/app.js"></script>
 </body>

@@ -313,7 +313,67 @@ header #saved-header {
 }
 
 /* <-------------------- SHOWSAVES.EJS --------------------> */
+.nav-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0px 25px 0 25px;
+    background-color: rgba(0, 0, 0, 0.05);
+    padding-top: 0%;
+    height: 50px;
+    justify-content: center;
+}
+
+.nav-container .hamburger {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+}
+
+.nav-container .nav-link-container {
+    display: none;
+}
+
+.hamburger-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    text-align: center;
+    background-color: #E9FFFF;
+    opacity: 0;
+    transition: all 0.50s ease-in-out;
+    transform: translateX(100%);
+    font-size: 25px;
+    padding-top: 25px;
+    position: fixed;
+    z-index: 12;
+    width: 100%;
+    height: 100vh;
+}
+
+.hamburger-menu.open {
+    transform: translateX(0%);
+    opacity: 1;
+}
+
+.hamburger-menu a {
+    text-decoration: none;
+    color: #008686;
+}
+
+.hamburger-menu a:hover {
+    color: black;
+}
+
 @media (min-width: 768px) {
+    .nav-container .hamburger {
+        display: none;
+    }
+
+    .hamburger-menu {
+        display: none;
+    }
+    
     .nav-container {
         display: flex;
         flex-direction: row;

@@ -18,7 +18,7 @@
     display: none;
 }
 
-#hamburger-menu {
+.hamburger-menu {
     display: flex;
     flex-direction: column;
     gap: 5px;
@@ -35,17 +35,17 @@
     height: 100vh;
 }
 
-#hamburger-menu.open {
+.hamburger-menu.open {
     transform: translateX(0%);
     opacity: 1;
 }
 
-#hamburger-menu a {
+.hamburger-menu a {
     text-decoration: none;
     color: #008686;
 }
 
-#hamburger-menu a:hover {
+.hamburger-menu a:hover {
     color: black;
 }
 
@@ -54,7 +54,7 @@
         display: none;
     }
 
-    #hamburger-menu {
+    .hamburger-menu {
         display: none;
     }
 

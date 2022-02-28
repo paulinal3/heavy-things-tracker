@@ -1,5 +1,5 @@
 const hamburger = document.querySelector(".bi")
-const menu = document.getElementById("hamburger-menu")
+const menu = document.querySelector(".hamburger-menu")
 
 const openHamburger = () => {
   menu.classList.toggle("open")
