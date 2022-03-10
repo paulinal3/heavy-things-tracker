@@ -114,6 +114,9 @@ router.delete('/saves/:id', isLoggedIn, (req, res) => {
     .then(deletedSave => {
         res.redirect('/exercises/saves')
     })
+    .catch(error => {
+        console.error
+    })
 })
 
 module.exports = router
