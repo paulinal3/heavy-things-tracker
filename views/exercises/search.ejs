@@ -4,7 +4,11 @@
 
 <body>
     <nav>
-        <%- include('../partials/userNavBar') %>
+        <% if (user) { %>
+            <%- include('../partials/userNavBar') %>
+        <% } else { %>
+            <%- include('../partials/nonUserNavBar') %>
+        <% } %>
     </nav>
 
     <main id="search-container">

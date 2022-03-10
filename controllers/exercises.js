@@ -12,7 +12,7 @@ const authHeader = {
 
 // create search route
 router.get('/search', (req, res) => {
-    res.render('exercises/search')
+    res.render('exercises/search', { user: res.locals.currentUser })
 })
 
 // INDEX route based on search results
@@ -24,7 +24,7 @@ router.get('/', (req, res) => {
     .then(apiRes => {
         console.log('this is the apiRes data arr of exercises', apiRes.data)
         const results = apiRes.data
-        res.render('exercises/index', {results})
+        res.render('exercises/index', { results, user: res.locals.currentUser })
     })
     .catch(error => {
         console.error

@@ -62,6 +62,7 @@
         display: block;
         display: flex;
         align-items: center;
+        width: 100%;
     }
     
     .nav-container .nav-link-container a {
@@ -77,10 +78,18 @@
     .nav-container .middle-link {
         display: flex;
         flex-direction: row;
-        column-gap: 2%;
+        column-gap: 25px;
         width: 100%;
         justify-content: center;
         align-content: center;
+    }
+}
+
+/* <-------------------- USERNAVBAR.EJS --------------------> */
+@media (min-width: 768px) {
+    .nav-container #non-user-links {
+        justify-content: flex-end;
+        gap: 25px;
     }
 }
 

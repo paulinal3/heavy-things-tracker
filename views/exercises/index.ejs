@@ -5,7 +5,11 @@
 <body>
     <header>
         <nav>
-            <%- include('../partials/userNavBar') %>
+            <% if (user) { %>
+                <%- include('../partials/userNavBar') %>
+            <% } else { %>
+                <%- include('../partials/nonUserNavBar') %>
+            <% } %>
         </nav>
         <div id="res-header">
             <h1>Exercise Results</h1>
