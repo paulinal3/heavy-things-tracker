@@ -84,7 +84,7 @@ router.get('/:exercise_name', (req, res) => {
         let demoVid = results.gifUrl
         let targetMuscle = results.target
 
-        res.render('exercises/show', {name, bodyPart, equipment, demoVid, targetMuscle})
+        res.render('exercises/show', {name, bodyPart, equipment, demoVid, targetMuscle, user: res.locals.currentUser })
     })
     .catch(error => {
         console.error

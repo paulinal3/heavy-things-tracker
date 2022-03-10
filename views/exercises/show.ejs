@@ -5,7 +5,11 @@
 <body>
     <header>
         <nav>
-            <%- include('../partials/userNavBar') %>
+            <% if (user) { %>
+                <%- include('../partials/userNavBar') %>
+            <% } else { %>
+                <%- include('../partials/nonUserNavBar') %>
+            <% } %>
         </nav>
 
         <div class="exercise-name">
@@ -39,7 +43,11 @@
                 <input hidden type="text" name="equipment" value="<%= equipment %>">
                 <input hidden type="text" name="muscleTargeted" value="<%= targetMuscle %>">
                 <input hidden type="text" name="exerciseDemo" value="<%= demoVid %>">
-                <button type="submit" id="save-btn">Save for Later!</button>
+                <% if (user) { %>
+                    <button type="submit" id="save-btn">Save for Later!</button>
+                <% } else { %>
+                    <button type="submit" id="save-btn">Log In to Save!</button>
+                <% } %>
             </form>
         </div>
     </main>
