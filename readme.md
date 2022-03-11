@@ -1,38 +1,36 @@
 # Heavy Things Tracker
-A fullstack application that allows users to search over 1300 exercises to save for their next workout! User also have the ability to log details of a completed workout and view all logged workouts through their workout history.
+A fullstack application that allows users to search over 1300 exercises to save for their next workout! Users also have the ability to log details of a completed workout and view all logged workouts through their workout history.
 
 ## Deployed App
-https://heavy-things-tracker.herokuapp.com/
+[Heavy Things Tracker App](https://heavy-things-tracker.herokuapp.com/)
 
 ## Userflow
 ![Userflow-diagram](./pitch-images/user-flowchart.png)
 
 ## Install
-1. Download code to your terminal, then run `npm i` to install the following packages: 
-     * `axios`
-     * `method_override`
-     * `cloudinary`
-     * `multer`
+1. Fork and clone repo, then run `npm i` 
 2. Open code
-3. In browser, go to https://rapidapi.com/justin-WFnsXH_t6/api/exercisedb/ and sign up for free account and subscribe to ExeciseDB API
+3. Sign up for free account and subscribe to ExeciseDB API [here](https://rapidapi.com/justin-WFnsXH_t6/api/exercisedb/)
 4. Copy your X-RapidApi-Key and paste in the `.env` file
 5. `.env` file should look like this:
      ```js
      RAPID_API_KEY=<yourApiKey>
      SUPER_SECRET_SECRET=<anyWordYouWant>
      ```
-6. Go to https://cloudinary.com/ and sign up for a free account
+6. Go to [Cloudinary](https://cloudinary.com/) and sign up for a free account
 7. Once you verify your account, go to Dashboard and copy your API Environment variable
 8. Paste into your `.env` on a new line
      ```js
      CLOUDINARY_URL=<cloudinary://**************:**************@paulinal3>
      ```
+9. In terminal, run `create database heavy_things_development`
+10. Run `sequelize db:migrate` to create tables
 
 ## Tech Stack
 * Postgres
 * Express
 * Node.JS
-* CSS/Bootstrap
+* CSS
 
 ## Wireframes
 * Welcome Page
@@ -61,7 +59,7 @@ https://heavy-things-tracker.herokuapp.com/
 * Cloudinary
 
 ## Examples of API Data
-API root = https://exercisedb.p.rapidapi.com/exercises/<:param>
+API root = https://exercisedb.p.rapidapi.com/exercises/:param
 * Body Part = bodyPart/{bodyPart}
      1. "back"
      2. "chest",
