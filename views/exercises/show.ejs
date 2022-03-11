@@ -37,18 +37,18 @@
             </div>
         </div>
         <div id="save-form">
-            <form method="POST" action="/exercises">
-                <input hidden type="text" name="name" value="<%= name %>">
-                <input hidden type="text" name="bodyPart" value="<%= bodyPart %>">
-                <input hidden type="text" name="equipment" value="<%= equipment %>">
-                <input hidden type="text" name="muscleTargeted" value="<%= targetMuscle %>">
-                <input hidden type="text" name="exerciseDemo" value="<%= demoVid %>">
-                <% if (user) { %>
+            <% if (user) { %>
+                <form method="POST" action="/exercises">
+                    <input hidden type="text" name="name" value="<%= name %>">
+                    <input hidden type="text" name="bodyPart" value="<%= bodyPart %>">
+                    <input hidden type="text" name="equipment" value="<%= equipment %>">
+                    <input hidden type="text" name="muscleTargeted" value="<%= targetMuscle %>">
+                    <input hidden type="text" name="exerciseDemo" value="<%= demoVid %>">
                     <button type="submit" id="save-btn">Save for Later!</button>
-                <% } else { %>
-                    <button type="submit" id="save-btn">Log In to Save!</button>
-                <% } %>
-            </form>
+                </form>
+            <% } else { %>
+                <a href="/auth/login"><button id="save-btn">Log In to Save!</button></a>
+            <% } %>
         </div>
     </main>
 
